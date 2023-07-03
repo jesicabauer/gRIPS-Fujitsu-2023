@@ -1,11 +1,2 @@
 # gRIPS-Fujitsu-2023
-takeshi
-Code repository
-<<<<<<< HEAD
-yuki kimura
-=======
-
-Nakashima0324
-
->>>>>>> 1daf1af0d925ba9088b70138ebc30758d283c8f3
-testing
+This code contains R code which can be adapted to Python which replicates Step 1 of the current Hello, Wide Learning website! 
