@@ -43,7 +43,7 @@ model=LogisticRegression(penalty="l1",C=1,solver="liblinear",random_state=0) #se
 #model=LogisticRegression(penalty="l1",C=1,solver="saga",random_state=0) #sets random state for reproducability
 
 
-
+#fit model and display results
 classifier=model.fit(X_train,y_train)
 
 print(classifier.predict(X_test))
