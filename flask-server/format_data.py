@@ -1,32 +1,42 @@
 import pandas as pd
 import re
+import math
 
 ##########################################
 # for animal training dataset
 # format into binary matrix to test LASSO
 ##########################################
 
-original_data = pd.read_csv("animals_train.csv")
+# original_data = pd.read_csv("animals_train.csv")
+original_data = pd.read_csv("COVID_train.csv")
+# original_data = pd.read_csv("defect_prevention_train.csv")
+# original_data = pd.read_csv("election_train.csv")
 # print(original_data)
 
-step2_data = pd.read_csv("animal_step2_data.csv")
+# step2_data = pd.read_csv("animal_step2_data.csv")
+step2_data = pd.read_csv("covid_step2_data.csv")
+# step2_data = pd.read_csv("defect_prevention_train_step2_data.csv")
+# step2_data = pd.read_csv("elections_step2_data.csv")
 # print(step2_data)
 
-animals_col = list(original_data["Name"])
-# print(animals_col)
+# print(list(original_data[original_data.columns[0]]))
+animals_col = list(original_data[original_data.columns[0]])
+
+labels_col = list(original_data[original_data.columns[-1]])
+# print(labels_col)
 
 combinations_col = list(step2_data["Combination of important items"])
 # print(combinations_col)
 
-matrix_dict = dict()
-matrix_dict["animals"] = animals_col
+# matrix_dict = dict()
+# matrix_dict["animals"] = animals_col
 
 # ------------ format combinations
 # turn combos from step 2 data into binary 0 1
 thresholds = set() # save thresholds for parsing later
 all_combo_binary = [] # [{feature1: #, feature2: #, ..}, {combo 2}, {combo 3}]
 for combo in combinations_col:
-    matrix_dict[combo] = [0] * len(animals_col)
+    # matrix_dict[combo] = [0] * len(animals_col)
     combo_string = combo.split("∧") # get features from the combos
     single_combo = dict()
     for feature in combo_string:
@@ -50,14 +60,16 @@ threshold_dict = dict() # {feature: set(threshold numbers)}
 for feature in thresholds:
     # print(feature)
     # print(re.split(r'(\W+)', feature, 1))
-    threshold_value = re.split(r'(\W+)', feature, 1)
+    threshold_value = re.split(r'>=|<', feature)
+    print(threshold_value)
     if threshold_value[0] not in threshold_dict:
         threshold_dict[threshold_value[0]] = set()
-    threshold_dict[threshold_value[0]].add(threshold_value[2])
+    threshold_dict[threshold_value[0]].add(threshold_value[1])
 
-# print(threshold_dict)
+print(thresholds)
+print(threshold_dict)
 # ----------------
-print(all_combo_binary)
+# print(all_combo_binary)
 # print(len(all_combo_binary))
 # matrix_dict["combinations"] = combinations_col
 # print(matrix_dict)
@@ -78,13 +90,13 @@ for index, row in original_data.iterrows():
     # print(row)
     for column in original_data.columns[1:]:
         # print(column)
-        # print(row[column])
+        print(row[column])
 
         if column == "Label": # keep the label as is
             data[column] = row[column]
         elif row[column] == "Has" or row[column] == "Yes":
             data[column] = 1
-        elif column == "Legs": # based on threshold
+        elif column in threshold_dict.keys(): # based on threshold
             # print(row[column])
             # columns based on threshold
             for t_feature, t_value in threshold_dict.items():
@@ -96,13 +108,16 @@ for index, row in original_data.iterrows():
                     else:
                         data[t_feature+">="+num] = 0
                         data[t_feature+"<"+num] = 1
+        elif pd.isnull(row[column]):
+            data[column] = -1
         else:
             data[column] = 0
         # break
     original_data_dict[row[0]] = data # row[0] is animal name
-    # break
+    
+    break
 
-# print(original_data_dict)
+print(original_data_dict)
 # print(thresholds)
 # print(matrix_dict)
 # print(len(original_data_dict.keys()))
@@ -116,6 +131,7 @@ for index, row in original_data.iterrows():
 
 # loop through all animals with their features
 check_combos = dict() # {animal: [combo1, combo2, combo3 ...]} combinations from step 2
+index = 0
 for animal, value in original_data_dict.items():
     # print(value)
     check_combos[animal] = []
@@ -127,14 +143,22 @@ for animal, value in original_data_dict.items():
             # print(binary)
             if value[feature] != binary:
                 check_combos[animal][-1] = 0
+    check_combos[animal].append(labels_col[index])
+    index += 1
 # print(matrix_dict)
 combo_matrix = pd.DataFrame.from_dict(check_combos, orient="index") # put into matrix format
 # print(check_combos)
 # print(combo_matrix)
+combinations_col.append("Label")
 combo_matrix.columns = combinations_col # add in column names
-# combo_matrix.to_csv("matrix_format.csv") # save to csv file
+# combo_matrix.to_csv("animal_matrix_format.csv") # save to csv file
+# combo_matrix.to_csv("covid_matrix_format.csv")
+# combo_matrix.to_csv("defect_prevention_matrix_format.csv")
+# combo_matrix.to_csv("elections_matrix_format.csv")
 
     
 
             
-            
+# #______________________________________
+# print(original_data)
+# pivot_df = original_data.pivot(index="Name", columns="")
