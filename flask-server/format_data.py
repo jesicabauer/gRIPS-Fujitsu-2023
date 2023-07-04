@@ -7,7 +7,7 @@ import re
 ##########################################
 
 #original_data = pd.read_csv("animals_train.csv")
-original_data = pd.read_csv("animals_test.csv")
+original_data = pd.read_csv("animals_train.csv")
 # print(original_data)
 
 step2_data = pd.read_csv("animal_step2_data.csv")
@@ -19,15 +19,15 @@ animals_col = list(original_data["Name"])
 combinations_col = list(step2_data["Combination of important items"])
 # print(combinations_col)
 
-matrix_dict = dict()
-matrix_dict["animals"] = animals_col
+#matrix_dict = dict()
+#matrix_dict["animals"] = animals_col
 
 # ------------ format combinations
 # turn combos from step 2 data into binary 0 1
 thresholds = set() # save thresholds for parsing later
 all_combo_binary = [] # [{feature1: #, feature2: #, ..}, {combo 2}, {combo 3}]
 for combo in combinations_col:
-    matrix_dict[combo] = [0] * len(animals_col)
+    #matrix_dict[combo] = [0] * len(animals_col)
     combo_string = combo.split("∧") # get features from the combos
     single_combo = dict()
     for feature in combo_string:
@@ -43,6 +43,9 @@ for combo in combinations_col:
             single_combo[binary_split[0].strip()] = 1
     # print(single_combo)
     all_combo_binary.append(single_combo)
+    
+    
+
 
 # print(all_combo_binary)
 # print(thresholds)
@@ -71,6 +74,39 @@ print(all_combo_binary)
 # ------------ fill in matrix df
 # dict_original = original_data.to_dict()
 # print(dict_original)
+
+
+
+
+#adding new columns to make categorical variables binary
+
+#############################################
+original_data_bin_cols=original_data
+col_idx=1
+n_cols=len(original_data_bin_cols.columns)
+threshold_cols=list(threshold_dict.keys())
+for col_name, col_data in original_data.items():
+    if col_idx!=1 and col_idx!=n_cols and col_name not in threshold_cols: #all columns except name, label, and threshold columns
+        col_val_set=set() #set of unique values in that column
+        for val in col_data:
+            col_val_set.add(val)
+        for val in col_val_set: #loops through each unique value from that column
+            print(f"value={val}")
+            new_col_name=col_name+"_"+val #new name of column, i.e. Wings_Has
+            binary_list=[]
+            for v in col_data:
+                if v==val:
+                    binary_list.append(1)
+                else:
+                    binary_list.append(0)
+            original_data_bin_cols.insert(loc=1,column=new_col_name,value=binary_list) #add new column
+        original_data_bin_cols=original_data_bin_cols.drop(col_name,axis=1)  #remove original column
+    col_idx+=1
+################################################
+
+
+
+
 
 ## turn original data into a dict
 original_data_dict = dict() # {animal: {feature1: #, feature2: #,...}}
