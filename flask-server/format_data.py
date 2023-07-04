@@ -6,7 +6,8 @@ import re
 # format into binary matrix to test LASSO
 ##########################################
 
-original_data = pd.read_csv("animals_train.csv")
+#original_data = pd.read_csv("animals_train.csv")
+original_data = pd.read_csv("animals_test.csv")
 # print(original_data)
 
 step2_data = pd.read_csv("animal_step2_data.csv")
@@ -132,7 +133,7 @@ combo_matrix = pd.DataFrame.from_dict(check_combos, orient="index") # put into m
 # print(check_combos)
 # print(combo_matrix)
 combo_matrix.columns = combinations_col # add in column names
-# combo_matrix.to_csv("matrix_format.csv") # save to csv file
+combo_matrix.to_csv("matrix_format_test.csv") # save to csv file
 
     
 
