@@ -1,0 +1,169 @@
+,Combination of important items,Combination Length,occurrences of POS,occurrences of NEG
+0,Advocates Healthcare_Yes ∧ Advocates Pension_Yes,2,67,33
+1,Age>=60.0 ∧ Number of Times Elected>=3.0,2,58,6
+2,Alma Mater_University C ∧ Faculty_Economics,2,41,2
+3,Advocates Welfare/Nursing_Yes ∧ Advocates Pension_Yes ∧ Highest Education_University (Postgraduate),3,34,15
+4,Advocates Child Support_No,1,29,159
+5,New/Incumbent/Former_New ∧ Birthplace = Electoral District_No,2,26,135
+6,Age>=60.0 ∧ Advocates Pension_No,2,26,10
+7,Age>=60.0 ∧ Advocates Employment/Labor_No,2,23,6
+8,Age>=60.0 ∧ Advocates Differing Family Names_Yes,2,22,5
+9,Age<60.0 ∧ Advocates Pension_No,2,21,154
+10,Advocates Healthcare_Yes ∧ Advocates Welfare/Nursing_Yes ∧ Alma Mater_University C,3,21,7
+11,Advocates Welfare/Nursing_Yes ∧ Advocates Pension_Yes ∧ Occuation_Public Servant,3,20,6
+12,Advocates Welfare/Nursing_Yes ∧ Advocates Pension_Yes ∧ Hobbies_Jogging and running,3,20,5
+13,New/Incumbent/Former_Incumbent ∧ Faculty_Medicine,2,19,8
+14,Political Party_Unaffiliated ∧ Alma Mater_University C,2,17,8
+15,Gender_Male ∧ New/Incumbent/Former_New ∧ Faculty_Economics,3,17,8
+16,Birthplace = Electoral District_No ∧ Advocates Healthcare_No,2,16,87
+17,Number of Times Elected<3.0 ∧ Birthplace = Electoral District_No ∧ Decade Born_1960's,3,15,84
+18,Birthplace = Electoral District_No ∧ Advocates Employment/Labor_Yes,2,15,80
+19,Block_Kinki ∧ Birthplace = Electoral District_Yes ∧ Highest Education_University (Undergraduate),3,15,5
+20,Advocates Welfare/Nursing_Yes ∧ Advocates Pension_Yes ∧ Faculty_Medicine,3,15,3
+21,New/Incumbent/Former_New ∧ Hereditary Politician_No ∧ Advocates Fiscal Discipline_Yes,3,14,77
+22,Gender_Female ∧ New/Incumbent/Former_New,2,14,74
+23,Political Party_A Party ∧ New/Incumbent/Former_Incumbent ∧ Highest Education_University (Postgraduate),3,14,4
+24,Number of Times Elected>=3.0 ∧ Hobbies_Watching movies,2,14,5
+25,New/Incumbent/Former_New ∧ Advocates Healthcare_No,2,13,89
+26,Number of Times Elected<3.0 ∧ Birthplace = Electoral District_No ∧ Advocates Fiscal Discipline_Yes,3,13,69
+27,Block_Kinki ∧ New/Incumbent/Former_Incumbent ∧ Birthplace = Electoral District_Yes,3,13,2
+28,Advocates Employment/Labor_Yes ∧ Decade Born_1960's,2,12,63
+29,Age<60.0 ∧ Birthplace = Electoral District_No ∧ Advocates Child Support_Yes,3,12,73
+30,Advocates Welfare/Nursing_Yes ∧ Alma Mater_University C ∧ Hobbies_Reading,3,12,4
+31,Political Party_A Party ∧ Block_Tohoku,2,12,4
+32,New/Incumbent/Former_Incumbent ∧ Alma Mater_University A,2,12,6
+33,Advocates Welfare/Nursing_No ∧ Advocates Pension_Yes,2,11,63
+34,New/Incumbent/Former_New ∧ Advocates Fiscal Discipline_No,2,11,80
+35,Political Party_Various Parties ∧ New/Incumbent/Former_Incumbent ∧ Highest Education_University (Postgraduate),3,11,5
+36,Political Party_A Party ∧ New/Incumbent/Former_Incumbent ∧ Occuation_Public Servant,3,11,4
+37,Age<60.0 ∧ Block_Tokyo,2,10,71
+38,New/Incumbent/Former_New ∧ Birthplace = Electoral District_Yes ∧ Highest Education_University (Undergraduate),3,10,52
+39,Gender_Male ∧ New/Incumbent/Former_New ∧ Advocates Fiscal Discipline_Yes,3,10,52
+40,Number of Times Elected<3.0 ∧ Birthplace = Electoral District_No ∧ Advocates Differing Family Names_No,3,10,72
+41,Gender_Male ∧ Block_South Kanto ∧ Advocates Healthcare_Yes,3,10,4
+42,Gender_Male ∧ Block_Tokai ∧ New/Incumbent/Former_Incumbent,3,10,4
+43,Block_South Kanto ∧ New/Incumbent/Former_Incumbent ∧ Birthplace = Electoral District_Yes,3,10,4
+44,Advocates Fiscal Discipline_No ∧ Decade Born_1960's ∧ Occuation_Public Servant,3,10,3
+45,Advocates Fiscal Discipline_No ∧ Advocates Pension_Yes,2,9,49
+46,Hereditary Politician_No ∧ Advocates Differing Family Names_No ∧ Advocates Employment/Labor_Yes,3,9,50
+47,Gender_Male ∧ Block_Tokyo,2,9,53
+48,Gender_Male ∧ Alma Mater_University A ∧ Occuation_Public Servant,3,9,2
+49,Number of Times Elected<3.0 ∧ Advocates Fiscal Discipline_No ∧ Advocates Employment/Labor_Yes,3,8,51
+50,New/Incumbent/Former_New ∧ Advocates Child Support_Yes,2,8,74
+51,New/Incumbent/Former_New ∧ Decade Born_1980's,2,8,48
+52,Political Party_C Party ∧ New/Incumbent/Former_New ∧ Hereditary Politician_No,3,8,46
+53,Age<60.0 ∧ Gender_Female ∧ Advocates Differing Family Names_Yes,3,8,41
+54,Block_Kyushu ∧ New/Incumbent/Former_Former ∧ Birthplace = Electoral District_Yes,3,8,2
+55,Birthplace = Electoral District_Yes ∧ Highest Education_University (Postgraduate) ∧ Alma Mater_University I,3,8,4
+56,Block_Hokuriku/Shinetsu ∧ Birthplace = Electoral District_Yes ∧ Advocates Welfare/Nursing_Yes,3,8,4
+57,Political Party_A Party ∧ Advocates Pension_Yes ∧ Occuation_Public Servant,3,8,3
+58,Advocates Differing Family Names_No ∧ Advocates Welfare/Nursing_Yes ∧ Hobbies_Golf,3,8,4
+59,Age<60.0 ∧ Advocates Differing Family Names_Yes ∧ Advocates Healthcare_Yes,3,7,37
+60,Political Party_C Party ∧ Decade Born_1960's,2,7,40
+61,Age<60.0 ∧ Political Party_C Party ∧ Birthplace = Electoral District_No,3,7,47
+62,Birthplace = Electoral District_No ∧ Advocates Welfare/Nursing_Yes ∧ Advocates Pension_No,3,7,44
+63,Number of Times Elected<3.0 ∧ Advocates Healthcare_Yes ∧ Advocates Welfare/Nursing_No,3,7,36
+64,New/Incumbent/Former_New ∧ Faculty_Law,2,7,46
+65,Birthplace = Electoral District_Yes ∧ Advocates Differing Family Names_Yes ∧ Alma Mater_University A,3,7,2
+66,New/Incumbent/Former_Incumbent ∧ Highest Education_University (Undergraduate) ∧ Faculty_Engineering,3,7,3
+67,Birthplace = Electoral District_Yes ∧ Advocates Welfare/Nursing_Yes ∧ Alma Mater_University D,3,7,3
+68,Block_Kinki ∧ Decade Born_1960's ∧ Occuation_Public Servant,3,7,3
+69,New/Incumbent/Former_Incumbent ∧ Decade Born_1950's ∧ Alma Mater_University B,3,7,3
+70,Block_North Kanto ∧ Advocates Child Support_Yes,2,7,3
+71,Political Party_C Party ∧ Advocates Pension_Yes ∧ Decade Born_1970's,3,7,2
+72,Block_Shikoku ∧ Occuation_Public Servant,2,7,1
+73,Block_Kyushu ∧ New/Incumbent/Former_New,2,6,42
+74,Number of Times Elected<3.0 ∧ Birthplace = Electoral District_No ∧ Advocates Employment/Labor_No,3,6,74
+75,Birthplace = Electoral District_No ∧ Advocates Employment/Labor_No ∧ Highest Education_University (Postgraduate),3,6,33
+76,New/Incumbent/Former_New ∧ Advocates Employment/Labor_No,2,6,75
+77,New/Incumbent/Former_New ∧ Decade Born_1960's ∧ Highest Education_University (Postgraduate),3,6,31
+78,New/Incumbent/Former_Incumbent ∧ Decade Born_1970's ∧ Hobbies_Jogging and running,3,6,3
+79,Birthplace = Electoral District_Yes ∧ Hereditary Politician_Yes ∧ Faculty_Law,3,6,3
+80,New/Incumbent/Former_Incumbent ∧ Advocates Welfare/Nursing_Yes ∧ Faculty_Engineering,3,6,2
+81,Political Party_Unaffiliated ∧ Decade Born_1960's ∧ Occuation_Public Servant,3,6,3
+82,Block_South Kanto ∧ Birthplace = Electoral District_Yes ∧ Advocates Welfare/Nursing_Yes,3,6,2
+83,Political Party_Unaffiliated ∧ Advocates Welfare/Nursing_No ∧ Advocates Employment/Labor_No,3,6,3
+84,Block_Kinki ∧ New/Incumbent/Former_Incumbent ∧ Advocates Welfare/Nursing_No,3,6,3
+85,Block_Kinki ∧ New/Incumbent/Former_New,2,5,32
+86,Block_South Kanto ∧ New/Incumbent/Former_New,2,5,31
+87,Advocates Fiscal Discipline_No ∧ Highest Education_High School,2,5,34
+88,Age<60.0 ∧ Advocates Child Support_Yes ∧ Advocates Employment/Labor_Yes,3,5,43
+89,Political Party_B Party ∧ Hereditary Politician_No ∧ Hobbies_Watching movies,3,5,28
+90,Birthplace = Electoral District_Yes ∧ Alma Mater_University A ∧ Hobbies_Reading,3,5,2
+91,Political Party_B Party ∧ New/Incumbent/Former_Former ∧ Highest Education_High School,3,5,1
+92,Block_Shikoku ∧ Birthplace = Electoral District_No ∧ Advocates Differing Family Names_Yes,3,5,2
+93,Age<60.0 ∧ Birthplace = Electoral District_No ∧ Hobbies_Golf,3,4,37
+94,New/Incumbent/Former_New ∧ Alma Mater_University H,2,4,28
+95,Advocates Differing Family Names_Yes ∧ Advocates Employment/Labor_No ∧ Decade Born_1960's,3,4,30
+96,Advocates Welfare/Nursing_No ∧ Decade Born_1970's ∧ Highest Education_University (Undergraduate),3,4,26
+97,Advocates Differing Family Names_Yes ∧ Advocates Welfare/Nursing_Yes ∧ Decade Born_1960's,3,4,21
+98,New/Incumbent/Former_New ∧ Alma Mater_University I,2,4,24
+99,Birthplace = Electoral District_No ∧ Advocates Differing Family Names_Yes ∧ Decade Born_1960's,3,4,36
+100,Birthplace = Electoral District_No ∧ Advocates Welfare/Nursing_No ∧ Highest Education_University (Postgraduate),3,4,37
+101,Advocates Differing Family Names_No ∧ Occuation_Cram School Teacher,2,4,24
+102,Advocates Differing Family Names_Yes ∧ Advocates Pension_Yes ∧ Decade Born_1960's,3,4,22
+103,Block_Shikoku ∧ Advocates Differing Family Names_Yes ∧ Advocates Employment/Labor_Yes,3,4,2
+104,New/Incumbent/Former_Former ∧ Decade Born_1970's ∧ Highest Education_University (Postgraduate),3,4,2
+105,Advocates Child Support_Yes ∧ Advocates Employment/Labor_No ∧ Faculty_Engineering,3,4,2
+106,Advocates Fiscal Discipline_No ∧ Advocates Child Support_Yes ∧ Faculty_Engineering,3,4,1
+107,Block_Tokai ∧ New/Incumbent/Former_Incumbent ∧ Advocates Pension_No,3,4,2
+108,Block_Tokai ∧ Advocates Child Support_No ∧ Occuation_Public Servant,3,4,0
+109,Advocates Welfare/Nursing_Yes ∧ Decade Born_1970's ∧ Faculty_Engineering,3,4,0
+110,Advocates Pension_Yes ∧ Decade Born_1980's ∧ Occuation_Public Servant,3,4,2
+111,Block_Kyushu ∧ Advocates Child Support_No ∧ Hobbies_Reading,3,4,1
+112,Political Party_A Party ∧ Hereditary Politician_No ∧ Decade Born_1970's,3,3,20
+113,Age<60.0 ∧ Highest Education_University (Undergraduate) ∧ Faculty_Education,3,3,21
+114,New/Incumbent/Former_New ∧ Advocates Pension_No,2,3,83
+115,Highest Education_High School ∧ Hobbies_Jogging and running,2,3,25
+116,Advocates Fiscal Discipline_No ∧ Advocates Child Support_Yes ∧ Advocates Pension_No,3,3,17
+117,Political Party_B Party ∧ Birthplace = Electoral District_Yes ∧ Advocates Fiscal Discipline_No,3,3,18
+118,Decade Born_1960's ∧ Highest Education_University (Postgraduate) ∧ Alma Mater_University B,3,3,19
+119,Political Party_C Party ∧ New/Incumbent/Former_Former ∧ Decade Born_1970's,3,3,0
+120,Block_North Kanto ∧ Number of Times Elected<3.0 ∧ Advocates Healthcare_No,3,3,17
+121,Political Party_Unaffiliated ∧ Advocates Employment/Labor_No ∧ Hobbies_Golf,3,3,1
+122,Block_Chugoku ∧ Decade Born_1960's ∧ Alma Mater_University I,3,3,1
+123,Block_Chugoku ∧ Number of Times Elected<3.0 ∧ Alma Mater_University I,3,3,1
+124,Block_North Kanto ∧ Decade Born_1970's ∧ Hobbies_Golf,3,3,0
+125,Block_North Kanto ∧ Faculty_Agriculture,2,3,0
+126,Advocates Differing Family Names_Yes ∧ Advocates Healthcare_No ∧ Decade Born_1960's,3,2,31
+127,Block_South Kanto ∧ Advocates Employment/Labor_Yes,2,2,25
+128,Gender_Female ∧ Advocates Child Support_Yes ∧ Decade Born_1960's,3,2,17
+129,Political Party_E Party ∧ New/Incumbent/Former_New,2,2,20
+130,Faculty_Law ∧ Hobbies_Watching movies,2,2,18
+131,Gender_Female ∧ Advocates Differing Family Names_Yes ∧ Advocates Healthcare_No,3,2,23
+132,New/Incumbent/Former_Former ∧ Hereditary Politician_Yes,2,2,12
+133,Number of Times Elected<3.0 ∧ New/Incumbent/Former_Former ∧ Birthplace = Electoral District_No,3,2,29
+134,Age<60.0 ∧ Political Party_B Party ∧ Number of Times Elected>=3.0,3,2,12
+135,Political Party_B Party ∧ Birthplace = Electoral District_No ∧ Occuation_Public Servant,3,2,13
+136,Gender_Female ∧ Birthplace = Electoral District_No ∧ Advocates Welfare/Nursing_No,3,2,29
+137,Number of Times Elected<3.0 ∧ Alma Mater_University J,2,2,14
+138,Occuation_Actor and Public Figure,1,2,22
+139,Gender_Female ∧ Block_Kyushu ∧ Advocates Child Support_No,3,2,1
+140,Advocates Pension_No ∧ Alma Mater_University I ∧ Occuation_Cram School Teacher,3,2,1
+141,Political Party_A Party ∧ Birthplace = Electoral District_Yes ∧ Hobbies_Painting,3,2,0
+142,Block_North Kanto ∧ Decade Born_1970's ∧ Hobbies_Watching movies,3,2,1
+143,Political Party_A Party ∧ Decade Born_1960's ∧ Hobbies_Painting,3,2,0
+144,Political Party_C Party ∧ Decade Born_1970's ∧ Faculty_Engineering,3,2,0
+145,Age>=60.0 ∧ Number of Times Elected<3.0,2,1,26
+146,Advocates Employment/Labor_No ∧ Faculty_Law,2,1,27
+147,Block_Shikoku ∧ Advocates Welfare/Nursing_Yes,2,1,10
+148,Political Party_C Party ∧ Occuation_Company Employee,2,1,14
+149,Block_Hokkaido ∧ Birthplace = Electoral District_Yes ∧ Decade Born_1960's,3,1,8
+150,Gender_Male ∧ Advocates Pension_Yes ∧ Faculty_Science,3,1,12
+151,Gender_Female ∧ Advocates Differing Family Names_No ∧ Decade Born_1960's,3,1,20
+152,Political Party_B Party ∧ Advocates Differing Family Names_Yes ∧ Advocates Employment/Labor_No,3,1,17
+153,Block_Kyushu ∧ Hereditary Politician_No ∧ Alma Mater_University H,3,1,8
+154,Advocates Welfare/Nursing_No ∧ Alma Mater_University D,2,1,18
+155,Gender_Female ∧ Hereditary Politician_No ∧ Occuation_Company Employee,3,1,18
+156,Age<60.0 ∧ Block_Kyushu ∧ Alma Mater_University H,3,1,8
+157,Political Party_Unaffiliated ∧ Advocates Differing Family Names_Yes ∧ Advocates Fiscal Discipline_No,3,1,13
+158,Block_Shikoku ∧ Advocates Differing Family Names_No,2,0,9
+159,Block_Shikoku ∧ Advocates Healthcare_Yes,2,0,7
+160,Birthplace = Electoral District_No ∧ Advocates Child Support_Yes ∧ Decade Born_1960's,3,0,28
+161,Political Party_B Party ∧ Block_Tohoku,2,0,25
+162,Block_Shikoku ∧ Number of Times Elected>=3.0,2,0,10
+163,Number of Times Elected<3.0 ∧ Decade Born_1950's ∧ Alma Mater_University A,3,0,7
+164,Political Party_C Party ∧ Block_Tokai ∧ Advocates Welfare/Nursing_Yes,3,0,6
+165,Advocates Differing Family Names_No ∧ Faculty_Literature,2,0,12
+166,Block_Hokuriku/Shinetsu ∧ Alma Mater_University B,2,0,8
+167,Gender_Male ∧ Advocates Pension_No ∧ Hobbies_Watching movies,3,0,16

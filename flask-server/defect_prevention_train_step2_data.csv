@@ -1,0 +1,9 @@
+,Combination of important items,Combination Length,occurrences of POS,occurrences of NEG
+0,Amount of Chemical A>=99.6 ∧ Amount of Chemical B>=508.7,2,20,10
+1,Rotation of K Axis<198.0 ∧ Rotation of J Axis>=301.0,2,16,0
+2,Production Line_Line 4 ∧ Amount of Chemical B>=508.7 ∧ Rotation of J Axis>=301.0,3,10,3
+3,Rotation of J Axis<301.0,1,8,83
+4,Amount of Chemical A<99.6,1,5,73
+5,Amount of Chemical B<508.7 ∧ Rotation of K Axis>=198.0,2,5,82
+6,Production Line_Line 2 ∧ Rotation of K Axis>=198.0,2,3,25
+7,Production Line_Line 4 ∧ Amount of Chemical B<508.7,2,2,23

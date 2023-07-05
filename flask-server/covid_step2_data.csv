@@ -1,0 +1,362 @@
+,Combination of important items,Combination Length,occurrences of POS,occurrences of NEG
+0,[Characteristic] Urban dwellers_>55.3% ∧ [Characteristic] Wage earners_>76.8% ∧ [Policy] Restrict on internal movement_2 to 3 weeks,3,46,17
+1,[Characteristic] Smokers_>14.3% ∧ [Characteristic] Wage earners_>76.8% ∧ [Policy] Restrict on internal movement_2 to 3 weeks,3,45,15
+2,[Characteristic] Over 65 years old_>8.5% ∧ [Characteristic] Wage earners_>76.8% ∧ [Policy] Restrict on internal movement_2 to 3 weeks,3,42,13
+3,[Characteristic] GDP per capita_>$19443 ∧ [Policy] Restrict on internal movement_2 to 3 weeks,2,42,11
+4,[Characteristic] Over 65 years old_>8.5% ∧ [Characteristic] Urban dwellers_>55.3% ∧ [Policy] Cancel public events_2 to 3 weeks,3,42,16
+5,[Characteristic] Average life span_>78.7 years old ∧ [Policy] Restrict on internal movement_2 to 3 weeks,2,41,12
+6,[Characteristic] GDP per capita_>$19443 ∧ [Characteristic] Urban dwellers_>55.3% ∧ [Policy] Workplace closing_2 to 3 weeks,3,39,15
+7,[Characteristic] Average life span_>78.7 years old ∧ [Policy] Workplace closing_2 to 3 weeks,2,39,12
+8,[Characteristic] Smokers_>14.3% ∧ [Policy] Workplace closing_2 to 3 weeks ∧ [Policy] Restrict on internal movement_2 to 3 weeks,3,37,14
+9,[Characteristic] GDP per capita_>$19443 ∧ [Policy] Restrictions on gatherings_2 to 3 weeks,2,37,14
+10,[Characteristic] GDP per capita_>$19443 ∧ [Characteristic] Over 65 years old_>8.5% ∧ [Policy] Workplace closing_2 to 3 weeks,3,36,13
+11,[Characteristic] Average life span_>78.7 years old ∧ [Policy] Cancel public events_2 to 3 weeks,2,36,12
+12,[Characteristic] Urban dwellers_>55.3% ∧ [Policy] Restrictions on gatherings_2 to 3 weeks ∧ [Policy] Restrict on internal movement_2 to 3 weeks,3,35,13
+13,[Characteristic] Over 65 years old_>8.5% ∧ [Policy] Workplace closing_2 to 3 weeks ∧ [Policy] Restrict on internal movement_2 to 3 weeks,3,33,9
+14,[Characteristic] Average life span_>78.7 years old ∧ [Policy] Restrictions on gatherings_2 to 3 weeks,2,33,9
+15,[Characteristic] Smokers_>14.3% ∧ [Policy] Restrictions on gatherings_2 to 3 weeks ∧ [Policy] Restrict on internal movement_2 to 3 weeks,3,33,10
+16,[Characteristic] Urban dwellers_>55.3% ∧ [Policy] School closing_2 to 3 weeks ∧ [Policy] Workplace closing_2 to 3 weeks,3,32,12
+17,[Characteristic] Average life span_>78.7 years old ∧ [Policy] School closing_2 to 3 weeks,2,32,9
+18,[Characteristic] Wage earners_>76.8% ∧ [Policy] Workplace closing_2 to 3 weeks ∧ [Policy] Restrict on internal movement_2 to 3 weeks,3,31,9
+19,[Characteristic] GDP per capita_>$19443 ∧ [Policy] School closing_2 to 3 weeks,2,31,10
+20,[Characteristic] GDP per capita_>$19443 ∧ [Policy] Stay at home requirements_2 to 3 weeks,2,30,11
+21,[Characteristic] Smokers_>14.3% ∧ [Policy] Workplace closing_2 to 3 weeks ∧ [Policy] Stay at home requirements_2 to 3 weeks,3,30,10
+22,[Characteristic] GDP per capita_>$19443 ∧ [Characteristic] Over 65 years old_>8.5% ∧ [Policy] Cancel public events_2 to 3 weeks,3,29,11
+23,[Characteristic] Wage earners_>76.8% ∧ [Policy] Stay at home requirements_2 to 3 weeks ∧ [Policy] Restrict on internal movement_2 to 3 weeks,3,28,8
+24,[Characteristic] Average life span_>78.7 years old ∧ [Policy] Stay at home requirements_2 to 3 weeks,2,28,10
+25,[Characteristic] Over 65 years old_>8.5% ∧ [Policy] Restrictions on gatherings_2 to 3 weeks ∧ [Policy] Restrict on internal movement_2 to 3 weeks,3,28,6
+26,[Characteristic] Smokers_>14.3% ∧ [Policy] Restrictions on gatherings_2 to 3 weeks ∧ [Policy] Workplace closing_2 to 3 weeks,3,27,10
+27,[Characteristic] Urban dwellers_>55.3% ∧ [Policy] Restrictions on gatherings_2 to 3 weeks ∧ [Policy] Workplace closing_2 to 3 weeks,3,27,10
+28,[Characteristic] Over 65 years old_>8.5% ∧ [Policy] School closing_2 to 3 weeks ∧ [Policy] Workplace closing_2 to 3 weeks,3,27,9
+29,[Characteristic] GDP per capita_>$19443 ∧ [Policy] Workplace closing_2 to 3 weeks ∧ [Policy] Cancel public events_>3 weeks,3,26,9
+30,[Characteristic] Over 65 years old_>8.5% ∧ [Policy] School closing_2 to 3 weeks ∧ [Policy] Restrict on internal movement_2 to 3 weeks,3,25,8
+31,[Characteristic] Wage earners_>76.8% ∧ [Policy] Restrictions on gatherings_2 to 3 weeks ∧ [Policy] Workplace closing_2 to 3 weeks,3,25,4
+32,[Characteristic] Region_Europe and Central Asia ∧ [Characteristic] GDP per capita_>$19443 ∧ [Policy] Cancel public events_2 to 3 weeks,3,25,8
+33,[Characteristic] Over 65 years old_>8.5% ∧ [Policy] Restrictions on gatherings_2 to 3 weeks ∧ [Policy] Workplace closing_2 to 3 weeks,3,25,6
+34,[Policy] Restrictions on gatherings_2 to 3 weeks ∧ [Policy] Workplace closing_2 to 3 weeks ∧ [Policy] Restrict on internal movement_2 to 3 weeks,3,25,7
+35,[Characteristic] Over 65 years old_>8.5% ∧ [Policy] School closing_2 to 3 weeks ∧ [Policy] Cancel public events_2 to 3 weeks,3,24,8
+36,[Characteristic] Wage earners_>76.8% ∧ [Policy] Restrictions on gatherings_2 to 3 weeks ∧ [Policy] Restrict on internal movement_2 to 3 weeks,3,24,5
+37,[Characteristic] Wage earners_>76.8% ∧ [Policy] Restrictions on gatherings_2 to 3 weeks ∧ [Policy] Stay at home requirements_2 to 3 weeks,3,23,7
+38,[Characteristic] Wage earners_>76.8% ∧ [Policy] School closing_2 to 3 weeks ∧ [Policy] Restrict on internal movement_2 to 3 weeks,3,23,6
+39,[Characteristic] Wage earners_>76.8% ∧ [Policy] Workplace closing_2 to 3 weeks ∧ [Policy] Stay at home requirements_2 to 3 weeks,3,23,4
+40,[Characteristic] Smokers_>14.3% ∧ [Policy] Restrict on internal movement_2 to 3 weeks ∧ [Policy] Cancel public events_2 to 3 weeks,3,22,7
+41,[Characteristic] Over 65 years old_>8.5% ∧ [Policy] Workplace closing_2 to 3 weeks ∧ [Policy] Stay at home requirements_2 to 3 weeks,3,22,5
+42,[Characteristic] Region_Europe and Central Asia ∧ [Policy] Workplace closing_2 to 3 weeks ∧ [Policy] Restrict on internal movement_2 to 3 weeks,3,22,7
+43,[Characteristic] GDP per capita_>$19443 ∧ [Characteristic] Over 65 years old_>8.5% ∧ [Policy] Close public transport_2 to 3 weeks,3,21,7
+44,[Characteristic] Wage earners_>76.8% ∧ [Policy] School closing_2 to 3 weeks ∧ [Policy] Workplace closing_2 to 3 weeks,3,20,7
+45,[Characteristic] Wage earners_>76.8% ∧ [Policy] Stay at home requirements_2 to 3 weeks ∧ [Policy] Close public transport_2 to 3 weeks,3,20,6
+46,[Characteristic] Over 65 years old_>8.5% ∧ [Policy] Workplace closing_2 to 3 weeks ∧ [Policy] Cancel public events_2 to 3 weeks,3,20,6
+47,[Characteristic] Over 65 years old_>8.5% ∧ [Policy] Restrict on internal movement_2 to 3 weeks ∧ [Policy] Cancel public events_2 to 3 weeks,3,19,3
+48,[Characteristic] Wage earners_>76.8% ∧ [Policy] Restrict on internal movement_2 to 3 weeks ∧ [Policy] Cancel public events_2 to 3 weeks,3,19,5
+49,[Characteristic] Wage earners_>76.8% ∧ [Policy] Restrictions on gatherings_2 to 3 weeks ∧ [Policy] Close public transport_2 to 3 weeks,3,19,7
+50,[Characteristic] Wage earners_>76.8% ∧ [Policy] School closing_2 to 3 weeks ∧ [Policy] Cancel public events_2 to 3 weeks,3,19,6
+51,[Characteristic] Region_East Asia and the Pacific ∧ [Characteristic] Over 65 years old_>8.5%,2,19,3
+52,[Characteristic] Average life span_>78.7 years old ∧ [Characteristic] Wage earners_>76.8% ∧ [Policy] Close public transport_2 to 3 weeks,3,18,6
+53,[Policy] School closing_2 to 3 weeks ∧ [Policy] Workplace closing_2 to 3 weeks ∧ [Policy] Stay at home requirements_2 to 3 weeks,3,18,4
+54,[Characteristic] Region_Europe and Central Asia ∧ [Policy] Restrictions on gatherings_2 to 3 weeks ∧ [Policy] Workplace closing_2 to 3 weeks,3,17,4
+55,[Policy] Stay at home requirements_2 to 3 weeks ∧ [Policy] Cancel public events_2 to 3 weeks,2,16,6
+56,[Characteristic] Smokers_>14.3% ∧ [Policy] School closing_2 to 3 weeks ∧ [Policy] Stay at home requirements_2 to 3 weeks,3,16,6
+57,[Characteristic] Region_Europe and Central Asia ∧ [Policy] School closing_2 to 3 weeks ∧ [Policy] Restrict on internal movement_2 to 3 weeks,3,16,6
+58,[Characteristic] Region_Europe and Central Asia ∧ [Policy] Workplace closing_2 to 3 weeks ∧ [Policy] Stay at home requirements_2 to 3 weeks,3,16,4
+59,[Characteristic] Urban dwellers_>55.3% ∧ [Policy] School closing_2 to 3 weeks ∧ [Policy] Restrictions on gatherings_2 to 3 weeks,3,16,6
+60,[Characteristic] Urban dwellers_>55.3% ∧ [Policy] Close public transport_2 to 3 weeks ∧ [Policy] Cancel public events_2 to 3 weeks,3,16,5
+61,[Characteristic] Region_Sub-Saharan Africa ∧ [Policy] Workplace closing_>3 weeks ∧ [Policy] Close public transport_>3 weeks,3,15,75
+62,[Characteristic] Over 65 years old_>8.5% ∧ [Policy] School closing_2 to 3 weeks ∧ [Policy] Stay at home requirements_2 to 3 weeks,3,15,4
+63,[Characteristic] Smokers_>14.3% ∧ [Policy] School closing_2 to 3 weeks ∧ [Policy] Restrictions on gatherings_2 to 3 weeks,3,15,5
+64,[Characteristic] Over 65 years old_>8.5% ∧ [Policy] School closing_2 to 3 weeks ∧ [Policy] Restrictions on gatherings_2 to 3 weeks,3,15,4
+65,[Characteristic] Wage earners_>76.8% ∧ [Policy] School closing_2 to 3 weeks ∧ [Policy] Restrictions on gatherings_2 to 3 weeks,3,13,4
+66,[Characteristic] Region_Europe and Central Asia ∧ [Policy] Restrict on internal movement_2 to 3 weeks ∧ [Policy] Cancel public events_2 to 3 weeks,3,13,3
+67,[Characteristic] Wage earners_>76.8% ∧ [Policy] School closing_2 to 3 weeks ∧ [Policy] Stay at home requirements_2 to 3 weeks,3,13,1
+68,[Characteristic] Smokers_>14.3% ∧ [Policy] Close public transport_2 to 3 weeks ∧ [Policy] Cancel public events_2 to 3 weeks,3,12,4
+69,[Policy] School closing_2 to 3 weeks ∧ [Policy] Restrictions on gatherings_2 to 3 weeks ∧ [Policy] Workplace closing_2 to 3 weeks,3,12,4
+70,[Characteristic] Over 65 years old_≤8.5% ∧ [Characteristic] Smokers_>14.3% ∧ [Policy] Stay at home requirements_>3 weeks,3,11,62
+71,[Characteristic] Over 65 years old_>8.5% ∧ [Policy] Restrictions on gatherings_2 to 3 weeks ∧ [Policy] Cancel public events_2 to 3 weeks,3,11,3
+72,[Characteristic] Region_East Asia and the Pacific ∧ [Characteristic] GDP per capita_>$19443,2,11,3
+73,[Characteristic] Region_East Asia and the Pacific ∧ [Characteristic] Average life span_>78.7 years old,2,11,3
+74,[Characteristic] Region_Europe and Central Asia ∧ [Policy] School closing_2 to 3 weeks ∧ [Policy] Stay at home requirements_2 to 3 weeks,3,11,3
+75,[Characteristic] Over 65 years old_>8.5% ∧ [Policy] Close public transport_2 to 3 weeks ∧ [Policy] Cancel public events_2 to 3 weeks,3,11,2
+76,[Characteristic] Average life span_≤78.7 years old ∧ [Characteristic] Wage earners_>76.8% ∧ [Policy] Stay at home requirements_>3 weeks,3,10,53
+77,[Characteristic] Region_East Asia and the Pacific ∧ [Characteristic] Wage earners_>76.8%,2,10,3
+78,[Characteristic] Over 65 years old_>8.5% ∧ [Characteristic] Wage earners_≤76.8% ∧ [Policy] Cancel public events_2 to 3 weeks,3,10,3
+79,[Characteristic] Wage earners_>76.8% ∧ [Policy] Close public transport_2 to 3 weeks ∧ [Policy] Cancel public events_2 to 3 weeks,3,10,2
+80,[Policy] Restrictions on gatherings_2 to 3 weeks ∧ [Policy] Close public transport_2 to 3 weeks ∧ [Policy] Cancel public events_2 to 3 weeks,3,9,3
+81,[Characteristic] Region_Middle East and North Africa ∧ [Policy] Workplace closing_2 to 3 weeks ∧ [Policy] Restrict on internal movement_2 to 3 weeks,3,9,3
+82,[Characteristic] Region_Middle East and North Africa ∧ [Policy] Workplace closing_2 to 3 weeks ∧ [Policy] Stay at home requirements_2 to 3 weeks,3,9,2
+83,[Characteristic] Vaccinated against BCG_>51% ∧ [Characteristic] GDP per capita_>$19443 ∧ [Policy] Close public transport_2 to 3 weeks,3,8,3
+84,[Characteristic] Region_Middle East and North Africa ∧ [Policy] Restrictions on gatherings_2 to 3 weeks ∧ [Policy] Restrict on internal movement_2 to 3 weeks,3,8,2
+85,[Characteristic] Over 65 years old_>8.5% ∧ [Policy] Restrictions on gatherings_2 to 3 weeks ∧ [Policy] Close public transport_>3 weeks,3,8,3
+86,[Characteristic] Region_Europe and Central Asia ∧ [Policy] Close public transport_2 to 3 weeks ∧ [Policy] Cancel public events_2 to 3 weeks,3,8,2
+87,[Characteristic] Vaccinated against BCG_≤51% ∧ [Policy] Workplace closing_>3 weeks,2,8,1
+88,[Characteristic] Region_Middle East and North Africa ∧ [Policy] Restrictions on gatherings_2 to 3 weeks ∧ [Policy] Close public transport_2 to 3 weeks,3,8,2
+89,[Characteristic] GDP per capita_≤$19443 ∧ [Characteristic] Wage earners_>76.8% ∧ [Policy] Stay at home requirements_>3 weeks,3,7,37
+90,[Policy] Workplace closing_>3 weeks ∧ [Policy] Cancel public events_2 to 3 weeks,2,7,2
+91,[Characteristic] Region_South America and the Caribbean ∧ [Characteristic] Over 65 years old_>8.5% ∧ [Policy] Cancel public events_2 to 3 weeks,3,7,1
+92,[Characteristic] Region_East Asia and the Pacific ∧ [Policy] Cancel public events_2 to 3 weeks,2,7,1
+93,[Characteristic] Region_East Asia and the Pacific ∧ [Policy] Close public transport_2 to 3 weeks,2,7,1
+94,[Characteristic] Region_Middle East and North Africa ∧ [Policy] Restrictions on gatherings_2 to 3 weeks ∧ [Policy] Stay at home requirements_2 to 3 weeks,3,7,0
+95,[Characteristic] Region_Sub-Saharan Africa ∧ [Policy] Cancel public events_2 to 3 weeks,2,7,1
+96,[Characteristic] Over 65 years old_>8.5% ∧ [Characteristic] Urban dwellers_≤55.3% ∧ [Policy] Stay at home requirements_2 to 3 weeks,3,7,2
+97,[Characteristic] Region_Sub-Saharan Africa ∧ [Policy] Restrictions on gatherings_>3 weeks,2,6,35
+98,[Characteristic] Region_Middle East and North Africa ∧ [Policy] Restrictions on gatherings_2 to 3 weeks ∧ [Policy] Workplace closing_2 to 3 weeks,3,6,1
+99,[Characteristic] Over 65 years old_>8.5% ∧ [Policy] Workplace closing_2 to 3 weeks ∧ [Policy] Close public transport_>3 weeks,3,6,2
+100,[Characteristic] GDP per capita_>$19443 ∧ [Policy] Close public transport_2 to 3 weeks ∧ [Policy] Cancel public events_2 to 3 weeks,3,6,1
+101,[Characteristic] GDP per capita_>$19443 ∧ [Characteristic] Wage earners_≤76.8%,2,6,1
+102,[Characteristic] Region_East Asia and the Pacific ∧ [Policy] Stay at home requirements_2 to 3 weeks,2,6,2
+103,[Characteristic] Average life span_≤78.7 years old ∧ [Policy] Restrictions on gatherings_2 to 3 weeks ∧ [Policy] Workplace closing_>3 weeks,3,5,25
+104,[Characteristic] Region_Middle East and North Africa ∧ [Characteristic] Smokers_>14.3% ∧ [Policy] Stay at home requirements_>3 weeks,3,5,38
+105,[Characteristic] Vaccinated against BCG_≤51% ∧ [Policy] Restrictions on gatherings_2 to 3 weeks,2,5,1
+106,[Characteristic] Region_Europe and Central Asia ∧ [Policy] School closing_>3 weeks ∧ [Policy] Cancel public events_2 to 3 weeks,3,5,1
+107,[Characteristic] Vaccinated against BCG_≤51% ∧ [Policy] Restrict on internal movement_2 to 3 weeks,2,5,1
+108,[Characteristic] Vaccinated against BCG_≤51% ∧ [Policy] Stay at home requirements_2 to 3 weeks,2,5,1
+109,[Characteristic] GDP per capita_>$19443 ∧ [Policy] Workplace closing_2 to 3 weeks ∧ [Policy] Close public transport_>3 weeks,3,5,1
+110,[Characteristic] Vaccinated against BCG_≤51% ∧ [Characteristic] Urban dwellers_>55.3% ∧ [Characteristic] Wage earners_≤76.8%,3,5,1
+111,[Characteristic] Vaccinated against BCG_≤51% ∧ [Characteristic] Average life span_>78.7 years old ∧ [Characteristic] Wage earners_≤76.8%,3,5,1
+112,[Characteristic] Vaccinated against BCG_≤51% ∧ [Characteristic] Over 65 years old_>8.5% ∧ [Characteristic] Wage earners_≤76.8%,3,5,1
+113,[Characteristic] Region_Europe and Central Asia ∧ [Characteristic] Average life span_>78.7 years old ∧ [Characteristic] Wage earners_≤76.8%,3,5,1
+114,[Characteristic] Region_Europe and Central Asia ∧ [Characteristic] Vaccinated against BCG_≤51% ∧ [Characteristic] Wage earners_≤76.8%,3,5,1
+115,[Characteristic] Vaccinated against BCG_≤51% ∧ [Characteristic] Smokers_>14.3% ∧ [Characteristic] Wage earners_≤76.8%,3,5,1
+116,[Characteristic] Vaccinated against BCG_≤51% ∧ [Policy] Close public transport_>3 weeks,2,5,1
+117,[Characteristic] Over 65 years old_>8.5% ∧ [Characteristic] Smokers_≤14.3% ∧ [Policy] School closing_2 to 3 weeks,3,5,1
+118,[Characteristic] Region_North America ∧ [Policy] Restrict on internal movement_2 to 3 weeks,2,5,1
+119,[Characteristic] Over 65 years old_>8.5% ∧ [Characteristic] Smokers_≤14.3% ∧ [Policy] Cancel public events_2 to 3 weeks,3,5,0
+120,[Characteristic] Vaccinated against BCG_≤51% ∧ [Policy] School closing_2 to 3 weeks,2,5,0
+121,[Characteristic] Over 65 years old_≤8.5% ∧ [Characteristic] Average life span_>78.7 years old,2,5,1
+122,[Characteristic] Urban dwellers_≤55.3% ∧ [Characteristic] Wage earners_>76.8% ∧ [Policy] Stay at home requirements_2 to 3 weeks,3,5,0
+123,[Characteristic] Region_South Asia,1,4,22
+124,[Characteristic] Average life span_≤78.7 years old ∧ [Policy] School closing_2 to 3 weeks ∧ [Policy] Cancel public events_>3 weeks,3,4,20
+125,[Characteristic] Region_South America and the Caribbean ∧ [Policy] Close public transport_2 to 3 weeks,2,4,21
+126,[Characteristic] GDP per capita_≤$19443 ∧ [Policy] School closing_2 to 3 weeks ∧ [Policy] Cancel public events_>3 weeks,3,4,20
+127,[Policy] School closing_2 to 3 weeks ∧ [Policy] Stay at home requirements_2 to 3 weeks ∧ [Policy] Restrict on internal movement_>3 weeks,3,4,1
+128,[Characteristic] Over 65 years old_>8.5% ∧ [Characteristic] Smokers_≤14.3% ∧ [Policy] Workplace closing_2 to 3 weeks,3,4,1
+129,[Characteristic] Region_East Asia and the Pacific ∧ [Policy] Restrictions on gatherings_2 to 3 weeks ∧ [Policy] Restrict on internal movement_2 to 3 weeks,3,4,0
+130,[Characteristic] Region_South America and the Caribbean ∧ [Characteristic] Smokers_>14.3% ∧ [Policy] Cancel public events_2 to 3 weeks,3,4,1
+131,[Characteristic] Over 65 years old_>8.5% ∧ [Policy] School closing_>3 weeks ∧ [Policy] Cancel public events_2 to 3 weeks,3,4,0
+132,[Characteristic] Smokers_≤14.3% ∧ [Characteristic] Urban dwellers_≤55.3% ∧ [Policy] Restrictions on gatherings_>3 weeks,3,4,20
+133,[Characteristic] Vaccinated against BCG_≤51% ∧ [Policy] Restrict on internal movement_>3 weeks,2,4,1
+134,[Characteristic] Vaccinated against BCG_≤51% ∧ [Policy] Cancel public events_2 to 3 weeks,2,4,0
+135,[Characteristic] Region_Middle East and North Africa ∧ [Characteristic] Average life span_>78.7 years old ∧ [Characteristic] Wage earners_≤76.8%,3,4,1
+136,[Characteristic] Region_Middle East and North Africa ∧ [Characteristic] GDP per capita_≤$19443 ∧ [Characteristic] Average life span_>78.7 years old,3,4,1
+137,[Characteristic] Region_Sub-Saharan Africa ∧ [Characteristic] Smokers_>14.3% ∧ [Policy] Restrict on internal movement_2 to 3 weeks,3,4,0
+138,[Characteristic] Region_Sub-Saharan Africa ∧ [Characteristic] Wage earners_>76.8% ∧ [Policy] Restrict on internal movement_2 to 3 weeks,3,4,0
+139,[Characteristic] Region_North America ∧ [Policy] Workplace closing_2 to 3 weeks,2,4,0
+140,[Characteristic] Urban dwellers_≤55.3% ∧ [Characteristic] Wage earners_>76.8% ∧ [Policy] Restrictions on gatherings_2 to 3 weeks,3,4,1
+141,[Characteristic] GDP per capita_>$19443 ∧ [Policy] Restrict on internal movement_>3 weeks ∧ [Policy] Cancel public events_2 to 3 weeks,3,4,0
+142,[Characteristic] Region_Sub-Saharan Africa ∧ [Policy] Restrict on internal movement_>3 weeks ∧ [Policy] Close public transport_2 to 3 weeks,3,4,0
+143,[Characteristic] Region_Sub-Saharan Africa ∧ [Characteristic] Smokers_≤14.3% ∧ [Policy] Stay at home requirements_>3 weeks,3,3,21
+144,[Characteristic] Urban dwellers_≤55.3% ∧ [Characteristic] Wage earners_≤76.8% ∧ [Policy] Restrictions on gatherings_2 to 3 weeks,3,3,17
+145,[Characteristic] GDP per capita_≤$19443 ∧ [Policy] Restrictions on gatherings_2 to 3 weeks ∧ [Policy] Restrict on internal movement_>3 weeks,3,3,21
+146,[Policy] School closing_2 to 3 weeks ∧ [Policy] Close public transport_>3 weeks,2,3,1
+147,[Characteristic] Region_South America and the Caribbean ∧ [Characteristic] Smokers_>14.3% ∧ [Policy] Cancel public events_>3 weeks,3,3,19
+148,[Characteristic] Vaccinated against BCG_≤51% ∧ [Characteristic] Wage earners_>76.8% ∧ [Policy] Close public transport_2 to 3 weeks,3,3,1
+149,[Policy] Close public transport_>3 weeks ∧ [Policy] Cancel public events_2 to 3 weeks,2,3,1
+150,[Characteristic] Region_Middle East and North Africa ∧ [Characteristic] Wage earners_>76.8% ∧ [Policy] Stay at home requirements_>3 weeks,3,3,24
+151,[Characteristic] Over 65 years old_≤8.5% ∧ [Characteristic] Wage earners_>76.8% ∧ [Policy] Stay at home requirements_>3 weeks,3,3,28
+152,[Characteristic] GDP per capita_>$19443 ∧ [Characteristic] Over 65 years old_≤8.5% ∧ [Policy] Close public transport_>3 weeks,3,3,15
+153,[Characteristic] Region_Middle East and North Africa ∧ [Characteristic] Average life span_>78.7 years old ∧ [Policy] Close public transport_2 to 3 weeks,3,3,0
+154,[Characteristic] Over 65 years old_≤8.5% ∧ [Policy] Restrictions on gatherings_2 to 3 weeks ∧ [Policy] Restrict on internal movement_>3 weeks,3,3,17
+155,[Characteristic] Vaccinated against BCG_≤51% ∧ [Policy] Stay at home requirements_>3 weeks,2,3,1
+156,[Characteristic] Region_North America ∧ [Policy] Stay at home requirements_2 to 3 weeks,2,3,1
+157,[Characteristic] Region_Middle East and North Africa ∧ [Characteristic] Wage earners_≤76.8% ∧ [Policy] Restrictions on gatherings_2 to 3 weeks,3,3,1
+158,[Characteristic] Region_North America ∧ [Policy] Restrictions on gatherings_2 to 3 weeks ∧ [Policy] Cancel public events_>3 weeks,3,3,1
+159,[Characteristic] Region_North America ∧ [Characteristic] Wage earners_>76.8% ∧ [Policy] Restrictions on gatherings_2 to 3 weeks,3,3,1
+160,[Characteristic] Region_North America ∧ [Characteristic] Over 65 years old_>8.5% ∧ [Policy] Restrictions on gatherings_2 to 3 weeks,3,3,1
+161,[Characteristic] Smokers_≤14.3% ∧ [Characteristic] Wage earners_>76.8% ∧ [Policy] Workplace closing_2 to 3 weeks,3,3,1
+162,[Policy] School closing_>3 weeks ∧ [Policy] Restrict on internal movement_>3 weeks ∧ [Policy] Cancel public events_2 to 3 weeks,3,3,0
+163,[Characteristic] Vaccinated against BCG_≤51% ∧ [Characteristic] Wage earners_>76.8% ∧ [Policy] Workplace closing_2 to 3 weeks,3,3,1
+164,[Characteristic] Region_East Asia and the Pacific ∧ [Characteristic] Urban dwellers_≤55.3% ∧ [Policy] Workplace closing_2 to 3 weeks,3,3,1
+165,[Characteristic] Urban dwellers_≤55.3% ∧ [Policy] Workplace closing_2 to 3 weeks ∧ [Policy] Close public transport_>3 weeks,3,3,1
+166,[Characteristic] Region_South America and the Caribbean ∧ [Characteristic] GDP per capita_>$19443,2,3,1
+167,[Characteristic] Region_Europe and Central Asia ∧ [Characteristic] Smokers_≤14.3% ∧ [Policy] Restrict on internal movement_>3 weeks,3,3,1
+168,[Characteristic] Region_Sub-Saharan Africa ∧ [Policy] Workplace closing_>3 weeks ∧ [Policy] Close public transport_2 to 3 weeks,3,3,0
+169,[Characteristic] Region_Sub-Saharan Africa ∧ [Characteristic] Over 65 years old_>8.5%,2,3,1
+170,[Characteristic] GDP per capita_>$19443 ∧ [Policy] Stay at home requirements_>3 weeks ∧ [Policy] Close public transport_2 to 3 weeks,3,3,1
+171,[Policy] Workplace closing_2 to 3 weeks ∧ [Policy] Stay at home requirements_>3 weeks,2,2,13
+172,[Characteristic] Over 65 years old_>8.5% ∧ [Characteristic] Smokers_≤14.3% ∧ [Policy] Cancel public events_>3 weeks,3,2,13
+173,[Characteristic] Over 65 years old_≤8.5% ∧ [Policy] School closing_2 to 3 weeks ∧ [Policy] Cancel public events_>3 weeks,3,2,13
+174,[Characteristic] Region_South America and the Caribbean ∧ [Characteristic] Smokers_>14.3% ∧ [Policy] School closing_>3 weeks,3,2,17
+175,[Characteristic] Vaccinated against BCG_>51% ∧ [Characteristic] GDP per capita_>$19443 ∧ [Policy] Restrictions on gatherings_>3 weeks,3,2,11
+176,[Characteristic] Wage earners_≤76.8% ∧ [Policy] Restrictions on gatherings_2 to 3 weeks ∧ [Policy] Close public transport_>3 weeks,3,2,12
+177,[Characteristic] Smokers_≤14.3% ∧ [Characteristic] Wage earners_>76.8% ∧ [Policy] Restrictions on gatherings_>3 weeks,3,2,12
+178,[Characteristic] Over 65 years old_≤8.5% ∧ [Characteristic] Urban dwellers_≤55.3% ∧ [Policy] Restrictions on gatherings_2 to 3 weeks,3,2,14
+179,[Characteristic] Region_South America and the Caribbean ∧ [Policy] School closing_>3 weeks ∧ [Policy] Stay at home requirements_2 to 3 weeks,3,2,11
+180,[Characteristic] Smokers_≤14.3% ∧ [Characteristic] Wage earners_>76.8% ∧ [Policy] Restrict on internal movement_>3 weeks,3,2,12
+181,[Characteristic] Region_South America and the Caribbean ∧ [Policy] School closing_>3 weeks ∧ [Policy] Workplace closing_2 to 3 weeks,3,2,13
+182,[Characteristic] Over 65 years old_≤8.5% ∧ [Policy] Restrictions on gatherings_2 to 3 weeks ∧ [Policy] Close public transport_>3 weeks,3,2,13
+183,[Characteristic] Region_East Asia and the Pacific ∧ [Policy] School closing_2 to 3 weeks ∧ [Policy] Restrictions on gatherings_2 to 3 weeks,3,2,0
+184,[Characteristic] Region_Middle East and North Africa ∧ [Characteristic] Over 65 years old_>8.5% ∧ [Policy] Workplace closing_2 to 3 weeks,3,2,0
+185,[Characteristic] Region_Middle East and North Africa ∧ [Characteristic] Over 65 years old_>8.5% ∧ [Policy] Restrict on internal movement_2 to 3 weeks,3,2,0
+186,[Characteristic] Region_Middle East and North Africa ∧ [Characteristic] Over 65 years old_>8.5% ∧ [Policy] Close public transport_2 to 3 weeks,3,2,0
+187,[Characteristic] Region_Middle East and North Africa ∧ [Characteristic] Over 65 years old_>8.5% ∧ [Policy] Restrictions on gatherings_2 to 3 weeks,3,2,0
+188,[Characteristic] Region_Sub-Saharan Africa ∧ [Characteristic] Wage earners_>76.8% ∧ [Policy] Stay at home requirements_2 to 3 weeks,3,2,0
+189,[Characteristic] Region_Sub-Saharan Africa ∧ [Characteristic] Smokers_>14.3% ∧ [Policy] Stay at home requirements_2 to 3 weeks,3,2,0
+190,[Characteristic] GDP per capita_≤$19443 ∧ [Characteristic] Average life span_>78.7 years old ∧ [Policy] Cancel public events_>3 weeks,3,2,10
+191,[Policy] Restrictions on gatherings_2 to 3 weeks ∧ [Policy] Stay at home requirements_>3 weeks ∧ [Policy] Close public transport_>3 weeks,3,2,10
+192,[Policy] School closing_2 to 3 weeks ∧ [Policy] Restrictions on gatherings_>3 weeks,2,2,0
+193,[Characteristic] Region_North America ∧ [Characteristic] Smokers_≤14.3% ∧ [Policy] School closing_2 to 3 weeks,3,2,0
+194,[Characteristic] GDP per capita_>$19443 ∧ [Characteristic] Smokers_≤14.3% ∧ [Policy] Workplace closing_2 to 3 weeks,3,2,0
+195,[Characteristic] GDP per capita_>$19443 ∧ [Characteristic] Urban dwellers_≤55.3% ∧ [Policy] School closing_>3 weeks,3,2,0
+196,[Characteristic] Region_North America ∧ [Characteristic] Average life span_≤78.7 years old ∧ [Policy] Restrictions on gatherings_2 to 3 weeks,3,2,0
+197,[Characteristic] Region_North America ∧ [Characteristic] Smokers_>14.3% ∧ [Policy] Restrictions on gatherings_2 to 3 weeks,3,2,0
+198,[Policy] School closing_2 to 3 weeks ∧ [Policy] Restrictions on gatherings_2 to 3 weeks ∧ [Policy] Restrict on internal movement_>3 weeks,3,2,0
+199,[Policy] Restrictions on gatherings_2 to 3 weeks ∧ [Policy] Restrict on internal movement_>3 weeks ∧ [Policy] Cancel public events_2 to 3 weeks,3,2,0
+200,[Characteristic] Region_East Asia and the Pacific ∧ [Characteristic] Urban dwellers_≤55.3% ∧ [Policy] Restrict on internal movement_2 to 3 weeks,3,2,0
+201,[Characteristic] Region_North America ∧ [Characteristic] Smokers_≤14.3% ∧ [Policy] Cancel public events_2 to 3 weeks,3,2,0
+202,[Characteristic] GDP per capita_>$19443 ∧ [Characteristic] Smokers_≤14.3% ∧ [Policy] Cancel public events_2 to 3 weeks,3,2,0
+203,[Characteristic] Region_Middle East and North Africa ∧ [Characteristic] Over 65 years old_>8.5% ∧ [Policy] School closing_2 to 3 weeks,3,2,0
+204,[Characteristic] Region_North America ∧ [Policy] Close public transport_2 to 3 weeks,2,2,0
+205,[Characteristic] Region_Sub-Saharan Africa ∧ [Characteristic] Urban dwellers_>55.3% ∧ [Policy] Close public transport_2 to 3 weeks,3,2,0
+206,[Characteristic] Region_Sub-Saharan Africa ∧ [Characteristic] Urban dwellers_>55.3% ∧ [Policy] Workplace closing_2 to 3 weeks,3,2,0
+207,[Characteristic] Region_Middle East and North Africa ∧ [Characteristic] Over 65 years old_>8.5% ∧ [Policy] Stay at home requirements_2 to 3 weeks,3,2,0
+208,[Characteristic] Over 65 years old_≤8.5% ∧ [Policy] Restrictions on gatherings_2 to 3 weeks ∧ [Policy] Stay at home requirements_>3 weeks,3,2,10
+209,[Characteristic] Region_East Asia and the Pacific ∧ [Policy] Restrictions on gatherings_2 to 3 weeks ∧ [Policy] Workplace closing_>3 weeks,3,2,0
+210,[Characteristic] Region_Middle East and North Africa ∧ [Characteristic] Urban dwellers_≤55.3%,2,1,20
+211,[Characteristic] Smokers_≤14.3% ∧ [Policy] Restrictions on gatherings_2 to 3 weeks,2,1,17
+212,[Characteristic] Region_Middle East and North Africa ∧ [Characteristic] GDP per capita_≤$19443 ∧ [Policy] School closing_2 to 3 weeks,3,1,8
+213,[Characteristic] Region_Middle East and North Africa ∧ [Characteristic] GDP per capita_>$19443 ∧ [Policy] Stay at home requirements_>3 weeks,3,1,16
+214,[Characteristic] Region_South America and the Caribbean ∧ [Characteristic] Smokers_>14.3% ∧ [Policy] Restrict on internal movement_>3 weeks,3,1,16
+215,[Characteristic] Region_South America and the Caribbean ∧ [Policy] Restrictions on gatherings_2 to 3 weeks,2,1,10
+216,[Characteristic] Over 65 years old_≤8.5% ∧ [Policy] Restrict on internal movement_2 to 3 weeks ∧ [Policy] Close public transport_>3 weeks,3,1,8
+217,[Characteristic] Over 65 years old_≤8.5% ∧ [Policy] School closing_2 to 3 weeks ∧ [Policy] Restrictions on gatherings_2 to 3 weeks,3,1,5
+218,[Characteristic] Over 65 years old_>8.5% ∧ [Characteristic] Smokers_≤14.3% ∧ [Policy] School closing_>3 weeks,3,1,12
+219,[Policy] Restrictions on gatherings_>3 weeks ∧ [Policy] Workplace closing_>3 weeks ∧ [Policy] Restrict on internal movement_2 to 3 weeks,3,1,5
+220,[Characteristic] Wage earners_≤76.8% ∧ [Policy] Restrictions on gatherings_2 to 3 weeks ∧ [Policy] Restrict on internal movement_>3 weeks,3,1,16
+221,[Characteristic] GDP per capita_>$19443 ∧ [Characteristic] Over 65 years old_≤8.5% ∧ [Policy] Stay at home requirements_>3 weeks,3,1,14
+222,[Characteristic] Region_North America ∧ [Characteristic] Average life span_>78.7 years old ∧ [Policy] Workplace closing_>3 weeks,3,1,6
+223,[Characteristic] Region_South America and the Caribbean ∧ [Policy] Workplace closing_>3 weeks ∧ [Policy] Stay at home requirements_2 to 3 weeks,3,1,6
+224,[Characteristic] Region_South America and the Caribbean ∧ [Characteristic] Smokers_>14.3% ∧ [Policy] Stay at home requirements_>3 weeks,3,1,12
+225,[Characteristic] GDP per capita_≤$19443 ∧ [Policy] Restrictions on gatherings_2 to 3 weeks ∧ [Policy] Stay at home requirements_>3 weeks,3,1,11
+226,[Characteristic] Region_South America and the Caribbean ∧ [Characteristic] Smokers_>14.3% ∧ [Policy] Workplace closing_>3 weeks,3,1,8
+227,[Characteristic] Region_South America and the Caribbean ∧ [Policy] School closing_2 to 3 weeks ∧ [Policy] Cancel public events_>3 weeks,3,1,5
+228,[Characteristic] Average life span_>78.7 years old ∧ [Characteristic] Smokers_≤14.3% ∧ [Policy] School closing_>3 weeks,3,1,7
+229,[Characteristic] GDP per capita_≤$19443 ∧ [Characteristic] Average life span_>78.7 years old ∧ [Policy] Restrict on internal movement_>3 weeks,3,1,7
+230,[Characteristic] Smokers_≤14.3% ∧ [Characteristic] Wage earners_>76.8% ∧ [Policy] Workplace closing_>3 weeks,3,1,10
+231,[Policy] Restrictions on gatherings_2 to 3 weeks ∧ [Policy] Restrict on internal movement_>3 weeks ∧ [Policy] Close public transport_2 to 3 weeks,3,1,6
+232,[Characteristic] Region_North America ∧ [Characteristic] Smokers_≤14.3% ∧ [Policy] School closing_>3 weeks,3,1,5
+233,[Characteristic] GDP per capita_>$19443 ∧ [Characteristic] Smokers_≤14.3% ∧ [Policy] School closing_>3 weeks,3,1,5
+234,[Characteristic] Region_North America ∧ [Policy] Workplace closing_>3 weeks ∧ [Policy] Cancel public events_>3 weeks,3,1,7
+235,[Characteristic] Region_North America ∧ [Policy] Workplace closing_>3 weeks ∧ [Policy] Restrict on internal movement_>3 weeks,3,1,7
+236,[Characteristic] Region_North America ∧ [Characteristic] Wage earners_>76.8% ∧ [Policy] Workplace closing_>3 weeks,3,1,7
+237,[Characteristic] Region_North America ∧ [Characteristic] Over 65 years old_>8.5% ∧ [Policy] Workplace closing_>3 weeks,3,1,7
+238,[Characteristic] Average life span_>78.7 years old ∧ [Characteristic] Wage earners_≤76.8% ∧ [Policy] Stay at home requirements_>3 weeks,3,1,5
+239,[Characteristic] GDP per capita_≤$19443 ∧ [Characteristic] Average life span_>78.7 years old ∧ [Policy] Stay at home requirements_>3 weeks,3,1,5
+240,[Characteristic] Region_Sub-Saharan Africa ∧ [Characteristic] Smokers_>14.3% ∧ [Policy] Workplace closing_2 to 3 weeks,3,1,0
+241,[Characteristic] Region_Sub-Saharan Africa ∧ [Characteristic] Wage earners_>76.8% ∧ [Policy] Workplace closing_2 to 3 weeks,3,1,0
+242,[Characteristic] Region_Sub-Saharan Africa ∧ [Characteristic] Smokers_>14.3% ∧ [Policy] Close public transport_2 to 3 weeks,3,1,0
+243,[Characteristic] Region_Sub-Saharan Africa ∧ [Characteristic] Wage earners_>76.8% ∧ [Policy] Close public transport_2 to 3 weeks,3,1,0
+244,[Characteristic] Region_North America ∧ [Policy] Restrictions on gatherings_>3 weeks,2,1,6
+245,[Characteristic] Average life span_>78.7 years old ∧ [Characteristic] Urban dwellers_≤55.3% ∧ [Policy] Close public transport_>3 weeks,3,1,0
+246,[Characteristic] GDP per capita_>$19443 ∧ [Characteristic] Urban dwellers_≤55.3% ∧ [Policy] Close public transport_>3 weeks,3,1,0
+247,[Characteristic] Average life span_>78.7 years old ∧ [Characteristic] Urban dwellers_≤55.3% ∧ [Policy] School closing_>3 weeks,3,1,0
+248,[Characteristic] Urban dwellers_≤55.3% ∧ [Policy] Restrict on internal movement_>3 weeks ∧ [Policy] Cancel public events_2 to 3 weeks,3,1,0
+249,[Characteristic] Urban dwellers_≤55.3% ∧ [Policy] School closing_2 to 3 weeks ∧ [Policy] Restrict on internal movement_>3 weeks,3,1,0
+250,[Characteristic] Region_East Asia and the Pacific ∧ [Policy] Restrictions on gatherings_>3 weeks ∧ [Policy] Workplace closing_2 to 3 weeks,3,1,0
+251,[Characteristic] Region_East Asia and the Pacific ∧ [Policy] School closing_2 to 3 weeks ∧ [Policy] Restrict on internal movement_>3 weeks,3,1,0
+252,[Characteristic] GDP per capita_≤$19443 ∧ [Characteristic] Average life span_>78.7 years old ∧ [Policy] Close public transport_>3 weeks,3,1,5
+253,[Characteristic] Vaccinated against BCG_≤51% ∧ [Characteristic] Wage earners_≤76.8% ∧ [Policy] Restrictions on gatherings_>3 weeks,3,1,0
+254,[Characteristic] GDP per capita_>$19443 ∧ [Characteristic] Urban dwellers_≤55.3% ∧ [Policy] Cancel public events_>3 weeks,3,1,0
+255,[Characteristic] GDP per capita_>$19443 ∧ [Characteristic] Urban dwellers_≤55.3% ∧ [Policy] Restrict on internal movement_>3 weeks,3,1,0
+256,[Characteristic] GDP per capita_>$19443 ∧ [Characteristic] Urban dwellers_≤55.3% ∧ [Policy] Stay at home requirements_>3 weeks,3,1,0
+257,[Characteristic] GDP per capita_>$19443 ∧ [Characteristic] Urban dwellers_≤55.3% ∧ [Policy] Workplace closing_>3 weeks,3,1,0
+258,[Characteristic] GDP per capita_>$19443 ∧ [Characteristic] Average life span_≤78.7 years old ∧ [Characteristic] Urban dwellers_≤55.3%,3,1,0
+259,[Characteristic] GDP per capita_>$19443 ∧ [Characteristic] Urban dwellers_≤55.3% ∧ [Policy] Restrictions on gatherings_>3 weeks,3,1,0
+260,[Characteristic] Region_South America and the Caribbean ∧ [Characteristic] Smokers_>14.3% ∧ [Policy] Close public transport_>3 weeks,3,1,9
+261,[Characteristic] Region_North America ∧ [Policy] Restrictions on gatherings_2 to 3 weeks ∧ [Policy] Stay at home requirements_>3 weeks,3,1,0
+262,[Policy] Restrictions on gatherings_2 to 3 weeks ∧ [Policy] Workplace closing_2 to 3 weeks ∧ [Policy] Stay at home requirements_>3 weeks,3,1,0
+263,[Characteristic] Wage earners_≤76.8% ∧ [Policy] Restrictions on gatherings_2 to 3 weeks ∧ [Policy] Stay at home requirements_>3 weeks,3,1,8
+264,[Characteristic] Region_Sub-Saharan Africa ∧ [Policy] Stay at home requirements_>3 weeks ∧ [Policy] Close public transport_2 to 3 weeks,3,1,0
+265,[Characteristic] Smokers_>14.3% ∧ [Policy] Stay at home requirements_>3 weeks ∧ [Policy] Restrict on internal movement_2 to 3 weeks,3,1,0
+266,[Characteristic] Region_Europe and Central Asia ∧ [Policy] Stay at home requirements_>3 weeks ∧ [Policy] Restrict on internal movement_2 to 3 weeks,3,1,0
+267,[Characteristic] Over 65 years old_>8.5% ∧ [Policy] Stay at home requirements_>3 weeks ∧ [Policy] Restrict on internal movement_2 to 3 weeks,3,1,0
+268,[Policy] Stay at home requirements_>3 weeks ∧ [Policy] Restrict on internal movement_2 to 3 weeks ∧ [Policy] Close public transport_2 to 3 weeks,3,1,0
+269,[Characteristic] Region_South Asia ∧ [Policy] Stay at home requirements_2 to 3 weeks ∧ [Policy] Close public transport_>3 weeks,3,1,0
+270,[Characteristic] Region_South Asia ∧ [Policy] Workplace closing_>3 weeks ∧ [Policy] Stay at home requirements_2 to 3 weeks,3,1,0
+271,[Characteristic] Region_Sub-Saharan Africa ∧ [Policy] Restrictions on gatherings_>3 weeks ∧ [Policy] Workplace closing_2 to 3 weeks,3,1,0
+272,[Characteristic] Region_East Asia and the Pacific ∧ [Policy] Restrictions on gatherings_2 to 3 weeks ∧ [Policy] Stay at home requirements_>3 weeks,3,1,0
+273,[Characteristic] Region_Europe and Central Asia ∧ [Characteristic] Urban dwellers_≤55.3% ∧ [Policy] School closing_2 to 3 weeks,3,0,5
+274,[Characteristic] Region_Middle East and North Africa ∧ [Characteristic] Wage earners_≤76.8% ∧ [Policy] School closing_2 to 3 weeks,3,0,7
+275,[Characteristic] Region_South America and the Caribbean ∧ [Policy] Stay at home requirements_2 to 3 weeks ∧ [Policy] Restrict on internal movement_>3 weeks,3,0,6
+276,[Characteristic] Region_Middle East and North Africa ∧ [Characteristic] Smokers_≤14.3% ∧ [Policy] Close public transport_2 to 3 weeks,3,0,4
+277,[Characteristic] Region_Middle East and North Africa ∧ [Policy] Restrictions on gatherings_>3 weeks ∧ [Policy] Restrict on internal movement_2 to 3 weeks,3,0,3
+278,[Characteristic] Smokers_≤14.3% ∧ [Policy] Workplace closing_>3 weeks ∧ [Policy] Restrict on internal movement_2 to 3 weeks,3,0,5
+279,[Policy] School closing_2 to 3 weeks ∧ [Policy] Workplace closing_>3 weeks ∧ [Policy] Cancel public events_>3 weeks,3,0,3
+280,[Characteristic] Region_North America ∧ [Characteristic] Average life span_≤78.7 years old ∧ [Policy] Cancel public events_2 to 3 weeks,3,0,2
+281,[Characteristic] Region_North America ∧ [Characteristic] Smokers_>14.3% ∧ [Policy] Cancel public events_2 to 3 weeks,3,0,2
+282,[Policy] School closing_2 to 3 weeks ∧ [Policy] Workplace closing_>3 weeks ∧ [Policy] Close public transport_>3 weeks,3,0,1
+283,[Characteristic] Region_Middle East and North Africa ∧ [Characteristic] Average life span_>78.7 years old ∧ [Policy] Stay at home requirements_>3 weeks,3,0,3
+284,[Characteristic] Over 65 years old_>8.5% ∧ [Characteristic] Smokers_≤14.3% ∧ [Policy] Workplace closing_>3 weeks,3,0,12
+285,[Characteristic] Region_East Asia and the Pacific ∧ [Policy] Restrict on internal movement_2 to 3 weeks ∧ [Policy] Close public transport_>3 weeks,3,0,2
+286,[Characteristic] Smokers_≤14.3% ∧ [Characteristic] Wage earners_>76.8% ∧ [Policy] Stay at home requirements_>3 weeks,3,0,4
+287,[Characteristic] Urban dwellers_≤55.3% ∧ [Policy] School closing_2 to 3 weeks ∧ [Policy] Restrictions on gatherings_2 to 3 weeks,3,0,3
+288,[Policy] Stay at home requirements_>3 weeks ∧ [Policy] Cancel public events_2 to 3 weeks,2,0,2
+289,[Characteristic] Over 65 years old_>8.5% ∧ [Characteristic] Smokers_≤14.3% ∧ [Policy] Restrict on internal movement_>3 weeks,3,0,11
+290,[Characteristic] Region_South America and the Caribbean ∧ [Characteristic] Urban dwellers_≤55.3% ∧ [Characteristic] Wage earners_≤76.8%,3,0,4
+291,[Characteristic] Region_South America and the Caribbean ∧ [Characteristic] GDP per capita_≤$19443 ∧ [Characteristic] Urban dwellers_≤55.3%,3,0,4
+292,[Characteristic] Region_Middle East and North Africa ∧ [Policy] School closing_2 to 3 weeks ∧ [Policy] Restrict on internal movement_>3 weeks,3,0,1
+293,[Characteristic] Region_North America ∧ [Characteristic] Average life span_≤78.7 years old ∧ [Policy] School closing_2 to 3 weeks,3,0,2
+294,[Characteristic] Region_North America ∧ [Characteristic] Smokers_>14.3% ∧ [Policy] School closing_2 to 3 weeks,3,0,2
+295,[Characteristic] Region_South America and the Caribbean ∧ [Characteristic] Smokers_>14.3% ∧ [Policy] Restrictions on gatherings_>3 weeks,3,0,8
+296,[Characteristic] Region_South America and the Caribbean ∧ [Policy] Workplace closing_2 to 3 weeks ∧ [Policy] Restrict on internal movement_>3 weeks,3,0,7
+297,[Characteristic] Region_Middle East and North Africa ∧ [Characteristic] Over 65 years old_>8.5% ∧ [Policy] Cancel public events_2 to 3 weeks,3,0,1
+298,[Characteristic] GDP per capita_>$19443 ∧ [Characteristic] Urban dwellers_≤55.3% ∧ [Policy] Close public transport_2 to 3 weeks,3,0,1
+299,[Characteristic] GDP per capita_>$19443 ∧ [Characteristic] Urban dwellers_≤55.3% ∧ [Policy] School closing_2 to 3 weeks,3,0,1
+300,[Characteristic] Average life span_>78.7 years old ∧ [Characteristic] Urban dwellers_≤55.3% ∧ [Policy] School closing_2 to 3 weeks,3,0,1
+301,[Characteristic] Average life span_>78.7 years old ∧ [Characteristic] Urban dwellers_≤55.3% ∧ [Policy] Close public transport_2 to 3 weeks,3,0,1
+302,[Characteristic] Region_Sub-Saharan Africa ∧ [Policy] Restrictions on gatherings_2 to 3 weeks,2,0,6
+303,[Characteristic] Region_Europe and Central Asia ∧ [Characteristic] Smokers_≤14.3% ∧ [Policy] Restrict on internal movement_2 to 3 weeks,3,0,2
+304,[Characteristic] Region_South America and the Caribbean ∧ [Policy] Workplace closing_2 to 3 weeks ∧ [Policy] Close public transport_>3 weeks,3,0,5
+305,[Characteristic] Over 65 years old_>8.5% ∧ [Characteristic] Smokers_≤14.3% ∧ [Policy] Close public transport_2 to 3 weeks,3,0,5
+306,[Characteristic] Region_South America and the Caribbean ∧ [Characteristic] Over 65 years old_≤8.5% ∧ [Characteristic] Urban dwellers_≤55.3%,3,0,3
+307,[Characteristic] Region_South America and the Caribbean ∧ [Characteristic] Vaccinated against BCG_>51% ∧ [Characteristic] Urban dwellers_≤55.3%,3,0,3
+308,[Characteristic] GDP per capita_≤$19443 ∧ [Characteristic] Average life span_>78.7 years old ∧ [Policy] Restrictions on gatherings_>3 weeks,3,0,1
+309,[Characteristic] Over 65 years old_≤8.5% ∧ [Characteristic] Average life span_>78.7 years old ∧ [Policy] Restrictions on gatherings_>3 weeks,3,0,1
+310,[Characteristic] Over 65 years old_≤8.5% ∧ [Characteristic] Average life span_>78.7 years old ∧ [Policy] Stay at home requirements_>3 weeks,3,0,1
+311,[Characteristic] Average life span_>78.7 years old ∧ [Characteristic] Smokers_≤14.3% ∧ [Policy] Workplace closing_>3 weeks,3,0,8
+312,[Characteristic] Region_Middle East and North Africa ∧ [Characteristic] Smokers_≤14.3% ∧ [Policy] Restrict on internal movement_2 to 3 weeks,3,0,4
+313,[Characteristic] Over 65 years old_>8.5% ∧ [Characteristic] Smokers_≤14.3% ∧ [Policy] Close public transport_>3 weeks,3,0,3
+314,[Characteristic] Region_Middle East and North Africa ∧ [Characteristic] Over 65 years old_>8.5% ∧ [Policy] Stay at home requirements_>3 weeks,3,0,2
+315,[Characteristic] Region_South America and the Caribbean ∧ [Policy] Restrictions on gatherings_>3 weeks ∧ [Policy] Workplace closing_2 to 3 weeks,3,0,4
+316,[Characteristic] Region_Europe and Central Asia ∧ [Characteristic] Over 65 years old_≤8.5% ∧ [Policy] School closing_2 to 3 weeks,3,0,2
+317,[Characteristic] Average life span_>78.7 years old ∧ [Characteristic] Smokers_≤14.3% ∧ [Policy] Restrict on internal movement_>3 weeks,3,0,7
+318,[Characteristic] Smokers_≤14.3% ∧ [Characteristic] Wage earners_>76.8% ∧ [Policy] Close public transport_2 to 3 weeks,3,0,2
+319,[Characteristic] Region_South America and the Caribbean ∧ [Policy] Stay at home requirements_2 to 3 weeks ∧ [Policy] Close public transport_>3 weeks,3,0,1
+320,[Characteristic] Over 65 years old_>8.5% ∧ [Characteristic] Smokers_≤14.3% ∧ [Policy] Restrictions on gatherings_>3 weeks,3,0,6
+321,[Characteristic] Region_Europe and Central Asia ∧ [Characteristic] Smokers_≤14.3% ∧ [Policy] School closing_2 to 3 weeks,3,0,1
+322,[Characteristic] Region_Europe and Central Asia ∧ [Characteristic] Over 65 years old_≤8.5% ∧ [Policy] Cancel public events_2 to 3 weeks,3,0,1
+323,[Characteristic] Region_Europe and Central Asia ∧ [Characteristic] Smokers_≤14.3% ∧ [Policy] Close public transport_2 to 3 weeks,3,0,1
+324,[Characteristic] Region_Europe and Central Asia ∧ [Characteristic] Smokers_≤14.3% ∧ [Policy] Workplace closing_2 to 3 weeks,3,0,1
+325,[Characteristic] Region_Europe and Central Asia ∧ [Characteristic] Smokers_≤14.3% ∧ [Policy] Cancel public events_2 to 3 weeks,3,0,1
+326,[Characteristic] Region_Middle East and North Africa ∧ [Characteristic] Smokers_≤14.3% ∧ [Policy] School closing_2 to 3 weeks,3,0,3
+327,[Policy] School closing_2 to 3 weeks ∧ [Policy] Stay at home requirements_>3 weeks,2,0,3
+328,[Characteristic] Region_South America and the Caribbean ∧ [Policy] School closing_2 to 3 weeks ∧ [Policy] Restrict on internal movement_>3 weeks,3,0,2
+329,[Characteristic] Region_North America ∧ [Characteristic] Smokers_≤14.3% ∧ [Policy] Workplace closing_>3 weeks,3,0,5
+330,[Characteristic] GDP per capita_>$19443 ∧ [Characteristic] Smokers_≤14.3% ∧ [Policy] Workplace closing_>3 weeks,3,0,5
+331,[Characteristic] Region_North America ∧ [Characteristic] Smokers_≤14.3% ∧ [Policy] Restrict on internal movement_>3 weeks,3,0,5
+332,[Characteristic] Region_North America ∧ [Characteristic] Average life span_>78.7 years old ∧ [Policy] Restrict on internal movement_>3 weeks,3,0,5
+333,[Characteristic] GDP per capita_>$19443 ∧ [Characteristic] Smokers_≤14.3% ∧ [Policy] Restrict on internal movement_>3 weeks,3,0,5
+334,[Characteristic] Region_South America and the Caribbean ∧ [Characteristic] GDP per capita_≤$19443 ∧ [Characteristic] Wage earners_>76.8%,3,0,5
+335,[Characteristic] Region_South America and the Caribbean ∧ [Characteristic] Over 65 years old_≤8.5% ∧ [Characteristic] Smokers_>14.3%,3,0,5
+336,[Characteristic] Region_South America and the Caribbean ∧ [Characteristic] Over 65 years old_≤8.5% ∧ [Characteristic] Wage earners_>76.8%,3,0,5
+337,[Characteristic] Region_South America and the Caribbean ∧ [Characteristic] Average life span_≤78.7 years old ∧ [Characteristic] Wage earners_>76.8%,3,0,5
+338,[Characteristic] Region_South America and the Caribbean ∧ [Characteristic] Smokers_>14.3% ∧ [Characteristic] Wage earners_>76.8%,3,0,5
+339,[Characteristic] Average life span_≤78.7 years old ∧ [Policy] Workplace closing_>3 weeks ∧ [Policy] Cancel public events_2 to 3 weeks,3,0,1
+340,[Characteristic] Vaccinated against BCG_>51% ∧ [Policy] Workplace closing_>3 weeks ∧ [Policy] Cancel public events_2 to 3 weeks,3,0,1
+341,[Characteristic] Urban dwellers_≤55.3% ∧ [Policy] Workplace closing_>3 weeks ∧ [Policy] Cancel public events_2 to 3 weeks,3,0,1
+342,[Characteristic] Over 65 years old_>8.5% ∧ [Characteristic] Smokers_≤14.3% ∧ [Characteristic] Urban dwellers_≤55.3%,3,0,2
+343,[Characteristic] Over 65 years old_>8.5% ∧ [Characteristic] Smokers_≤14.3% ∧ [Policy] Stay at home requirements_>3 weeks,3,0,2
+344,[Characteristic] Vaccinated against BCG_>51% ∧ [Policy] School closing_2 to 3 weeks ∧ [Policy] Workplace closing_>3 weeks,3,0,2
+345,[Characteristic] GDP per capita_≤$19443 ∧ [Policy] School closing_2 to 3 weeks ∧ [Policy] Workplace closing_>3 weeks,3,0,2
+346,[Characteristic] Region_South America and the Caribbean ∧ [Policy] Stay at home requirements_>3 weeks ∧ [Policy] Restrict on internal movement_2 to 3 weeks,3,0,1
+347,[Characteristic] Region_South America and the Caribbean ∧ [Policy] Restrict on internal movement_2 to 3 weeks ∧ [Policy] Close public transport_>3 weeks,3,0,1
+348,[Policy] Stay at home requirements_>3 weeks ∧ [Policy] Restrict on internal movement_2 to 3 weeks ∧ [Policy] Close public transport_>3 weeks,3,0,1
+349,[Characteristic] Region_South America and the Caribbean ∧ [Policy] Restrictions on gatherings_>3 weeks ∧ [Policy] Restrict on internal movement_2 to 3 weeks,3,0,1
+350,[Characteristic] Over 65 years old_≤8.5% ∧ [Policy] Stay at home requirements_>3 weeks ∧ [Policy] Restrict on internal movement_2 to 3 weeks,3,0,1
+351,[Characteristic] Average life span_>78.7 years old ∧ [Characteristic] Smokers_≤14.3% ∧ [Policy] Close public transport_2 to 3 weeks,3,0,2
+352,[Characteristic] GDP per capita_>$19443 ∧ [Characteristic] Smokers_≤14.3% ∧ [Policy] Restrictions on gatherings_>3 weeks,3,0,4
+353,[Characteristic] Average life span_>78.7 years old ∧ [Characteristic] Smokers_≤14.3% ∧ [Policy] Restrictions on gatherings_>3 weeks,3,0,4
+354,[Characteristic] Average life span_>78.7 years old ∧ [Characteristic] Smokers_≤14.3% ∧ [Policy] Close public transport_>3 weeks,3,0,1
+355,[Characteristic] Average life span_≤78.7 years old ∧ [Policy] School closing_2 to 3 weeks ∧ [Policy] Workplace closing_>3 weeks,3,0,1
+356,[Characteristic] Smokers_≤14.3% ∧ [Policy] School closing_2 to 3 weeks ∧ [Policy] Workplace closing_>3 weeks,3,0,1
+357,[Characteristic] Region_South America and the Caribbean ∧ [Policy] School closing_2 to 3 weeks ∧ [Policy] Workplace closing_>3 weeks,3,0,1
+358,[Characteristic] Wage earners_≤76.8% ∧ [Policy] School closing_2 to 3 weeks ∧ [Policy] Workplace closing_>3 weeks,3,0,1
+359,[Characteristic] Region_South America and the Caribbean ∧ [Characteristic] Wage earners_>76.8% ∧ [Policy] Workplace closing_2 to 3 weeks,3,0,2
+360,[Characteristic] Region_South America and the Caribbean ∧ [Characteristic] Urban dwellers_≤55.3% ∧ [Policy] Stay at home requirements_2 to 3 weeks,3,0,1
