@@ -36,3 +36,59 @@
     transform: rotate(360deg);
   }
 }
+
+
+/* div {
+  color: red;
+} */
+
+.stepBlock, .phasesBlock {
+  height: 80%;
+  width: 15%;
+  text-align: center;
+  vertical-align: center;
+  background-color: #d0cdd1;
+  /* display: flex;
+  justify-content: center; */
+  /* margin: 0.5rem; */
+}
+
+.phasesBlock {
+  background-color: white;
+  bottom: 0;
+}
+
+.stepBlock:hover {
+  /* background-color: #755580; */
+  cursor: pointer;
+}
+
+.navBar, .trainingPhase, .testingPhase {
+  display: flex;
+  justify-content: space-evenly;
+  height: 100%;
+  /* background-color: #d5d2d6; */
+}
+
+.navContainer {
+  height: 5rem;
+  align-items: center;
+  
+}
+
+.onclickColor {
+  background-color: #96aab5;
+}
+
+.stepDivBackground {
+  background-color: #d0cdd1;
+}
+
+.phases {
+  display: flex;
+}
+
+.onclickTextColor {
+  color: #273e4a;
+  text-decoration: underline;
+}
