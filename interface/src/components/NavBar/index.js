@@ -128,12 +128,12 @@ const Navbar = () => {
                     Testing phase
                 </div> */}
             {/* </div> */}
-            <div class="navContainer">
-				<div class="navBar">
+            <div class="navContainer phasesContainer">
+				<div class="navBar phasesBar">
                     {/* <div class="trainingPhase"> */}
                         <div class="phasesBlock">
                             <div id="trainingText">
-                                    Training Phase
+                                    Training Phase >>>
                             </div>
                         </div>
                         <div class="phasesBlock">
@@ -146,7 +146,7 @@ const Navbar = () => {
                                
                             </div>
                         </div>
-                        <div class="phasesBlock">
+                        <div class="phasesBlock endTraining">
                             <div >
                                
                             </div>
@@ -155,7 +155,7 @@ const Navbar = () => {
                     {/* <div class="testingPhase"> */}
                        <div class="phasesBlock">
                             <div id="testingText">
-                                Testing Phase
+                                Testing Phase >>>
                             </div>
                         </div>
                         <div class="phasesBlock">

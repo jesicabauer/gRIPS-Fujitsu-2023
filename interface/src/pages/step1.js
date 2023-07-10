@@ -2,6 +2,10 @@
 import React, {useState, useEffect} from 'react'
 
 const Step1 = () => {
+    const table_element = document.getElementById("combo_table")
+	if (table_element) {
+		table_element.remove()
+	}
     // const [data, setData] = useState({}) 
     // useEffect(() => {
     // // Using fetch to fetch the api from

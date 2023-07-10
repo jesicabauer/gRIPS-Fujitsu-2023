@@ -89,6 +89,83 @@
 }
 
 .onclickTextColor {
-  color: #273e4a;
+  color: #b5676e !important;
   text-decoration: underline;
+}
+
+table, td{
+  width: 80%;
+  margin: auto;
+  border: 1px solid black;
+  border-collapse: collapse;
+  margin-bottom: 10rem;
+}
+
+#row_div {
+  width: 100%;
+}
+
+tr:hover {
+  background-color: #b9c4c9;
+
+}
+
+th {
+  background-color: #b9c4c9;
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+td, th {
+  padding: 1rem;
+}
+
+#trainingText, #testingText {
+  padding: 2rem;
+  word-wrap: normal;
+}
+
+.phasesContainer {
+  justify-content: space-evenly;
+}
+
+#trainingText {
+  border-left: solid;
+  border-width: 1rem;
+  font-weight: bold;
+  color: #ded9da;
+  white-space: nowrap;
+  /* border-top: solid; */
+
+}
+/* .phasesBlock, .phasesBar {
+  border-top: solid;
+} */
+
+#testingText {
+  border-left: solid;
+  border-width: 1rem;
+  font-weight: bold;
+  color: #ded9da;
+}
+
+.loading {
+  /* height: 100%;
+  width: 100%;
+  margin: auto; */
+  padding-top: 10%;
+  padding-left: 40%;
+
+}
+
+#hoverTip {
+  display: none;
+}
+
+#column1:hover #tooltip1 {
+  display: block;
+}
+
+#tooltip1 {
+  display: none;
 }
