@@ -6,6 +6,10 @@ const Step1 = () => {
 	if (table_element) {
 		table_element.remove()
 	}
+    const table3_element = document.getElementById("table_step3")
+	if (table3_element) {
+		table3_element.remove()
+	}
     // const [data, setData] = useState({}) 
     // useEffect(() => {
     // // Using fetch to fetch the api from

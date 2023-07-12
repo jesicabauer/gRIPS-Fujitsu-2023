@@ -147,25 +147,37 @@ td, th {
   border-width: 1rem;
   font-weight: bold;
   color: #ded9da;
+  white-space: nowrap;
 }
 
 .loading {
   /* height: 100%;
   width: 100%;
   margin: auto; */
-  padding-top: 10%;
+  padding-top: 2rem;
   padding-left: 40%;
-
+  color: #964d53
 }
 
 #hoverTip {
   display: none;
 }
 
-#column1:hover #tooltip1 {
+#column1:hover #tooltip1, #column2:hover #tooltip2, #column3:hover #tooltip3, #column4:hover #tooltip4 {
   display: block;
 }
 
-#tooltip1 {
+#tooltip1, #tooltip2, #tooltip3, #tooltip4, #tooltipRow {
   display: none;
+  border: none !important;
+}
+
+#column1 div, #column2 div, #column3 div, #column4 div {
+  color: #964d53
+}
+
+#explanationStep2 {
+  width: 80%;
+  margin: auto;
+  padding-top: 1rem;
 }

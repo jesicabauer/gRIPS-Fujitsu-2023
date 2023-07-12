@@ -5,6 +5,10 @@ const Step5 = () => {
 	if (table_element) {
 		table_element.remove()
 	}
+	const table3_element = document.getElementById("table_step3")
+	if (table3_element) {
+		table3_element.remove()
+	}
 	return (
 		<div>
 			<h1>Step5</h1>
