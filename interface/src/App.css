@@ -53,6 +53,10 @@
   /* margin: 0.5rem; */
 }
 
+.stepBlock div {
+  padding-top: 10%;
+}
+
 .phasesBlock {
   background-color: white;
   bottom: 0;
