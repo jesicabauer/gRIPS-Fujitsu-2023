@@ -10,14 +10,28 @@ import json
 from sklearn.linear_model import LogisticRegression
 from sklearn.svm import l1_min_c
 import pandas as pd
+from flask import request
+# from selenium.webdriver.chrome.service import Service
+# from webdriver_manager.chrome import ChromeDriverManager
 
 
 app = Flask(__name__)
 
 def save_step2_data():
+    print("here1")
     options = webdriver.ChromeOptions()
+    options.binary_location = "/Applications/Google Chrome.app"
+    chrome_driver_binary = "/Users/lilyge/Downloads/gRIPS23/chromedriver_mac_arm64/chromedriver"
+    print("here2")
     options.add_argument('--headless')
-    browser = webdriver.Chrome(options=options)
+    # print("here3")
+    # browser = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+    print("here4")
+    browser = webdriver.Chrome(chrome_driver_binary, chrome_options=options)
+    # options = webdriver.FirefoxOptions()
+    # browser = webdriver.Firefox(options=options)
+
+    # options.add_argument("-headless")
 
     browser.get("https://widelearning.labs.fujitsu.com/en/trialTool/terms.html")
     browser.fullscreen_window()
@@ -89,8 +103,8 @@ def csv_to_json(csv_file):
 
 def step3_data():
     #load in training and testing data
-    X_train=pd.read_csv("matrix_format.csv")
-    X_test=pd.read_csv("matrix_format_test.csv")
+    X_train=pd.read_csv("animal_combos_train.csv")
+    X_test=pd.read_csv("animal_combos_test.csv")
 
     #gets lists of names of rows and columns
     train_row_names=list(X_train.iloc[:,0])
@@ -195,6 +209,7 @@ def step3_data():
     return json_data
 
 def step6_data():
+    # TODO load a saved model from step 3 so no need to rerun when reloaded
     list_dict = [{'Animal': 'Vulture', 'Score': 0.0003779295526581034, 'Prediction': 0}, {'Animal': 'Dolphin', 'Score': 0.958200951847406, 'Prediction': 1}, {'Animal': 'Penguin', 'Score': 0.0003779295526581034, 'Prediction': 0}, {'Animal': 'Platypus', 'Score': 0.9518695080210506, 'Prediction': 1}, {'Animal': 'Worm', 'Score': 0.00017021114676542243, 'Prediction': 0}]
     json_data = json.dumps(list_dict)
     return json_data
@@ -219,6 +234,19 @@ def step6():
 
     return step6_data()
 
+@app.route("/step4_select", methods=['GET', 'POST'])
+def user_select():
+    sd = ""
+    if request.method == 'POST':
+        sd = ""
+        sd = request.form.get('startDate')
+        print(request.form)
+        
+    # print(sd)
+    return sd
+     # print(request.json["testinig"])
+    # return [{"hello": "hi"}]
+    # todo_data = request.get_json()
 
 
 # @app.route("/lasso")
