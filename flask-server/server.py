@@ -237,13 +237,14 @@ def step6():
 @app.route("/step4_select", methods=['GET', 'POST'])
 def user_select():
     sd = ""
+    print(request.method)
     if request.method == 'POST':
         sd = ""
         sd = request.form.get('startDate')
         print(request.form)
         
     # print(sd)
-    return sd
+    return [{"selected": sd}]
      # print(request.json["testinig"])
     # return [{"hello": "hi"}]
     # todo_data = request.get_json()

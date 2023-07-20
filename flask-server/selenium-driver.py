@@ -11,7 +11,10 @@ import numpy as np
 # options.add_argument("--headless=new")
 # browser = webdriver.Chrome(options=options)
 options = webdriver.ChromeOptions()
+options.binary_location = "/Applications/Google Chrome.app"
+chrome_driver_binary = "/Users/lilyge/Downloads/gRIPS23/chromedriver_mac_arm64/chromedriver"
 # options.add_argument('--headless')
+# browser = webdriver.Chrome(options=options)
 browser = webdriver.Chrome(options=options)
 
 # browser = webdriver.Chrome()
