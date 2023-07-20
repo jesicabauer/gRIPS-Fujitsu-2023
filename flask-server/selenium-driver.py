@@ -4,6 +4,9 @@ from selenium.webdriver.chrome.options import Options
 import time
 import pandas as pd
 import numpy as np
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 
 
 # driver_exe = 'chromedriver'
@@ -11,13 +14,20 @@ import numpy as np
 # options.add_argument("--headless=new")
 # browser = webdriver.Chrome(options=options)
 options = webdriver.ChromeOptions()
-options.binary_location = "/Applications/Google Chrome.app"
-chrome_driver_binary = "/Users/lilyge/Downloads/gRIPS23/chromedriver_mac_arm64/chromedriver"
-# options.add_argument('--headless')
+# options.binary_location = "/Applications/Google Chrome.app"
+# chrome_driver_binary = "/Users/lilyge/Downloads/gRIPS23/chromedriver_mac_arm64/chromedriver"
+options.add_argument('--headless')
+# # browser = webdriver.Chrome(options=options)
 # browser = webdriver.Chrome(options=options)
-browser = webdriver.Chrome(options=options)
 
 # browser = webdriver.Chrome()
+
+ 
+# Install Webdriver
+service = Service(ChromeDriverManager().install())
+ 
+# Create Driver Instance
+browser = webdriver.Chrome(service=service, options=options)
 
 browser.get("https://widelearning.labs.fujitsu.com/en/trialTool/terms.html")
 browser.fullscreen_window()

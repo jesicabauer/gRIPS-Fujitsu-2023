@@ -11,6 +11,9 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.svm import l1_min_c
 import pandas as pd
 from flask import request
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 # from selenium.webdriver.chrome.service import Service
 # from webdriver_manager.chrome import ChromeDriverManager
 
@@ -18,21 +21,28 @@ from flask import request
 app = Flask(__name__)
 
 def save_step2_data():
-    print("here1")
-    options = webdriver.ChromeOptions()
-    options.binary_location = "/Applications/Google Chrome.app"
-    chrome_driver_binary = "/Users/lilyge/Downloads/gRIPS23/chromedriver_mac_arm64/chromedriver"
-    print("here2")
-    options.add_argument('--headless')
-    # print("here3")
-    # browser = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
-    print("here4")
-    browser = webdriver.Chrome(chrome_driver_binary, chrome_options=options)
+    # print("here1")
+    # options = webdriver.ChromeOptions()
+    # options.binary_location = "/Applications/Google Chrome.app"
+    # chrome_driver_binary = "/Users/lilyge/Downloads/gRIPS23/chromedriver_mac_arm64/chromedriver"
+    # print("here2")
+    # options.add_argument('--headless')
+    # # print("here3")
+    # # browser = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+    # print("here4")
+    # browser = webdriver.Chrome(chrome_driver_binary, chrome_options=options)
     # options = webdriver.FirefoxOptions()
     # browser = webdriver.Firefox(options=options)
 
-    # options.add_argument("-headless")
+    options = webdriver.ChromeOptions()
+    options.add_argument("-headless")
+    
 
+    # Install Webdriver
+    service = Service(ChromeDriverManager().install())
+ 
+    # Create Driver Instance
+    browser = webdriver.Chrome(service=service, options=options)
     browser.get("https://widelearning.labs.fujitsu.com/en/trialTool/terms.html")
     browser.fullscreen_window()
     browser.execute_script("window.scrollTo(720, 840)")
