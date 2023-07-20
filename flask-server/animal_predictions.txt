@@ -1,0 +1,1 @@
+[{'Animal': 'Vulture', 'Score': 0.0003779295526581034, 'Prediction': 0}, {'Animal': 'Dolphin', 'Score': 0.958200951847406, 'Prediction': 1}, {'Animal': 'Penguin', 'Score': 0.0003779295526581034, 'Prediction': 0}, {'Animal': 'Platypus', 'Score': 0.9518695080210506, 'Prediction': 1}, {'Animal': 'Worm', 'Score': 0.00017021114676542243, 'Prediction': 0}]
