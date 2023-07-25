@@ -39,7 +39,6 @@ def Rademacher (model, erasuresize, data):
     b = np.array([i for i in df.iloc[:,-1]])
     return np.dot(b, prediction)/num_rows
 
-
 def main(Data):
     model = [SVM,RF, DT2, DT3, DT5, DT10,LR2, PT, NB]
     book  = {SVM:[],RF:[], DT2:[], DT3:[], DT5:[], DT10:[],LR2:[], PT:[], NB:[]} 
@@ -48,14 +47,14 @@ def main(Data):
          
         sup_corre = Explore_data_correlations.main(Data)[0]
         inf_corre = Explore_data_correlations.main(Data)[1]   
-        if Data.shape[0] <= 2000:
+        if Data.shape[0] <= 1500:
             size1 = Data.shape[0]
         else:
-            size1 = 1000
-        if Data.shape[1] <= 2000:
+            size1 = 1500
+        if Data.shape[1] <= 1500:
              size2 = Data.shape[0]
         else:
-             size2 = 1000
+             size2 = 1500
             
         data = Data_generate.main(size1, size2, inf_corre, sup_corre)  
         row = data.shape[0]

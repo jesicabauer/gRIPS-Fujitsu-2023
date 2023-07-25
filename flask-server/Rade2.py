@@ -55,14 +55,14 @@ def main(Data):
         Data = pd.read_csv('matrix_format.csv')
         sup_corre = Explore_data_correlations.main(Data)[0]
         inf_corre = Explore_data_correlations.main(Data)[1]   
-        if Data.shape[0] <= 1000:
+        if Data.shape[0] <= 1500:
             size1 = Data.shape[0]
         else:
-            size1 = 1000
-        if Data.shape[1] <= 1000:
+            size1 = 1500
+        if Data.shape[1] <= 1500:
              size2 = Data.shape[0]
         else:
-             size2 = 1000
+             size2 = 1500
             
         data = Data_generate.main(size1, size2, inf_corre, sup_corre)
         row = data.shape[0]
