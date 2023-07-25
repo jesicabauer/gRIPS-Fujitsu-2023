@@ -50,12 +50,18 @@ const Step1 = () => {
     // )
 	return (
         // the react form
-        <form>
-        <input
-            type="file" onChange={uploadTrainingFile}>
-        </input>
-        {/* <input type="submit" value="Submit" onClick={uploadFile}></input> */}
-        </form>
+        <div class="fileUpload">
+            <label>
+            {/* <form> */}
+            <input 
+                type="file" onChange={uploadTrainingFile}/>
+            Click here to upload training data
+            {/* <input type="submit" value="Submit" onClick={uploadFile}></input> */}
+            {/* </form> */}
+        </label>
+        </div>
+        
+        
 	// 	<div>
 	// 		<h1>
 	// 			GeeksforGeeks is a Computer

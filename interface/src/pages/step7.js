@@ -32,12 +32,15 @@ const Step7 = () => {
     };
 
 	return (
-		<form>
+		// <form>
+		<div class="fileUpload">
+		<label>
         <input
-            type="file" onChange={uploadTestingFile}>
-        </input>
+            type="file" onChange={uploadTestingFile}/>
+            Click here to upload testing data
         {/* <input type="submit" value="Submit" onClick={uploadFile}></input> */}
-        </form>
+		</label>
+        </div>
 	);
 };
 

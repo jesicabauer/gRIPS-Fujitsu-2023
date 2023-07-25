@@ -98,9 +98,11 @@ const Step5 = () => {
 		<div>
 			{/* <h1>{selection}</h1> */}
 			<div>
-				<form method='post' action='/user_feature_selection'>
+				<form method='post' action='/user_feature_selection' class="">
 					{features_set.map(x =>
-						<input type="button" id='startDate' name={'startDate'+x} value={x} onClick={() => featureSelected(x)}/>
+						<label>
+							<input type="button" id='startDate' name={'startDate'+x} value={x} onClick={() => featureSelected(x)}/>
+						</label>
 					)}
                     
                     {/* <input type='submit' value='submit' /> */}
