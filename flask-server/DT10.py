@@ -16,7 +16,7 @@ def main(train_data ,test_data):
 
     
     #setting model
-    model = DecisionTreeClassifier(max_depth = 2, random_state=42)
+    model = DecisionTreeClassifier(max_depth = 10, random_state=42)
     model.fit(train_x, train_y)
     
     # prediction
