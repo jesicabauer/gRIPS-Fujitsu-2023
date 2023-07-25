@@ -43,7 +43,7 @@ def main(Data ):
     for k in range(len(model)):
         #何回平均
         run = 10      
-        Data = pd.read_csv('matrix_format.csv')
+
         sup_corre = Explore_data_correlations.main(Data)[0]
         inf_corre = Explore_data_correlations.main(Data)[1]   
         if Data.shape[0] <= 1500:
@@ -74,10 +74,11 @@ def main(Data ):
             List_comp[j] = compx / run
             data_erasure_size -= add_data_size
             print(List_Data[j])
-            print(List_comp[j])
         book[model[k]].append(List_comp)
         book[model[k]].append(List_Data)
-        #plt.plot(List_Data, List_comp)
+        #plt.xlabel('Data_size')
+        #plt.ylabel('accuracy')
+        #plt.plot(List_Data, List_comp,label=str(k))
     return book
 
 main(Data = pd.read_csv('5000cutData.csv') )

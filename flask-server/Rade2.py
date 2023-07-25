@@ -52,7 +52,6 @@ def main(Data):
     book  = {SVM:[],RF:[], DT2:[], DT3:[], DT5:[], DT10:[],LR:[], PT:[], NB:[]} 
     for k in range(len(model)):
         run = 10 
-        Data = pd.read_csv('matrix_format.csv')
         sup_corre = Explore_data_correlations.main(Data)[0]
         inf_corre = Explore_data_correlations.main(Data)[1]   
         if Data.shape[0] <= 1500:
@@ -83,10 +82,11 @@ def main(Data):
             print(j)
         book[model[k]].append(List_comp)
         book[model[k]].append(List_Data)
-            
-        plt.ylim(0, 1)
-        plt.xlim(0,iterations)
-        plt.plot(List_Data, List_comp)
+        #plt.ylim(0, 1)
+        #plt.xlim(0,iterations)
+        #plt.xlabel('landumly')
+        #plt.ylabel('Complexity')
+        #plt.plot(List_Data, List_comp,label=str(k))
     return book
 
 main(Data = pd.read_csv('5000cutData.csv') )

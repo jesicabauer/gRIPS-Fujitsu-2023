@@ -75,9 +75,9 @@ def main(Data):
             List_comp[j] = (compx / run)
             data_erasure_size -= add_data_size
             print(List_Data[j])
-            plt.ylim(0, 1)
         book[model[k]].append(List_comp)
         book[model[k]].append(List_Data)
+        #plt.ylim(0, 1)
         #plt.xlabel('Data_size')
         #plt.ylabel('Complexity')
         #plt.plot(List_Data, List_comp,label=str(k))
