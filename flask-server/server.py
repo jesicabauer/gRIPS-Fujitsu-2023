@@ -14,6 +14,11 @@ from flask import request
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
+import os
+from io import BytesIO
+from flask import jsonify, request
+import csv
+import io
 # from selenium.webdriver.chrome.service import Service
 # from webdriver_manager.chrome import ChromeDriverManager
 
@@ -53,7 +58,8 @@ def save_step2_data():
 
     file_upload = browser.find_element(By.CLASS_NAME, "input-btn")
     # file_upload.send_keys("/Users/lilyge/Downloads/gRIPS23/defect_prevention_train.csv")
-    file_upload.send_keys("/Users/lilyge/Downloads/gRIPS23/animals_train.csv")
+    # file_upload.send_keys("/Users/lilyge/Downloads/gRIPS23/animals_train.csv")
+    file_upload.send_keys(os.path.join(os.path.dirname(__file__), "training_data_input.csv"))
 
     browser.find_element(By.CLASS_NAME, "v-btn__content").click()
 
@@ -71,7 +77,7 @@ def save_step2_data():
     df_data = pd.read_html(browser.page_source)
 
     # df_data[0].to_csv("defect_prevention_train_step2_data.csv")
-    df_data[0].to_csv("animal_step2_data.csv")
+    df_data[0].to_csv("animal_step2_data_direct.csv")
     return "animal_step2_data.csv"
 
 
@@ -258,6 +264,120 @@ def user_select():
      # print(request.json["testinig"])
     # return [{"hello": "hi"}]
     # todo_data = request.get_json()
+
+# the flask post request receiver
+
+@app.route('/training_file_upload', methods=['POST'])
+def upload_training_file():
+    """Handles the upload of a file."""
+    d = {}
+    try:
+        file = request.files['file_from_react']
+        # stream = io.StringIO(file.stream.read().decode("UTF8"), newline=None)
+        # print(stream)
+        # csv_input = csv.reader(stream)
+        # print(csv_input)
+        # save_step2_data(file)
+        filename = file.filename
+        # print(f"Uploading file {filename}")
+        # # print(file.read())
+        file_bytes = file.read()
+        file_content = BytesIO(file_bytes).readlines()
+        print(len(file_content))
+        data_list = []
+        for b in file_content:
+            print(b.decode('utf-8'))
+            str_data = b.decode('utf-8')
+            data_list.append(str_data)
+        print(data_list)
+        print("writing csv...")
+        csv_file = open('training_data_input.csv', 'w')
+        w = csv.writer(csv_file, delimiter = ',')
+        w.writerows([x.split(',') for x in data_list])
+        csv_file.close()
+        d['status'] = 1
+
+    except Exception as e:
+        print(f"Couldn't upload file {e}")
+        d['status'] = 0
+
+    return jsonify(d)
+
+
+@app.route('/testing_file_upload', methods=['POST'])
+def upload_testing_file():
+    """Handles the upload of a file."""
+    d = {}
+    try:
+        file = request.files['file_from_react']
+        # stream = io.StringIO(file.stream.read().decode("UTF8"), newline=None)
+        # print(stream)
+        # csv_input = csv.reader(stream)
+        # print(csv_input)
+        # save_step2_data(file)
+        filename = file.filename
+        # print(f"Uploading file {filename}")
+        # # print(file.read())
+        file_bytes = file.read()
+        file_content = BytesIO(file_bytes).readlines()
+        print(len(file_content))
+        data_list = []
+        for b in file_content:
+            print(b.decode('utf-8'))
+            str_data = b.decode('utf-8')
+            data_list.append(str_data)
+        print(data_list)
+        print("writing csv...")
+        csv_file = open('testing_data_input.csv', 'w')
+        w = csv.writer(csv_file, delimiter = ',')
+        w.writerows([x.split(',') for x in data_list])
+        csv_file.close()
+        d['status'] = 1
+
+    except Exception as e:
+        print(f"Couldn't upload file {e}")
+        d['status'] = 0
+
+    return jsonify(d)
+
+
+@app.route('/user_feature_selection', methods=['POST'])
+def user_feature_selection():
+    """Handles the upload of a file."""
+    d = {}
+    print("in user feature selection")
+    try:
+        feature_selected = request.form.get("feature_selected")
+        print(feature_selected)
+        # stream = io.StringIO(file.stream.read().decode("UTF8"), newline=None)
+        # print(stream)
+        # csv_input = csv.reader(stream)
+        # print(csv_input)
+        # save_step2_data(file)
+        # filename = file.filename
+        # # print(f"Uploading file {filename}")
+        # # # print(file.read())
+        # file_bytes = file.read()
+        # file_content = BytesIO(file_bytes).readlines()
+        # print(len(file_content))
+        # data_list = []
+        # for b in file_content:
+        #     print(b.decode('utf-8'))
+        #     str_data = b.decode('utf-8')
+        #     data_list.append(str_data)
+        # print(data_list)
+        # print("writing csv...")
+        # csv_file = open('training_data_input.csv', 'w')
+        # w = csv.writer(csv_file, delimiter = ',')
+        # w.writerows([x.split(',') for x in data_list])
+        # csv_file.close()
+        d['status'] = 1
+
+    except Exception as e:
+        print(f"Couldn't select feature {e}")
+        d['status'] = 0
+
+    return jsonify(d)
 
 
 # @app.route("/lasso")

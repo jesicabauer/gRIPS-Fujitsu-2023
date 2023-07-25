@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import $ from 'jquery';
+import React, {useState, useEffect} from 'react'
 
 const Step4 = () => {
 	const table_element = document.getElementById("combo_table")
@@ -10,127 +9,77 @@ const Step4 = () => {
 	if (table3_element) {
 		table3_element.remove()
 	}
+	// const [data3, setData3] = useState({}) 
+    // useEffect(() => {
+    // // Using fetch to fetch the api from
+    // // flask server it will be redirected to proxy
+    // fetch("/step3").then((res) =>
+    //     res.json().then((data_in) => {
+    //         // Setting a data from api
+    //         setData3(data_in);
+    //         console.log(data_in)
+    //     })
+    //     );
+    // }, []);
 
-	const features_set = ["feature1", "feature2", "feature3", "feature4", "feature5", "feature6"]
+	// console.log(data3.length)
+	// var output = "Loading learned weights ..."
 
-	// const [selection, setSelection] = useState()
-	// const submitData = async () => {
-	// 	console.log("here")
-	// 	const the_data = {
-	// 		testinig: "testing!"
+	// if (data3.length) {
+	// 	const data_table = document.createElement("table");
+	// 	data_table.setAttribute("id", "table_step3")
+	// 	const table_header = document.createElement("thead");
+	// 	const table_header_row = document.createElement("tr");
+	// 	const header_1 = document.createElement("th")
+	// 	const header_text_1 = document.createTextNode("Combination of Important Items");
+	// 	header_1.setAttribute("id", "step3_column1")
+	// 	const header_2 = document.createElement("th")
+	// 	const header_text_2 = document.createTextNode("Weights from LASSO");
+	// 	header_2.setAttribute("id", "step3_column2")
+
+	// 	header_1.appendChild(header_text_1);
+	// 	header_2.appendChild(header_text_2);
+	// 	table_header_row.appendChild(header_1)
+	// 	table_header_row.appendChild(header_2)
+	// 	table_header.appendChild(table_header_row)
+	// 	const table_body = document.createElement("tbody");
+
+	// 	for (let i = 0; i < data3.length; i += 1) {
+	// 		const table_row = document.createElement("tr")
+	// 		// console.log(data[0])
+	// 		// const div_container = document.createElement("div")
+	// 		// div_container.setAttribute("id", "row_div")
+	// 		for (let col in data3[i]) {
+	// 			console.log(data3[i][col])
+	// 			const table_cell = document.createElement("td")
+	// 			const cell_text = document.createTextNode(data3[i][col]);
+	// 			table_cell.appendChild(cell_text);
+	// 			// div_container.appendChild(table_cell);
+	// 			table_row.appendChild(table_cell);
+	// 		}
+	// 		// div_container)
+	// 		// output = data.map((row, i) => (
+	// 		// 	<tr key={i}>
+	// 		// 		<td>{document.createTextNode(row.important_combo)}</td>
+	// 		// 		<td>{document.createTextNode(row.combo_length)}</td>
+	// 		// 		<td>{document.createTextNode(row.pos_count)}</td>
+	// 		// 		<td>{document.createTextNode(row.neg_count)}</td>
+	// 		// 	</tr>
+	// 		// ))
+	// 		table_body.appendChild(table_row);
+	// 		output = ""
 	// 	}
+		
+	// 	data_table.appendChild(table_header);
+	// 	data_table.appendChild(table_body);
+	// 	document.body.appendChild(data_table);
 
-	// 	const result = await fetch("/step4_select", {
-	// 		method: 'POST',
-	// 		headers: {
-	// 			'Content-Type': 'application/json',
-
-	// 		},
-	// 		body: JSON.stringify(the_data)
-	// 	})
-
-	// 	console.log(result)
-	// 	const json_result = await result.json()
-	// 	console.log(json_result)
-	// 	setSelection(result.testinig)
 	// }
-
-	// const [data_select, setData] = useState({}) 
-	// useEffect(() => {
-	// // Using fetch to fetch the api from
-	// // flask server it will be redirected to proxy
-	// 	fetch("/step4_select").then((res) =>
-	// 		res.json().then((data_in) => {
-	// 			// Setting a data from api
-	// 			setData(data_in);
-	// 			console.log(data_in)
-	// 		})
-	// 		);
-	// }, []);
-
-	// // const displayData = () => {
-		
-		
-	// // }
-	
-
-	// console.log(data_select)
-	// onSubmit={(event) => event.preventDefault()
-
-	const [selectedFeature, setSelectedFeature] = useState("");
-	console.log("here??")
-	useEffect(() => {
-		console.log("in use effect")
-		if (selectedFeature) {
-			console.log(selectedFeature)
-			fetch("/step4_select", {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-	
-				},
-				body: JSON.stringify(selectedFeature)
-			})
-			.then((res) => {
-				if (!res.ok) return Promise.reject(res);
-				return res.json();
-			  })
-			  .then((data) => {
-				// do something with data ¯\_(ツ)_/¯
-				console.log("data??")
-				console.log(data)
-				fetch("/step4_select").then((res) =>
-					res.json().then((data_in) => {
-						// Setting a data from api
-						// setData(data_in);
-						console.log(data_in)
-					})
-					);
-				}, [])
-			  .catch(console.error);
-		  }
-		}, [selectedFeature]);
-
-		// const selectedData = (x) => {
-		// 	// e.preventDefault()
-		// 	// setSelectedFeature()
-		// 	console.log("???")
-		// 	console.log(x)
-		// 	let feature_name = document.getElementById("")
-		// }
-
-		function selectedData(featureButton) {
-			if (featureButton) {
-				console.log(featureButton.value)
-			}
-			
-			
-		}
-		// $("button").on("click", function() {
-		// 	console.log("???")
-		// 	var fired_button = $(this).val();
-		// 	alert(fired_button);
-		// 	console.log(selectedFeature)
-		// 	setSelectedFeature(() => selectedFeature)
-		// 	console.log(selectedFeature)
-		// });
-
 	return (
-		<div>
-			{/* <h1>{selection}</h1> */}
-			<div>
-				{/* <form method='post' action='/step4_select'> */}
-					{features_set.map(x =>
-						<button type="button" id='startDate' name='startDate' value={x} onClick={() => setSelectedFeature(x)}>{x}</button>
-					)}
-                    
-                    <input type='submit' value='submit' />
-                {/* </form> */}
-            </div>
-			{/* <p>{displayData}</p> */}
-			{/* <button onClick={submitData}> testing</button> */}
-			{/* <p>{data_select}</p> */}
-		</div>
+		<div class="loading">
+            {/* <p>{output}</p> */}
+			[list of models + LASSO with feature selection]
+        </div>
 	);
 };
 

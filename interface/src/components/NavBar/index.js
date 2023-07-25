@@ -5,7 +5,7 @@ import { Nav, NavLink, NavMenu }
 
 const Navbar = () => {
     const navigate = useNavigate();
-    var stepsList = ["step1Div", "step2Div", "step3Div", "step4Div", "step5Div", "step6Div"]
+    var stepsList = ["step1Div", "step2Div", "step3Div", "step4Div", "step5Div", "step6Div", "step7Div", "step8Div"]
     var trainingSteps = 4
 
     const onClickStep1 = () => {
@@ -82,6 +82,7 @@ const Navbar = () => {
         phaseElement.classList.remove("onclickTextColor")
         navigate('/step4');
     }
+
     const onClickStep5 = () => {
         // console.log("hello")
         for (let index = 0; index < stepsList.length; index += 1) {
@@ -94,12 +95,13 @@ const Navbar = () => {
         var step5Element = document.getElementById("step5Div");
         step5Element.classList.remove("stepDivBackground");
         step5Element.classList.add("onclickColor");
-        var phaseElement = document.getElementById("testingText");
-        phaseElement.classList.add("onclickTextColor")
         var phaseElement = document.getElementById("trainingText");
+        phaseElement.classList.add("onclickTextColor")
+        var phaseElement = document.getElementById("testingText");
         phaseElement.classList.remove("onclickTextColor")
         navigate('/step5');
     }
+
     const onClickStep6 = () => {
         // console.log("hello")
         for (let index = 0; index < stepsList.length; index += 1) {
@@ -112,11 +114,48 @@ const Navbar = () => {
         var step6Element = document.getElementById("step6Div");
         step6Element.classList.remove("stepDivBackground");
         step6Element.classList.add("onclickColor");
+        var phaseElement = document.getElementById("trainingText");
+        phaseElement.classList.add("onclickTextColor")
+        var phaseElement = document.getElementById("testingText");
+        phaseElement.classList.remove("onclickTextColor")
+        navigate('/step6');
+    }
+
+    const onClickStep7 = () => {
+        // console.log("hello")
+        for (let index = 0; index < stepsList.length; index += 1) {
+            if (index != 6) {
+                var stepElement = document.getElementById(stepsList[index]);
+                stepElement.classList.add("stepDivBackground");
+                stepElement.classList.remove("onclickColor");
+            }
+        }
+        var step5Element = document.getElementById("step7Div");
+        step5Element.classList.remove("stepDivBackground");
+        step5Element.classList.add("onclickColor");
         var phaseElement = document.getElementById("testingText");
         phaseElement.classList.add("onclickTextColor")
         var phaseElement = document.getElementById("trainingText");
         phaseElement.classList.remove("onclickTextColor")
-        navigate('/step6');
+        navigate('/step7');
+    }
+    const onClickStep8 = () => {
+        // console.log("hello")
+        for (let index = 0; index < stepsList.length; index += 1) {
+            if (index != 7) {
+                var stepElement = document.getElementById(stepsList[index]);
+                stepElement.classList.add("stepDivBackground");
+                stepElement.classList.remove("onclickColor");
+            }
+        }
+        var step6Element = document.getElementById("step8Div");
+        step6Element.classList.remove("stepDivBackground");
+        step6Element.classList.add("onclickColor");
+        var phaseElement = document.getElementById("testingText");
+        phaseElement.classList.add("onclickTextColor")
+        var phaseElement = document.getElementById("trainingText");
+        phaseElement.classList.remove("onclickTextColor")
+        navigate('/step8');
     }
 	return (
 		<>
@@ -139,6 +178,16 @@ const Navbar = () => {
                         <div class="phasesBlock">
                             <div>
                                 
+                            </div>
+                        </div>
+                        <div class="phasesBlock">
+                            <div >
+                               
+                            </div>
+                        </div>
+                        <div class="phasesBlock">
+                            <div >
+                               
                             </div>
                         </div>
                         <div class="phasesBlock">
@@ -190,9 +239,7 @@ const Navbar = () => {
                                 Step 4
                             </div>
                         </div>
-                    {/* </div> */}
-                    {/* <div class="testingPhase"> */}
-                       <div class="stepBlock" id="step5Div" onClick={onClickStep5}>
+                        <div class="stepBlock" id="step5Div" onClick={onClickStep5}>
                             <div to="/step5" activeStyle>
                                 Step 5
                             </div>
@@ -200,6 +247,18 @@ const Navbar = () => {
                         <div class="stepBlock" id="step6Div" onClick={onClickStep6}>
                             <div to="/step6" activeStyle>
                                 Step 6
+                            </div>
+                        </div>
+                    {/* </div> */}
+                    {/* <div class="testingPhase"> */}
+                       <div class="stepBlock" id="step7Div" onClick={onClickStep7}>
+                            <div to="/step7" activeStyle>
+                                Step 7
+                            </div>
+                        </div>
+                        <div class="stepBlock" id="step8Div" onClick={onClickStep8}>
+                            <div to="/step8" activeStyle>
+                                Step 8
                             </div>
                         </div> 
                     {/* </div> */}

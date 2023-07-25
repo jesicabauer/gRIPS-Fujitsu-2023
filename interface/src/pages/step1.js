@@ -10,6 +10,27 @@ const Step1 = () => {
 	if (table3_element) {
 		table3_element.remove()
 	}
+
+    // the react post request sender
+    const uploadTrainingFile = async (e) => {
+        const file = e.target.files[0];
+        console.log(file)
+        if (file != null) {
+            const data = new FormData();
+            data.append('file_from_react', file);
+            console.log(data)
+            let response = await fetch('/training_file_upload',
+                {
+                method: 'post',
+                body: data,
+                }
+            );
+            let res = await response.json();
+            if (res.status !== 1){
+                alert('Error uploading file');
+            }
+        }
+    };
     // const [data, setData] = useState({}) 
     // useEffect(() => {
     // // Using fetch to fetch the api from
@@ -27,14 +48,21 @@ const Step1 = () => {
     //         <p>{data.data}</p>
     //     </div>
     // )
-	// return (
+	return (
+        // the react form
+        <form>
+        <input
+            type="file" onChange={uploadTrainingFile}>
+        </input>
+        {/* <input type="submit" value="Submit" onClick={uploadFile}></input> */}
+        </form>
 	// 	<div>
 	// 		<h1>
 	// 			GeeksforGeeks is a Computer
 	// 			Science portal for geeks.
 	// 		</h1>
 	// 	</div>
-	// );
+	);
 };
 
 export default Step1;
