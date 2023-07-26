@@ -43,13 +43,14 @@ def main(Data):
     sup_corre = Explore_data_correlations.main(Data)[0]
     inf_corre = Explore_data_correlations.main(Data)[1]  
 
-    if Data.shape[0] <= 3000:
-        size1 = Data.shape[0]
+    if Data.shape[0] <= 600:
+        size = Data.shape[0]
     else:
-        size1 = 3000
+        size = 600
 
     
-    data = Data_generate.main(size1, 500, inf_corre, sup_corre) 
+    data = Data_generate.main(2000, size, inf_corre, sup_corre) 
+    done =0
     
     for k in range(len(model)):
         #何回平均
@@ -72,7 +73,8 @@ def main(Data):
             List_Data[j] = row - data_erasure_size
             List_comp[j] = compx / run
             data_erasure_size -= add_data_size
-            print(List_Data[j])
+            done += 100/( iterations * len(model))
+            print(str(done) + "%")
         book[model[k]].append(List_comp)
         book[model[k]].append(List_Data)
         plt.xlabel('Data_size')

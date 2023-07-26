@@ -53,13 +53,17 @@ def main(Data):
     sup_corre = Explore_data_correlations.main(Data)[0]
     inf_corre = Explore_data_correlations.main(Data)[1]   
     
-    if Data.shape[0] <= 3000:
+    if Data.shape[0] <= 2000:
         size1 = Data.shape[0]
     else:
-        size1 = 3000
-
+        size1 = 2000
+    if Data.shape[1] <= 600:
+         size2 = Data.shape[0]
+    else:
+         size2 = 600
     
-    data = Data_generate.main(size1, 500, inf_corre, sup_corre) 
+    data = Data_generate.main(size1, size2, inf_corre, sup_corre) 
+    done =0
     for k in range(len(model)):
         run = 10 
         row = data.shape[0]
@@ -77,7 +81,8 @@ def main(Data):
             List_Data.append(j)
                 #"run" times average
             List_comp.append(compx / run)
-            print(j)
+            done += 100/( iterations * len(model))
+            print(str(done) + "%")
         book[model[k]].append(List_comp)
         book[model[k]].append(List_Data)
         plt.ylim(0, 1)

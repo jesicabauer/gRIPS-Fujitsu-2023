@@ -43,17 +43,17 @@ def main(Data):
     sup_corre = Explore_data_correlations.main(Data)[0]
     inf_corre = Explore_data_correlations.main(Data)[1]    
     
-    if Data.shape[0] <= 3000:
-        size1 = Data.shape[0]
+    if Data.shape[1] <= 600:
+        size = Data.shape[0]
     else:
-        size1 = 3000
+        size = 600
 
-    
-    
-    data = Data_generate.main(size1, 500, inf_corre, sup_corre)
-            
-    for k in range(len(model)):      
-        run = 10 
+    data = Data_generate.main(2000, size, inf_corre, sup_corre)
+    done =0
+    for k in range(len(model)):  
+        
+        
+        run = 10
          
         row = data.shape[0]
         if(int(data.shape[0]/50)>10):
@@ -68,11 +68,13 @@ def main(Data):
         for j in range(iterations):
             compx = 0
             for i in range(run):
-                compx += Rademacher(model[k], data_erasure_size, data)   
+                compx += Rademacher(model[k], data_erasure_size, data)
             List_Data[j] = (row  - data_erasure_size)
             List_comp[j] = (compx / run)
             data_erasure_size -= add_data_size
-            print(List_Data[j])
+            done += 100/( iterations * len(model))
+            print(str(done) + "%")
+           
         book[model[k]].append(List_comp)
         book[model[k]].append(List_Data)
         plt.ylim(0, 1)
