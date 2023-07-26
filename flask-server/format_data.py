@@ -1,28 +1,34 @@
 import pandas as pd
 import re
+from sklearn.datasets import load_iris
 
 ##########################################
 # for animal training dataset
 # format into binary matrix to test LASSO
 ##########################################
 
-data_type="train"
+data_type="test"
 
-original_data = pd.read_csv("animals_train.csv")
-#original_data = pd.read_csv("COVID_train.csv")
-# original_data = pd.read_csv("defect_prevention_train.csv")
+#original_data = pd.read_csv("animals_train.csv")
+#original_data = pd.read_csv("COVID_test_b_advance.csv")
+#original_data = pd.read_csv("defect_prevention_test.csv")
 #original_data = pd.read_csv("election_test.csv")
+original_data=pd.read_csv("iris_test.csv")
 
 
+print(original_data.columns)
 
-step2_data = pd.read_csv("animal_step2_data.csv")
+
+#step2_data = pd.read_csv("animal_step2_data.csv")
 #step2_data = pd.read_csv("covid_step2_data.csv")
-# step2_data = pd.read_csv("defect_prevention_train_step2_data.csv")
+#step2_data = pd.read_csv("defect_prevention_train_step2_data.csv")
 #step2_data = pd.read_csv("elections_step2_data.csv")
+step2_data=pd.read_csv("iris_step2_data.csv")
+
 # print(step2_data)
 
 
-animals_col = list(original_data[original_data.columns[0]])
+#animals_col = list(original_data[original_data.columns[0]])
 
 if data_type=="train":
     labels_col = list(original_data[original_data.columns[-1]])
@@ -37,7 +43,8 @@ combinations_col = list(step2_data["Combination of important items"])
 ################### getting threshold column names ###########################
 thresholds = set() # save thresholds for parsing later
 for combo in combinations_col:
-    combo_string = combo.split("∧") # get features from the combos
+    combo_string = combo.split("∧") # get features from the 
+    #print(combo_string)
     for feature in combo_string:
         binary_split = feature.split("_") # get value for feature
         if len(binary_split)==1: #threshold
@@ -62,7 +69,7 @@ for feature in thresholds:
 
 ###############adding new columns to make all variables binary #####################
 
-original_data_bin_cols=original_data
+original_data_bin_cols=original_data.copy()
 col_idx=1
 n_cols=len(original_data.columns)
 if data_type=="test":
@@ -112,6 +119,7 @@ for col_name, col_data in original_data.items():
     col_idx+=1
 binary_col_names=list(original_data_bin_cols.columns)
     
+#print(f"binary mat col names {binary_col_names}")
 
 ####################building final data matrix by checking combinations ###############################
 
@@ -141,5 +149,5 @@ if data_type=="train":
     combinations_col.append("Label")
 combo_matrix.columns = combinations_col # add in column names
 
-combo_matrix.to_csv("covid_combos_train.csv") # save to csv file
+combo_matrix.to_csv("iris_combos_test.csv") # save to csv file
 

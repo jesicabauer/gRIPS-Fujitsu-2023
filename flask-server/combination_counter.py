@@ -55,7 +55,7 @@ def combination_counter(dataset_csv,dataset_type,step2data_csv,combination_to_co
     
     ###############adding new columns to make all variables binary #####################
     
-    original_data_bin_cols=original_data
+    original_data_bin_cols=original_data.copy()
     col_idx=1
     n_cols=len(original_data.columns)
     if data_type=="test":
@@ -137,7 +137,7 @@ def combination_counter(dataset_csv,dataset_type,step2data_csv,combination_to_co
 dataset_csv="election_test.csv"
 dataset_type="test" #either "train" or "test"
 step2data_csv="elections_step2_data.csv"
-combination_to_count="Gender_Female∧   Block_South Kanto"
+combination_to_count="Gender_Female"
 
 #note: combination_to_count must be in format: feature name∧feature name
 #if format is incorrect, error message will display saying the feature is not present in the dataset
