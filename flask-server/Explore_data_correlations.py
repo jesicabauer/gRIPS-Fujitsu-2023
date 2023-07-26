@@ -22,6 +22,6 @@ def main(data):
     normalized_dot_products = dot_products / len(labels)
     final_results = (normalized_dot_products + 1) / 2
     sorted_results = final_results.sort_values(ascending=False)
-    return sorted_results[0],sorted_results[-1]
+    return sorted_results[0] , sorted_results[-1]
 # Print the results
 

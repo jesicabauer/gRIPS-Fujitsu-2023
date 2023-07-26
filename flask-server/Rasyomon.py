@@ -37,25 +37,24 @@ def Rasyomon (model, erasuresize, data):
     return np.dot(y_test, prediction)/num_rows
 
 
-def main(Data ):
-    model = [SVM,RF, DT2, DT3, DT5, DT10,LR, PT, NB]
-    book  = {SVM:[],RF:[], DT2:[], DT3:[], DT5:[], DT10:[],LR:[], PT:[], NB:[]} 
+def main(Data):
+    model = [RF, DT2, DT3, DT5, DT10,LR, PT, NB]
+    book  = {RF:[], DT2:[], DT3:[], DT5:[], DT10:[],LR:[], PT:[], NB:[]} 
+    sup_corre = Explore_data_correlations.main(Data)[0]
+    inf_corre = Explore_data_correlations.main(Data)[1]  
+
+    if Data.shape[0] <= 3000:
+        size1 = Data.shape[0]
+    else:
+        size1 = 3000
+
+    
+    data = Data_generate.main(size1, 500, inf_corre, sup_corre) 
+    
     for k in range(len(model)):
         #何回平均
         run = 10      
-
-        sup_corre = Explore_data_correlations.main(Data)[0]
-        inf_corre = Explore_data_correlations.main(Data)[1]   
-        if Data.shape[0] <= 1500:
-            size1 = Data.shape[0]
-        else:
-            size1 = 1500
-        if Data.shape[1] <= 1500:
-             size2 = Data.shape[0]
-        else:
-             size2 = 1500
-            
-        data = Data_generate.main(size1, size2, inf_corre, sup_corre)        
+                 
         row = data.shape[0]
         if(int(data.shape[0]/50)>10):
             data_erasure_size = row - int(data.shape[0]/50)
@@ -76,9 +75,9 @@ def main(Data ):
             print(List_Data[j])
         book[model[k]].append(List_comp)
         book[model[k]].append(List_Data)
-        #plt.xlabel('Data_size')
-        #plt.ylabel('accuracy')
-        #plt.plot(List_Data, List_comp,label=str(k))
+        plt.xlabel('Data_size')
+        plt.ylabel('accuracy')
+        plt.plot(List_Data, List_comp,label=str(k))
     return book
 
 main(Data = pd.read_csv('5000cutData.csv') )

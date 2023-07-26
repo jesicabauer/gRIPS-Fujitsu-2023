@@ -48,22 +48,20 @@ def Rade2(model, erasuresize, data, n):
 
 
 def main(Data):
-    model = [SVM,RF, DT2, DT3, DT5, DT10,LR, PT, NB]
-    book  = {SVM:[],RF:[], DT2:[], DT3:[], DT5:[], DT10:[],LR:[], PT:[], NB:[]} 
+    model = [RF, DT2, DT3, DT5, DT10,LR, PT, NB]
+    book  = {RF:[], DT2:[], DT3:[], DT5:[], DT10:[],LR:[], PT:[], NB:[]} 
+    sup_corre = Explore_data_correlations.main(Data)[0]
+    inf_corre = Explore_data_correlations.main(Data)[1]   
+    
+    if Data.shape[0] <= 3000:
+        size1 = Data.shape[0]
+    else:
+        size1 = 3000
+
+    
+    data = Data_generate.main(size1, 500, inf_corre, sup_corre) 
     for k in range(len(model)):
         run = 10 
-        sup_corre = Explore_data_correlations.main(Data)[0]
-        inf_corre = Explore_data_correlations.main(Data)[1]   
-        if Data.shape[0] <= 1500:
-            size1 = Data.shape[0]
-        else:
-            size1 = 1500
-        if Data.shape[1] <= 1500:
-             size2 = Data.shape[0]
-        else:
-             size2 = 1500
-            
-        data = Data_generate.main(size1, size2, inf_corre, sup_corre)
         row = data.shape[0]
         data_erasure_size = 0
        
@@ -82,11 +80,11 @@ def main(Data):
             print(j)
         book[model[k]].append(List_comp)
         book[model[k]].append(List_Data)
-        #plt.ylim(0, 1)
-        #plt.xlim(0,iterations)
-        #plt.xlabel('landumly')
-        #plt.ylabel('Complexity')
-        #plt.plot(List_Data, List_comp,label=str(k))
+        plt.ylim(0, 1)
+        plt.xlim(0,iterations)
+        plt.xlabel('landumly')
+        plt.ylabel('Complexity')
+        plt.plot(List_Data, List_comp,label=str(k))
     return book
 
 main(Data = pd.read_csv('5000cutData.csv') )
