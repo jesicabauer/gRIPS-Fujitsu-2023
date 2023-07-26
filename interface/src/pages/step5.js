@@ -11,7 +11,7 @@ const Step5 = () => {
 		table3_element.remove()
 	}
 
-	const features_set = ["feature1", "feature2", "feature3", "feature4", "feature5", "feature6"]
+	const features_set = ["feature1", "feature2", "feature3", "feature4", "feature5", "feature6", "feature1", "feature2", "feature3", "feature4", "feature5", "feature6"]
 
 	// const [selection, setSelection] = useState()
 	// const submitData = async () => {
@@ -99,11 +99,15 @@ const Step5 = () => {
 			{/* <h1>{selection}</h1> */}
 			<div>
 				<form method='post' action='/user_feature_selection' class="">
-					{features_set.map(x =>
-						<label>
-							<input type="button" id='startDate' name={'startDate'+x} value={x} onClick={() => featureSelected(x)}/>
-						</label>
-					)}
+					<div class="featuresContainer">
+						{features_set.map(x =>
+							// <label>
+								// <input type="button" id='startDate' name={'startDate'+x} value={x} onClick={() => featureSelected(x)}/>
+							// {/* </label> */}
+							<div id='featureSelect' class="featureOption stepDivBackground" name={'featureSelect'+x} value={x} onClick={() => featureSelected(x)}>{x}</div>
+						)}
+					</div>
+					
                     
                     {/* <input type='submit' value='submit' /> */}
                 </form>

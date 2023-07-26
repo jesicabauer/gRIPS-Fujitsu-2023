@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import $ from 'jquery';
 
 const Step2 = () => {
 	const table_element = document.getElementById("combo_table")
@@ -132,11 +133,111 @@ const Step2 = () => {
 		data_table.appendChild(table_body);
 		document.body.appendChild(data_table);
 
+		let columnHeader1 = document.getElementById("column1")
+		columnHeader1.addEventListener("mouseover", function(e) {
+			console.log(e.pageX+20)
+			$('#header1Hover').css({
+				display: 'block',
+				left: e.pageX+10,
+				top: e.pageY,
+				position: 'absolute',
+				width: '10rem',
+				height: '5rem',
+				background: 'black',
+				color: 'white',
+				textAlign: 'center',
+				padding: '1rem'
+				
+			})
+		})
+
+		columnHeader1.addEventListener("mouseout", function(e) {
+			$('#header1Hover').css({
+				display: 'None',
+			})
+		})
+
+		let columnHeader2 = document.getElementById("column2")
+		columnHeader2.addEventListener("mouseover", function(e) {
+			console.log(e.pageX+20)
+			$('#header2Hover').css({
+				display: 'block',
+				left: e.pageX+10,
+				top: e.pageY,
+				position: 'absolute',
+				width: '10rem',
+				height: '5rem',
+				background: 'black',
+				color: 'white',
+				textAlign: 'center',
+				padding: '1rem'
+				
+			})
+		})
+
+		columnHeader2.addEventListener("mouseout", function(e) {
+			$('#header2Hover').css({
+				display: 'None',
+			})
+		})
+
+		let columnHeader3 = document.getElementById("column3")
+		columnHeader3.addEventListener("mouseover", function(e) {
+			console.log(e.pageX+20)
+			$('#header3Hover').css({
+				display: 'block',
+				left: e.pageX+10,
+				top: e.pageY,
+				position: 'absolute',
+				width: '10rem',
+				height: '5rem',
+				background: 'black',
+				color: 'white',
+				textAlign: 'center',
+				padding: '1rem'
+				
+			})
+		})
+
+		columnHeader3.addEventListener("mouseout", function(e) {
+			$('#header3Hover').css({
+				display: 'None',
+			})
+		})
+
+		let columnHeader4 = document.getElementById("column4")
+		columnHeader4.addEventListener("mouseover", function(e) {
+			console.log(e.pageX+20)
+			$('#header4Hover').css({
+				display: 'block',
+				left: e.pageX+10,
+				top: e.pageY,
+				position: 'absolute',
+				width: '10rem',
+				height: '5rem',
+				background: 'black',
+				color: 'white',
+				textAlign: 'center',
+				padding: '1rem'
+				
+			})
+		})
+
+		columnHeader4.addEventListener("mouseout", function(e) {
+			$('#header4Hover').css({
+				display: 'None',
+			})
+		})
+
 	}
 	
 	// for (index = 0; index <)
     return (
 		<div>
+			<div id="header1Hover">testing hover 1</div>
+			<div id="header2Hover">testing hover 2</div>
+			<div id="header3Hover">testing hover 3</div>
+			<div id="header4Hover">testing hover 4</div>
 			<p id="explanationStep2">Wide Learning generates all possible combinations of variables. The combinations in this table are the most important combinations of features to determine whether or not an animal is a mammal. The importance of a combination is measured by the length of the combination and the number of positive and negative occurrences for the animals in the training dataset that have that combination of features. The table below will only show feature combinations with a maximum length of three, however, important feature combinations that are longer than three may exist.</p>
         <div class="loading">
             <p>{output}</p>
