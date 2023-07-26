@@ -42,18 +42,14 @@ def main(Data):
     book  = {RF:[], DT2:[], DT3:[], DT5:[], DT10:[],LR2:[], PT:[], NB:[]} 
     sup_corre = Explore_data_correlations.main(Data)[0]
     inf_corre = Explore_data_correlations.main(Data)[1]    
-    
-    if Data.shape[1] <= 600:
-        size = Data.shape[0]
-    else:
-        size = 600
 
-    data = Data_generate.main(2000, size, inf_corre, sup_corre)
+    data = Data_generate.main(3000, 200, inf_corre, sup_corre)
+    
     done =0
     for k in range(len(model)):  
         
         
-        run = 10
+        run = 15
          
         row = data.shape[0]
         if(int(data.shape[0]/50)>10):
@@ -72,7 +68,7 @@ def main(Data):
             List_Data[j] = (row  - data_erasure_size)
             List_comp[j] = (compx / run)
             data_erasure_size -= add_data_size
-            done += 100/( iterations * len(model))
+            done += 100/( int(iterations) * len(model))
             print(str(done) + "%")
            
         book[model[k]].append(List_comp)
@@ -83,4 +79,4 @@ def main(Data):
         plt.plot(List_Data, List_comp,label=str(k))
     return book
 
-main(Data = pd.read_csv('5000cutData.csv') )
+main(Data = pd.read_csv('matrix_format.csv') )

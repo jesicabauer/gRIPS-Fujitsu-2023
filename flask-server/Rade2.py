@@ -57,12 +57,9 @@ def main(Data):
         size1 = Data.shape[0]
     else:
         size1 = 2000
-    if Data.shape[1] <= 600:
-         size2 = Data.shape[0]
-    else:
-         size2 = 600
+
     
-    data = Data_generate.main(size1, size2, inf_corre, sup_corre) 
+    data = Data_generate.main(size1, 200, inf_corre, sup_corre) 
     done =0
     for k in range(len(model)):
         run = 10 
@@ -71,17 +68,17 @@ def main(Data):
        
         iterations = row  - data_erasure_size
             
-        List_comp = []
-        List_Data = []
+        List_comp = np.zeros(50)
+        List_Data = np.zeros(50)
             
-        for j in range(0,iterations,int(iterations/50)):
+        for j in range(50):
             compx = 0
             for i in range(run):
-                compx += Rade2(model[k], data_erasure_size, data , j)   
-            List_Data.append(j)
+                compx += Rade2(model[k], data_erasure_size, data , int(j * iterations/50))  
+            List_Data[j] = int(j * iterations/50)
                 #"run" times average
-            List_comp.append(compx / run)
-            done += 100/( iterations * len(model))
+            List_comp[j] = (compx / run)
+            done += 100/(50 * len(model))
             print(str(done) + "%")
         book[model[k]].append(List_comp)
         book[model[k]].append(List_Data)
@@ -92,4 +89,4 @@ def main(Data):
         plt.plot(List_Data, List_comp,label=str(k))
     return book
 
-main(Data = pd.read_csv('5000cutData.csv') )
+main(Data = pd.read_csv('matrix_format.csv') )
