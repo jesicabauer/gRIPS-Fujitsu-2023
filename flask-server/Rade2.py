@@ -258,7 +258,9 @@ def Rade2(model, erasuresize, data, n):
 
 def main(Data):
     model = [RF, DT2, DT3, DT5, DT10,LR2, PT, NB]
+    model2 = ["RF", "DT2", "DT3", "DT5", "DT10","LR2", "PT", "NB"]
     book  = {"RF":[],"DT2":[],"DT3":[],"DT5":[],"DT10":[],"LR2":[],"PT":[],"NB":[]} 
+    book1_list =[]
     sup_corre = Explore_data_correlations(Data)[0]
     inf_corre = Explore_data_correlations(Data)[1]   
     
@@ -293,13 +295,10 @@ def main(Data):
             List_comp[j] = (compx / run)
             done += 100/(50 * len(model))
             print(str(done) + "%")
-        book[model[k].__name__].append(List_comp)
-        book[model[k].__name__].append(List_Data)
-        plt.ylim(0, 1)
-        plt.xlim(0,iterations)
-        plt.xlabel('landumly')
-        plt.ylabel('Complexity')
-        plt.plot(List_Data, List_comp,label=str(k))
-    return book
+        book[model2[k]].append(List_comp)
+        book[model2[k]].append(List_Data)
+        book1_list.append(book)
+    return book1_list
 
-main(Data = pd.read_csv('matrix_format.csv') )
+if __name__ == "__main__":
+    main(Data = pd.read_csv('matrix_format.csv') )

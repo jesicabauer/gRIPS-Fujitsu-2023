@@ -245,16 +245,18 @@ def Rademacher (model, erasuresize, data):
 
 
 def main(Data):
-    model = [RF, DT2, DT3, DT5, DT10,LR2, PT, NB]
-    book1  = {"RF":[], "DT2":[], "DT3":[], "DT5":[], "DT10":[],"LR2":[], "PT":[], "NB":[]} 
-    book_list =[]
+    model = [RF, DT2, DT3, DT5, DT10,LR2, PT, NB]   
+    model2 = ["RF", "DT2", "DT3", "DT5", "DT10","LR2", "PT", "NB"]
+    book1_list =[]
+    book2_list = []
     sup_corre = Explore_data_correlations(Data)[0]
     inf_corre = Explore_data_correlations(Data)[1]    
     data = Data_generation(2000, 200, inf_corre, sup_corre)
     done =0
     
     for k in range(len(model)):  
-        book = {"model_name":"" ,"value":[]}
+        book1 = {"model_name":"" ,"value":[]}
+        book2 = {"model_name":"","value":[]}
         run = 10
         row = data.shape[0]
         
@@ -277,18 +279,18 @@ def main(Data):
             done += 100/( int(iterations) * len(model))
             print(str(done) + "%")
            
-        book1[model[k].__name__].append(List_comp)
-        book1[model[k].__name__].append(List_Data)
-        plt.ylim(0, 1)
-        plt.xlabel('Data_size')
-        plt.ylabel('Complexity')
-        plt.plot(List_Data, List_comp,label=str(k))
-        book["model_name"] = model[k].__name__
-        book["value"] = List_comp[-1]
-        book_list.append(book)
-    return  book1 , book_list
+        book1["model_name"] = model2[k]
+        book2["model_name"] = model2[k]
+        book1["value"] = List_comp[-1]
+        book2["value"].append(List_comp)
+        book2["value"].append(List_Data)
+        book1_list.append(book1)
+        book2_list.append(book2)
+    return  (book1_list , book2_list)
 
-print(main(Data = pd.read_csv('matrix_format.csv') ))
+
+if __name__ == "__main__":
+    main(Data = pd.read_csv('matrix_format.csv') )
 
 
 
