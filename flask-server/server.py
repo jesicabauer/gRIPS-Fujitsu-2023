@@ -21,6 +21,7 @@ import csv
 import io
 # from Rademacher import main as RademacherMain
 import Rademacher
+import format_data
 # from selenium.webdriver.chrome.service import Service
 # from webdriver_manager.chrome import ChromeDriverManager
 
@@ -79,8 +80,8 @@ def save_step2_data():
     df_data = pd.read_html(browser.page_source)
 
     # df_data[0].to_csv("defect_prevention_train_step2_data.csv")
-    df_data[0].to_csv("animal_step2_data_direct.csv")
-    return "animal_step2_data.csv"
+    df_data[0].to_csv("step2_data.csv")
+    return "step2_data.csv"
 
 
 def csv_to_json(csv_file):
@@ -385,7 +386,9 @@ def user_feature_selection():
 @app.route("/rademacher_complexity")
 def rademacher_complexity():
     print("in rademacher_complexity")
-    # return Rademacher.main(Data = pd.read_csv('training_data_input.csv'))
+    binary_data = format_data.binary_combo_data("training_data_input.csv", "step2_data.csv", "train")
+    print(binary_data)
+    return Rademacher.main(Data = binary_data)
 
 # @app.route("/lasso")
 # def members():

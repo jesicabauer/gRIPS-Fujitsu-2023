@@ -152,7 +152,11 @@ def binary_combo_data(original_data_csv,step2_data_csv,data_type):
         combinations_col.append("Label")
     combo_matrix.columns = combinations_col # add in column names
     
+    combo_matrix.to_csv("animal_binary_train.csv") # save to csv file
     return combo_matrix
     
     #combo_matrix.to_csv("iris_combos_test.csv") # save to csv file
     
+
+# if __name__ == "__main__":
+    # binary_combo_data("training_data_input.csv", "step2_data.csv", "train")
