@@ -1,4 +1,3 @@
-
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -252,7 +251,7 @@ def main(Data):
     book_list =[]
     sup_corre = Explore_data_correlations(Data)[0]
     inf_corre = Explore_data_correlations(Data)[1]  
-    if(Data.shape[0]>=51 and Data.shape[1] >= 12):
+    if(Data.shape[0]>=81 and Data.shape[1] >= 12):
         data = Data
     else :
         data = Data_generation(300, 200, inf_corre, sup_corre) 
