@@ -22,11 +22,64 @@ import io
 # from Rademacher import main as RademacherMain
 import Rademacher
 import format_data
+import Rashomon
+import Rade2
 # from selenium.webdriver.chrome.service import Service
 # from webdriver_manager.chrome import ChromeDriverManager
 
 
 app = Flask(__name__)
+
+@app.route("/step1_display")
+def step1_display():
+    csv_data = pd.read_csv("training_data_input.csv")
+    print(csv_data)
+
+    df_list = []
+    print(len(csv_data))
+    print(len(csv_data.columns))
+
+    for row_index in range(0, len(csv_data)):
+        print(row_index)
+        row_list = csv_data.loc[row_index, :].values.flatten().tolist()
+        print(row_list)
+        df_list.append(row_list)
+
+    print(df_list)
+
+    data_json = []
+    for row in df_list:
+        row_dict = {}
+        for column in range(0, len(csv_data.columns)):
+            if pd.isna(row[column]):
+                print("here???")
+                row_dict[csv_data.columns[column]] = "N/A"
+            else:
+                element_data = row[column]
+                if type(row[column]) == np.int64:
+                    element_data = row[column].item()
+                row_dict[csv_data.columns[column]] = element_data
+                # print(type(element_data))
+            
+        data_json.append(row_dict)
+
+    training_data = json.dumps(data_json)
+
+    return training_data
+
+    # for row_index in range(0, len(csv_data)):
+    #     print(row_index)
+    #     row_list = csv_data.loc[row_index, :].values.flatten().tolist()
+    #     print(row_list)
+    #     df_list.append(row_list)
+
+    # print(df_list)
+    # print(csv_data.columns)
+
+    # data_json = []
+    # for row_data in df_list:
+    #     # print(row_data)
+    #     index = str(row_data.pop(0))
 
 def save_step2_data():
     # print("here1")
@@ -98,13 +151,14 @@ def csv_to_json(csv_file):
         df_list.append(row_list)
 
     print(df_list)
+    print(csv_data.columns)
 
     data_json = []
     for row_data in df_list:
-        print(row_data)
+        # print(row_data)
         index = str(row_data.pop(0))
         # data_json[index] = row_data
-        print(row_data)
+        # print(row_data)
         row_dict = {}
         row_dict["important_combo"] = row_data[0]
         row_dict["combo_length"] = int(row_data[1])
@@ -114,10 +168,10 @@ def csv_to_json(csv_file):
         data_json.append(row_dict)
 
 
-    print(data_json)
+    # print(data_json)
 
     data = json.dumps(data_json)
-    print(data)
+    # print(data)
     return data
 
 def step3_data():
@@ -247,6 +301,10 @@ def members():
 def step3():
 
     return step3_data()
+
+@app.route("/step4")
+def step4():
+    return
 
 @app.route("/step6")
 def step6():
@@ -388,7 +446,73 @@ def rademacher_complexity():
     print("in rademacher_complexity")
     binary_data = format_data.binary_combo_data("training_data_input.csv", "step2_data.csv", "train")
     print(binary_data)
-    return Rademacher.main(Data = binary_data)
+    return Rademacher.main(Data = binary_data)[1]
+
+@app.route("/complexity_chart")
+def complexity_chart():
+    print("in complexity_chart")
+    binary_data = format_data.binary_combo_data("training_data_input.csv", "step2_data.csv", "train")
+    print(binary_data)
+    return Rademacher.main(Data = binary_data)[0]
+
+@app.route("/rashomon_accuracy")
+def rashomon_accuracy():
+    print("in rashomon_accuracy")
+    binary_data = format_data.binary_combo_data("training_data_input.csv", "step2_data.csv", "train")
+    print(binary_data)
+    return Rashomon.main(Data = binary_data)[1]
+
+@app.route("/accuracy_chart")
+def accuracy_chart():
+    print("in accuracy_chart")
+    binary_data = format_data.binary_combo_data("training_data_input.csv", "step2_data.csv", "train")
+    print(binary_data)
+    return Rashomon.main(Data = binary_data)[0]
+
+@app.route("/new_complexity_chart")
+def new_complexity_chart():
+    print("in new_complexity_chart")
+    binary_data = format_data.binary_combo_data("training_data_input.csv", "step2_data.csv", "train")
+    print(binary_data)
+    return Rade2.main(Data = binary_data)
+
+
+@app.route("/step7_display")
+def step7_display():
+    csv_data = pd.read_csv("testing_data_input.csv")
+    print(csv_data)
+
+    df_list = []
+    print(len(csv_data))
+    print(len(csv_data.columns))
+
+    for row_index in range(0, len(csv_data)):
+        print(row_index)
+        row_list = csv_data.loc[row_index, :].values.flatten().tolist()
+        print(row_list)
+        df_list.append(row_list)
+
+    print(df_list)
+
+    data_json = []
+    for row in df_list:
+        row_dict = {}
+        for column in range(0, len(csv_data.columns)):
+            if pd.isna(row[column]):
+                print("here???")
+                row_dict[csv_data.columns[column]] = "N/A"
+            else:
+                element_data = row[column]
+                if type(row[column]) == np.int64:
+                    element_data = row[column].item()
+                row_dict[csv_data.columns[column]] = element_data
+                # print(type(element_data))
+            
+        data_json.append(row_dict)
+
+    testing_data = json.dumps(data_json)
+
+    return testing_data
 
 # @app.route("/lasso")
 # def members():

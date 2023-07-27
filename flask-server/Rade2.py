@@ -258,6 +258,7 @@ def Rade2(model, erasuresize, data, n):
 
 def main(Data):
     model = [RF, DT2, DT3, DT5, DT10,LR2, PT, NB]
+    model2 = ["RF", "DT2", "DT3", "DT5", "DT10","LR2", "PT", "NB"]
     book  = {"RF":[],"DT2":[],"DT3":[],"DT5":[],"DT10":[],"LR2":[],"PT":[],"NB":[]} 
     sup_corre = Explore_data_correlations(Data)[0]
     inf_corre = Explore_data_correlations(Data)[1]   
@@ -274,12 +275,16 @@ def main(Data):
     
     data = Data_generation(size1, size2, inf_corre, sup_corre) 
     done =0
+    all_model_data = []
     for k in range(len(model)):
         run = 10 
         row = data.shape[0]
         data_erasure_size = 0
        
         iterations = row  - data_erasure_size
+
+        model_data_dict = {}
+        model_data_dict["Model Name"] = model2[k]
             
         List_comp = np.zeros(50)
         List_Data = np.zeros(50)
@@ -293,13 +298,17 @@ def main(Data):
             List_comp[j] = (compx / run)
             done += 100/(50 * len(model))
             print(str(done) + "%")
-        book[model[k].__name__].append(List_comp)
-        book[model[k].__name__].append(List_Data)
-        plt.ylim(0, 1)
-        plt.xlim(0,iterations)
-        plt.xlabel('landumly')
-        plt.ylabel('Complexity')
-        plt.plot(List_Data, List_comp,label=str(k))
-    return book
+        # book[model2[k]].append(List_comp)
+        # book[model2[k]].append(List_Data)
+        model_data_dict["y_axis"] = list(List_comp)
+        model_data_dict["x_axis"] = list(List_Data)
+        all_model_data.append(model_data_dict)
+        # plt.ylim(0, 1)
+        # plt.xlim(0,iterations)
+        # plt.xlabel('landumly')
+        # plt.ylabel('Complexity')
+        # plt.plot(List_Data, List_comp,label=str(k))
+    return all_model_data
 
-main(Data = pd.read_csv('matrix_format.csv') )
+if __name__ == "__main__":
+    main(Data = pd.read_csv('matrix_format.csv') )

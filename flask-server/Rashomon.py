@@ -248,6 +248,7 @@ def Rasyomon (model, erasuresize, data):
 
 def main(Data):
     model = [RF, DT2, DT3, DT5, DT10,LR2, PT, NB]
+    model2 = ["RF", "DT2", "DT3", "DT5", "DT10","LR2", "PT", "NB"]
     book1  = {"RF":[], "DT2":[], "DT3":[], "DT5":[], "DT10":[],"LR2":[], "PT":[], "NB":[]} 
     book_list =[]
     sup_corre = Explore_data_correlations(Data)[0]
@@ -258,11 +259,16 @@ def main(Data):
         data = Data_generation(300, 200, inf_corre, sup_corre) 
     done =0
     
+    all_model_data = []
     for k in range(len(model)):
-        book = {"model_name":"" ,"value":[]}
+        # book = {"model_name":"" ,"value":[]}
+        book = {}
         
         #何回平均
         run = 15   
+
+        model_data_dict = {}
+        model_data_dict["Model Name"] = model2[k]
                  
         row = data.shape[0]
         data_erasure_size = row - 50
@@ -280,14 +286,19 @@ def main(Data):
             data_erasure_size -= add_data_size
             done += 100/( int(iterations) * len(model))
             print(str(done) + "%")
-        book1[model[k].__name__].append(List_comp)
-        book1[model[k].__name__].append(List_Data)
-        plt.xlabel('Data_size')
-        plt.ylabel('accuracy')
-        plt.plot(List_Data, List_comp,label=str(k))
-        book["model_name"] = model[k].__name__
-        book["value"] = List_comp[-1]
-        book_list.append(book)
-    return book1 , book_list
+        # book1[model2[k]].append(List_comp)
+        # book1[model2[k]].append(List_Data)
 
-print(main(Data = pd.read_csv('matrix_format.csv')) )
+        model_data_dict["y_axis"] = list(List_comp)
+        model_data_dict["x_axis"] = list(List_Data)
+        all_model_data.append(model_data_dict)
+        # plt.xlabel('Data_size')
+        # plt.ylabel('accuracy')
+        # plt.plot(List_Data, List_comp,label=str(k))
+        book["Model Name"] = model2[k]
+        book["Accuracy Value"] = List_comp[-1]
+        book_list.append(book)
+    return (all_model_data , book_list)
+
+if __name__ == "__main__":
+    print(main(Data = pd.read_csv('matrix_format.csv')) )

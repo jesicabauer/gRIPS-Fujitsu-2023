@@ -246,6 +246,7 @@ def Rademacher (model, erasuresize, data):
 
 def main(Data):
     model = [RF, DT2, DT3, DT5, DT10,LR2, PT, NB]
+    model2 = ["RF", "DT2", "DT3", "DT5", "DT10","LR2", "PT", "NB"]
     book1  = {"RF":[], "DT2":[], "DT3":[], "DT5":[], "DT10":[],"LR2":[], "PT":[], "NB":[]} 
     book_list =[]
     sup_corre = Explore_data_correlations(Data)[0]
@@ -253,11 +254,15 @@ def main(Data):
     data = Data_generation(2000, 200, inf_corre, sup_corre)
     done =0
     
+    all_model_data = []
     for k in range(len(model)):  
-        book = {"model_name":"" ,"value":[]}
+        # book = {"model_name":"" ,"value":[]}
+        book = {}
         run = 10
         row = data.shape[0]
         
+        model_data_dict = {}
+        model_data_dict["Model Name"] = model2[k]
         if(int(data.shape[0]/50)>10):
             data_erasure_size = row - int(data.shape[0]/50)
         else:
@@ -277,18 +282,33 @@ def main(Data):
             done += 100/( int(iterations) * len(model))
             print(str(done) + "%")
            
-        book1[model[k].__name__].append(List_comp)
-        book1[model[k].__name__].append(List_Data)
-        plt.ylim(0, 1)
-        plt.xlabel('Data_size')
-        plt.ylabel('Complexity')
-        plt.plot(List_Data, List_comp,label=str(k))
-        book["model_name"] = model[k].__name__
-        book["value"] = List_comp[-1]
+        # book1[model2[k]].append(List_comp)
+        model_data_dict["y_axis"] = list(List_comp)
+        # book1[model2[k]].append(List_Data)
+        model_data_dict["x_axis"] = list(List_Data)
+        all_model_data.append(model_data_dict)
+        # plt.ylim(0, 1)
+        # plt.xlabel('Data_size')
+        # plt.ylabel('Complexity')
+        # plt.plot(List_Data, List_comp,label=str(k))
+        book["Model Name"] = model2[k]
+        book["Complexity Value"] = List_comp[-1]
         book_list.append(book)
-    return  book1 , book_list
+        book1_list = []
+        book1_list.append(book1)
+        # book1.tolist() , 
+        result = []
+        print(book_list)
+        print(book1)
+        print(book1_list)
 
-print(main(Data = pd.read_csv('matrix_format.csv') ))
+    print(all_model_data)
+        # result.append(book1_list, book_list)
+    return (all_model_data, book_list)
+
+
+if __name__ == "__main__":
+    print(main(Data = pd.read_csv('matrix_format.csv') ))
 
 
 
