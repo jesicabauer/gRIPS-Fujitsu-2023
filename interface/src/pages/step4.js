@@ -9,21 +9,67 @@ const Step4 = () => {
 	if (table3_element) {
 		table3_element.remove()
 	}
-	// const [data3, setData3] = useState({}) 
-    // useEffect(() => {
-    // // Using fetch to fetch the api from
-    // // flask server it will be redirected to proxy
-    // fetch("/step3").then((res) =>
-    //     res.json().then((data_in) => {
-    //         // Setting a data from api
-    //         setData3(data_in);
-    //         console.log(data_in)
-    //     })
-    //     );
-    // }, []);
+	const model_metrics_table_element = document.getElementById("model_metrics_table")
+	if (model_metrics_table_element) {
+		model_metrics_table_element.remove()
+	}
 
-	// console.log(data3.length)
+	const [modelMetrics, setModelMetrics] = useState({}) 
+    useEffect(() => {
+        // Using fetch to fetch the api from
+        // flask server it will be redirected to proxy
+        fetch("/model_accuracy_complexity").then((res) =>
+            res.json().then((data_in) => {
+                // Setting a data from api
+                setModelMetrics(data_in);
+                console.log(data_in)
+            })
+            );
+        }, []);
+
+    console.log(modelMetrics)
+    console.log(modelMetrics.length)
 	// var output = "Loading learned weights ..."
+
+	let table_container = document.getElementById("tableContainer")
+    if (modelMetrics.length) {
+        const data_table = document.createElement("table");
+		data_table.setAttribute("id", "model_metrics_table")
+		const table_header = document.createElement("thead");
+        const table_header_row = document.createElement("tr");
+
+        for (var column_key in modelMetrics[0]) {
+            console.log(column_key)
+            const new_header = document.createElement("th")
+            const header_text = document.createTextNode(column_key);
+            new_header.setAttribute("id", "column_"+column_key)
+            new_header.appendChild(header_text)
+            table_header_row.appendChild(new_header)
+        }
+		table_header.appendChild(table_header_row)
+        const table_body = document.createElement("tbody");
+        for (let i = 0; i < modelMetrics.length; i += 1) {
+			const table_row = document.createElement("tr")
+			// console.log(data[0])
+			// const div_container = document.createElement("div")
+			// div_container.setAttribute("id", "row_div")
+			for (let col in modelMetrics[i]) {
+				console.log(modelMetrics[i][col])
+                const table_cell = document.createElement("td")
+				const cell_text = document.createTextNode(modelMetrics[i][col]);
+				table_cell.appendChild(cell_text);
+				// div_container.appendChild(table_cell);
+				table_row.appendChild(table_cell);
+            }
+           table_body.appendChild(table_row); 
+        }
+
+
+        data_table.appendChild(table_header);
+		data_table.appendChild(table_body);
+        // let table_container = document.getElementById("tableContainer")
+		table_container.appendChild(data_table);
+	}
 
 	// if (data3.length) {
 	// 	const data_table = document.createElement("table");
@@ -76,9 +122,10 @@ const Step4 = () => {
 
 	// }
 	return (
-		<div class="loading">
+		<div>
+			<div class="tableContainer" id="tableContainer"></div>
             {/* <p>{output}</p> */}
-			[list of models + LASSO with feature selection]
+			{/* [list of models + LASSO with feature selection] */}
         </div>
 	);
 };

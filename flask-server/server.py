@@ -448,19 +448,37 @@ def rademacher_complexity():
     print(binary_data)
     return Rademacher.main(Data = binary_data)[1]
 
-@app.route("/complexity_chart")
-def complexity_chart():
-    print("in complexity_chart")
-    binary_data = format_data.binary_combo_data("training_data_input.csv", "step2_data.csv", "train")
-    print(binary_data)
-    return Rademacher.main(Data = binary_data)[0]
-
 @app.route("/rashomon_accuracy")
 def rashomon_accuracy():
     print("in rashomon_accuracy")
     binary_data = format_data.binary_combo_data("training_data_input.csv", "step2_data.csv", "train")
     print(binary_data)
     return Rashomon.main(Data = binary_data)[1]
+
+@app.route("/model_accuracy_complexity")
+def model_accuracy_complexity():
+    binary_data = format_data.binary_combo_data("training_data_input.csv", "step2_data.csv", "train")
+    model_complexity = Rademacher.main(Data = binary_data)[1]
+    model_accuracy = Rashomon.main(Data = binary_data)[1]
+
+    print(model_complexity)
+    print(model_accuracy)
+
+    for index in range(0, len(model_complexity)):
+        model_complexity[index]["Accuracy Value"] = model_accuracy[index]["Accuracy Value"]
+
+
+    return model_complexity
+
+    # for key in model_complexity:
+
+
+@app.route("/complexity_chart")
+def complexity_chart():
+    print("in complexity_chart")
+    binary_data = format_data.binary_combo_data("training_data_input.csv", "step2_data.csv", "train")
+    print(binary_data)
+    return Rademacher.main(Data = binary_data)[0]
 
 @app.route("/accuracy_chart")
 def accuracy_chart():
