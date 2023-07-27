@@ -251,7 +251,7 @@ def main(Data):
     book2_list = []
     sup_corre = Explore_data_correlations(Data)[0]
     inf_corre = Explore_data_correlations(Data)[1]    
-    data = Data_generation(2000, 200, inf_corre, sup_corre)
+    data = Data_generation(2000, Data.shape[1], inf_corre, sup_corre)
     done =0
     
     for k in range(len(model)):  

@@ -272,6 +272,7 @@ def main(Data):
         size2 = Data.shape[0]
     else:
         size2 = 200
+        
 
     
     data = Data_generation(size1, size2, inf_corre, sup_corre) 
