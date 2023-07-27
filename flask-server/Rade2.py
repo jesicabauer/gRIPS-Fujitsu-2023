@@ -260,6 +260,7 @@ def main(Data):
     model = [RF, DT2, DT3, DT5, DT10,LR2, PT, NB]
     model2 = ["RF", "DT2", "DT3", "DT5", "DT10","LR2", "PT", "NB"]
     book  = {"RF":[],"DT2":[],"DT3":[],"DT5":[],"DT10":[],"LR2":[],"PT":[],"NB":[]} 
+    book1_list =[]
     sup_corre = Explore_data_correlations(Data)[0]
     inf_corre = Explore_data_correlations(Data)[1]   
     
@@ -271,6 +272,7 @@ def main(Data):
         size2 = Data.shape[0]
     else:
         size2 = 200
+        
 
     
     data = Data_generation(size1, size2, inf_corre, sup_corre) 
@@ -312,3 +314,4 @@ def main(Data):
 
 if __name__ == "__main__":
     main(Data = pd.read_csv('matrix_format.csv') )
+

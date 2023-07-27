@@ -1,4 +1,3 @@
-
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -251,9 +250,10 @@ def main(Data):
     model2 = ["RF", "DT2", "DT3", "DT5", "DT10","LR2", "PT", "NB"]
     book1  = {"RF":[], "DT2":[], "DT3":[], "DT5":[], "DT10":[],"LR2":[], "PT":[], "NB":[]} 
     book_list =[]
+
     sup_corre = Explore_data_correlations(Data)[0]
     inf_corre = Explore_data_correlations(Data)[1]  
-    if(Data.shape[0]>=51 and Data.shape[1] >= 12):
+    if(Data.shape[0]>=81 and Data.shape[1] >= 2):
         data = Data
     else :
         data = Data_generation(300, 200, inf_corre, sup_corre) 
@@ -263,6 +263,7 @@ def main(Data):
     for k in range(len(model)):
         # book = {"model_name":"" ,"value":[]}
         book = {}
+
         
         #何回平均
         run = 15   
@@ -286,6 +287,7 @@ def main(Data):
             data_erasure_size -= add_data_size
             done += 100/( int(iterations) * len(model))
             print(str(done) + "%")
+            
         # book1[model2[k]].append(List_comp)
         # book1[model2[k]].append(List_Data)
 
@@ -302,3 +304,4 @@ def main(Data):
 
 if __name__ == "__main__":
     print(main(Data = pd.read_csv('matrix_format.csv')) )
+
