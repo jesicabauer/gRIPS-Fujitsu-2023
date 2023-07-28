@@ -29,34 +29,78 @@ const Step3 = () => {
 		const data_table = document.createElement("table");
 		data_table.setAttribute("id", "table_step3")
 		const table_header = document.createElement("thead");
-		const table_header_row = document.createElement("tr");
-		const header_1 = document.createElement("th")
-		const header_text_1 = document.createTextNode("Combination of Important Items");
-		header_1.setAttribute("id", "step3_column1")
-		const header_2 = document.createElement("th")
-		const header_text_2 = document.createTextNode("Weights from LASSO");
-		header_2.setAttribute("id", "step3_column2")
+        const table_header_row = document.createElement("tr");
+        // let hover_tracker = {}
+        // let table_container = document.getElementById("tableContainer")
+        const container_element = document.getElementById("step3container")
 
-		header_1.appendChild(header_text_1);
-		header_2.appendChild(header_text_2);
-		table_header_row.appendChild(header_1)
-		table_header_row.appendChild(header_2)
+		for (var column_key in data3[0]) {
+            console.log(column_key)
+            const new_header = document.createElement("th")
+            const header_text = document.createTextNode(column_key);
+            let column_str = column_key.replace(/[^a-z0-9]/gi, '').replace(/\s/g, '')
+            new_header.setAttribute("id", "column_"+column_str)
+            let hover_key = "hover_"+column_str
+
+            new_header.appendChild(header_text)
+            table_header_row.appendChild(new_header)
+        }
+
 		table_header.appendChild(table_header_row)
-		const table_body = document.createElement("tbody");
-
-		for (let i = 0; i < data3.length; i += 1) {
+        const table_body = document.createElement("tbody");
+        for (let i = 0; i < data3.length; i += 1) {
 			const table_row = document.createElement("tr")
 			// console.log(data[0])
 			// const div_container = document.createElement("div")
 			// div_container.setAttribute("id", "row_div")
 			for (let col in data3[i]) {
-				console.log(data3[i][col])
-				const table_cell = document.createElement("td")
+				// console.log(trainingData[i][col])
+                const table_cell = document.createElement("td")
 				const cell_text = document.createTextNode(data3[i][col]);
 				table_cell.appendChild(cell_text);
 				// div_container.appendChild(table_cell);
 				table_row.appendChild(table_cell);
-			}
+            }
+           table_body.appendChild(table_row); 
+           output = ""
+        }
+
+		data_table.appendChild(table_header);
+		data_table.appendChild(table_body);
+        // let table_container = document.getElementById("tableContainer")
+		document.body.appendChild(data_table);
+
+		// const data_table = document.createElement("table");
+		// data_table.setAttribute("id", "table_step3")
+		// const table_header = document.createElement("thead");
+		// const table_header_row = document.createElement("tr");
+		// const header_1 = document.createElement("th")
+		// const header_text_1 = document.createTextNode("Combination of Important Items");
+		// header_1.setAttribute("id", "step3_column1")
+		// const header_2 = document.createElement("th")
+		// const header_text_2 = document.createTextNode("Weights from LASSO");
+		// header_2.setAttribute("id", "step3_column2")
+
+		// header_1.appendChild(header_text_1);
+		// header_2.appendChild(header_text_2);
+		// table_header_row.appendChild(header_1)
+		// table_header_row.appendChild(header_2)
+		// table_header.appendChild(table_header_row)
+		// const table_body = document.createElement("tbody");
+
+		// for (let i = 0; i < data3.length; i += 1) {
+		// 	const table_row = document.createElement("tr")
+		// 	// console.log(data[0])
+		// 	// const div_container = document.createElement("div")
+		// 	// div_container.setAttribute("id", "row_div")
+		// 	for (let col in data3[i]) {
+		// 		console.log(data3[i][col])
+		// 		const table_cell = document.createElement("td")
+		// 		const cell_text = document.createTextNode(data3[i][col]);
+		// 		table_cell.appendChild(cell_text);
+		// 		// div_container.appendChild(table_cell);
+		// 		table_row.appendChild(table_cell);
+		// 	}
 			// div_container)
 			// output = data.map((row, i) => (
 			// 	<tr key={i}>
@@ -66,19 +110,25 @@ const Step3 = () => {
 			// 		<td>{document.createTextNode(row.neg_count)}</td>
 			// 	</tr>
 			// ))
-			table_body.appendChild(table_row);
-			output = ""
-		}
+			// table_body.appendChild(table_row);
+		// 	output = ""
+		// }
 		
-		data_table.appendChild(table_header);
-		data_table.appendChild(table_body);
-		document.body.appendChild(data_table);
+		// data_table.appendChild(table_header);
+		// data_table.appendChild(table_body);
+		// document.body.appendChild(data_table);
 
 	}
 	return (
-		<div class="loading">
-            <p>{output}</p>
-        </div>
+		<div>
+			<div id = "step3container">
+				
+			</div>
+			<div class="loading">
+				<p>{output}</p>
+			</div>
+		</div>
+		
 	);
 };
 
