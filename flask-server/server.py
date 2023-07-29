@@ -101,7 +101,7 @@ def save_step2_data():
     
 
     # Install Webdriver
-    service = Service(ChromeDriverManager().install())
+    service = Service(ChromeDriverManager(version='114.0.5735.90').install())
  
     # Create Driver Instance
     browser = webdriver.Chrome(service=service, options=options)

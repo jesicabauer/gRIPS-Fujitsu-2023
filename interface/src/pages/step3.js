@@ -54,13 +54,42 @@ const Step3 = () => {
 			// console.log(data[0])
 			// const div_container = document.createElement("div")
 			// div_container.setAttribute("id", "row_div")
+			let col_index = 0
 			for (let col in data3[i]) {
 				// console.log(trainingData[i][col])
                 const table_cell = document.createElement("td")
-				const cell_text = document.createTextNode(data3[i][col]);
+				let new_text_node = data3[i][col]
+				if (col_index == 0) {
+					console.log(data3[i][col])
+					let combo_list = data3[i][col].split("∧")
+					console.log(combo_list)
+					let new_feature_str = ""
+					for (let j = 0; j < combo_list.length; j += 1) {
+						console.log(combo_list[j])
+						let feature_detail = combo_list[j].split("_")
+						console.log(feature_detail)
+						if (feature_detail.length > 1) {
+							let feature_str = feature_detail[1].trim() + " " + feature_detail[0].trim()
+							console.log(feature_str)
+							if (j < combo_list.length - 1) {
+								new_feature_str += '"' + feature_str + '" and '
+							} else {
+								new_feature_str += '"' + feature_str + '"'
+							}
+							
+						} else {
+							new_feature_str += '"' + feature_detail[0] + '"'
+						}
+						
+					}
+					new_text_node = new_feature_str
+				}
+				
+				const cell_text = document.createTextNode(new_text_node);
 				table_cell.appendChild(cell_text);
 				// div_container.appendChild(table_cell);
 				table_row.appendChild(table_cell);
+				col_index += 1
             }
            table_body.appendChild(table_row); 
            output = ""
