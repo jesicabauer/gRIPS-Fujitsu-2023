@@ -18,7 +18,7 @@ const Step4 = () => {
     useEffect(() => {
         // Using fetch to fetch the api from
         // flask server it will be redirected to proxy
-        fetch("/model_accuracy_complexity").then((res) =>
+        fetch("/step4_data").then((res) =>
             res.json().then((data_in) => {
                 // Setting a data from api
                 setModelMetrics(data_in);

@@ -18,6 +18,7 @@ const Step1 = () => {
 
     const [dataUploaded, setDataUploaded] = useState(false) 
     console.log(dataUploaded)
+    console.log("???")
 
     // the react post request sender
     const uploadTrainingFile = async (e) => {

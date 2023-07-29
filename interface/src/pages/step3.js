@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import $ from 'jquery';
 
 const Step3 = () => {
 	const table_element = document.getElementById("combo_table")
@@ -69,6 +70,43 @@ const Step3 = () => {
 		data_table.appendChild(table_body);
         // let table_container = document.getElementById("tableContainer")
 		document.body.appendChild(data_table);
+
+		for (var column_key in data3[0]) {
+            console.log("ever here???")
+            const new_hover = document.createElement("div")
+            let column_hover_str = column_key.replace(/[^a-z0-9]/gi, '').replace(/\s/g, '')
+            new_hover.setAttribute("id", "hover_"+column_hover_str)
+            let new_hover_text = document.createTextNode("testing"+column_key)
+            new_hover.classList.add("displayNone")
+            new_hover.appendChild(new_hover_text)
+            container_element.appendChild(new_hover)
+            const get_header = document.getElementById("column_"+column_hover_str)
+            let hover_key = "#hover_"+column_hover_str
+            get_header.addEventListener("mouseover", function(e) {
+                // document.getElementById("hover_"+column_key).classList.remove("displayNone")
+                console.log(e.pageX+20)
+                $(hover_key).css({
+                    display: 'block',
+                    left: e.pageX+10,
+                    top: e.pageY,
+                    position: 'absolute',
+                    width: '10rem',
+                    height: '5rem',
+                    background: 'black',
+                    color: 'white',
+                    textAlign: 'center',
+                    padding: '1rem'
+                    
+                })
+            })
+    
+            get_header.addEventListener("mouseout", function(e) {
+                $(hover_key).css({
+                    display: 'None',
+                })
+            })
+            // hover_tracker[hover_key] = 1
+        }
 
 		// const data_table = document.createElement("table");
 		// data_table.setAttribute("id", "table_step3")

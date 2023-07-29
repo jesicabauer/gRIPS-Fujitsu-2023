@@ -357,7 +357,7 @@ def main(Data):
         model_data_dict["x_axis_Rasyo"] = list(List_Data_Rasyo)
         model_data_dict["accuracy"] = List_comp_Rasyo[-1] 
         model_data_dict["Rademacher_comp"] = List_comp_Rade[-1]
-        model_data_dict["Random_comp"] = List_comp_Rade2[-1]
+        # model_data_dict["Random_comp"] = List_comp_Rade2[-1]
         
         all_model_data.append(model_data_dict)
     #plt.ylim(0, 1.1)

@@ -24,6 +24,7 @@ import Rademacher
 import format_data
 import Rashomon
 import Rade2
+import combine
 # from selenium.webdriver.chrome.service import Service
 # from webdriver_manager.chrome import ChromeDriverManager
 
@@ -190,7 +191,7 @@ def step3_data():
     X_test=X_test.iloc[:,1:] #removing animal name column
 
     #list of all combinations
-    combo_names=list(X_test.columns)
+    combo_names=list(X_test.columns) #TODO: step 3 doesn't have test data yet?
 
 
     #finding minimum acceptable C
@@ -494,6 +495,11 @@ def new_complexity_chart():
     print(binary_data)
     return Rade2.main(Data = binary_data)
 
+@app.route("/step4_data")
+def step4_data():
+    print("in step4_data")
+    binary_data = format_data.binary_combo_data("training_data_input.csv", "step2_data.csv", "train")
+    return combine.main(Data = binary_data)
 
 @app.route("/step7_display")
 def step7_display():
