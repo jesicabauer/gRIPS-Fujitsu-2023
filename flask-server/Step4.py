@@ -303,9 +303,8 @@ def Rade2(model,  data, n):
     return (data.iloc[:, -1] * prediction).mean()
 
 def Rasyomon (model, erasuresize, data):
-    data = data.iloc[:-erasuresize]
+    #data = data.iloc[:-erasuresize]
     df = data.copy()
-
     
     df = df.replace(0, -1)
     X = df.iloc[:, :-1]
@@ -342,24 +341,30 @@ def main(Data):
         row = data.shape[0]
         
         model_data_dict = {}
-        model_data_dict["Model Name"] = model_name[k]        
+        model_data_dict["Model Name"] = model_name[k]
+               
         List_comp_Rade2 = np.zeros(iterations)
         List_Data_Rade2 = np.zeros(iterations)
-
+        
+        accuracy = 0
         for j in range(iterations):
             compx_Rade = 0
             compx_Rade2 = 0
+            
         
             for i in range(run):
                 if(j==iterations-1):
                     compx_Rade += Rademacher(model[k], 0, data)
-                compx_Rade2 += Rade2(model[k],  data , int(j * row/iterations)) 
+                    accuracy += Rasyomon(model[k] , 0, data)
+                compx_Rade2 += Rade2(model[k],  data , int(j * row/iterations))
+                #accuracy += Rasyomon(model[k] , data_erasure_size_Rasyo, data)
                 
             done += 100/( int(iterations) * len(model))
             print(str(done) + "%")
             List_Data_Rade2[j] = int(j * row/50)
             List_comp_Rade2[j] = (compx_Rade2 / run)
         model_data_dict["complexity"] = compx_Rade/run
+        model_data_dict["accuracy"] = accuracy/run
         model_data_dict["y_axis_Rade2"] = list(List_comp_Rade2)
         model_data_dict["x_axis_Rade2"] = list(List_Data_Rade2)
         x_values = List_Data_Rade2
