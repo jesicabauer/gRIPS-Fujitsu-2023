@@ -10,7 +10,40 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.linear_model import Perceptron
 from sklearn.naive_bayes import GaussianNB
 from numpy.polynomial.polynomial import Polynomial
+from sklearn.linear_model import LogisticRegression
 from sklearn import svm
+
+
+def Lasso(train_data ,test_data):
+
+    train_data = pd.DataFrame(train_data)
+    test_data = pd.DataFrame(test_data)
+    
+    #split data
+    train_y=train_data.iloc[:,-1]
+    train_x=train_data.iloc[:,1:-1] 
+    x=test_data.iloc[:,1:] 
+
+    #train the model
+    C_val=20
+    n_nonzero=101
+    while n_nonzero>100:
+        C_val=C_val*.9  #large C=denser beta, small C=sparser beta
+       
+        model=LogisticRegression(penalty="l1",C=C_val,solver="liblinear",random_state=0) #sets random state for reproducability
+        
+        classifier=model.fit(train_x,train_y) #fit model
+        
+        #get coefficients
+        original_coef=classifier.coef_[0].copy()
+        nonzero_weight_indices=np.nonzero(original_coef)[0]
+        n_nonzero=len(nonzero_weight_indices)
+    
+
+    #get predictions
+    predictions=classifier.predict(x)
+
+    return predictions    
 
 
 def SVM(data,test):
@@ -303,9 +336,8 @@ def Rade2(model,  data, n):
     return (data.iloc[:, -1] * prediction).mean()
 
 def Rasyomon (model, erasuresize, data):
-    data = data.iloc[:-erasuresize]
+    #data = data.iloc[:-erasuresize]
     df = data.copy()
-
     
     df = df.replace(0, -1)
     X = df.iloc[:, :-1]
@@ -321,8 +353,8 @@ def Rasyomon (model, erasuresize, data):
 
 def main(Data):
     
-    model = [SVM,RF, DT2, DT3, DT5, DT10,LR2, PT, NB]
-    model_name = ["SVM","RF", "DT2", "DT3", "DT5", "DT10","LR2", "PT", "NB"]
+    model = [Lasso,SVM,RF,DT2,DT3,DT5,DT10,LR2,PT,NB]
+    model_name = ["Lasso","SVM","RF", "DT2", "DT3", "DT5", "DT10","LR2", "PT", "NB"]
 
     sup_corre = Explore_data_correlations(Data)[0]
     inf_corre = Explore_data_correlations(Data)[1]
@@ -342,24 +374,30 @@ def main(Data):
         row = data.shape[0]
         
         model_data_dict = {}
-        model_data_dict["Model Name"] = model_name[k]        
+        model_data_dict["Model Name"] = model_name[k]
+               
         List_comp_Rade2 = np.zeros(iterations)
         List_Data_Rade2 = np.zeros(iterations)
-
+        
+        accuracy = 0
         for j in range(iterations):
             compx_Rade = 0
             compx_Rade2 = 0
+            
         
             for i in range(run):
                 if(j==iterations-1):
                     compx_Rade += Rademacher(model[k], 0, data)
-                compx_Rade2 += Rade2(model[k],  data , int(j * row/iterations)) 
+                    accuracy += Rasyomon(model[k] , 0, data)
+                compx_Rade2 += Rade2(model[k],  data , int(j * row/iterations))
+                #accuracy += Rasyomon(model[k] , data_erasure_size_Rasyo, data)
                 
             done += 100/( int(iterations) * len(model))
             print(str(done) + "%")
             List_Data_Rade2[j] = int(j * row/50)
             List_comp_Rade2[j] = (compx_Rade2 / run)
         model_data_dict["complexity"] = compx_Rade/run
+        model_data_dict["accuracy"] = accuracy/run
         model_data_dict["y_axis_Rade2"] = list(List_comp_Rade2)
         model_data_dict["x_axis_Rade2"] = list(List_Data_Rade2)
         x_values = List_Data_Rade2
