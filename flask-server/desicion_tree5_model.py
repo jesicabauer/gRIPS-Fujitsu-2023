@@ -20,12 +20,15 @@ train_x=train_data.iloc[:,1:-1]
 test_x=test_data.iloc[:,1:]
 #get_combo
 combo_names=list(test_x.columns)
+row_names=list(test_data.iloc[:,0])
 #setting model
 model = DecisionTreeClassifier(max_depth = 5, random_state=42)
 # learning
 model.fit(train_x, train_y)
 # prediction
 y_pred = model.predict(test_x)
+score = model.predict_proba(test_x)
+print(score)
 
 weight = list(model.feature_importances_)
 nonzero_weight_indices = np.nonzero(weight)[0]
@@ -35,3 +38,10 @@ for i in nonzero_weight_indices:
     dictionary["Combo"]=combo_names[i]
     dictionary["Weight"]=weight[i]
     weight_dictionary_list.append(dictionary)
+
+prediction_disctionary_list=[]
+for (k,v) in enumerate(row_names):
+    dictionary={}
+    dictionary["Row"]=row_names[k]
+    dictionary["Predict"]=y_pred[k]
+    prediction_disctionary_list.append(dictionary)
