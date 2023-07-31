@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+// import * as fs from "fs";
 
 const Step4 = () => {
 	const table_element = document.getElementById("combo_table")
@@ -15,24 +16,58 @@ const Step4 = () => {
 	}
 
 	const [modelMetrics, setModelMetrics] = useState({}) 
+	const [stepStatus, setStepStatus] = useState(false) 
     useEffect(() => {
         // Using fetch to fetch the api from
         // flask server it will be redirected to proxy
-        fetch("/step4_data").then((res) =>
-            res.json().then((data_in) => {
-                // Setting a data from api
-                setModelMetrics(data_in);
-                console.log(data_in)
-            })
-            );
+		console.log(stepStatus)
+		// if (stepStatus == false) {
+		fetch("/step4_data").then((res) =>
+			res.json().then((data_in) => {
+				// Setting a data from api
+				setModelMetrics(data_in);
+				console.log(data_in)
+				setStepStatus(true)
+			})
+			);
+		// } 
+		// else {
+		// 	fetch("/step4_saved_data").then((res) =>
+		// 		res.json().then((data_in) => {
+		// 			// Setting a data from api
+		// 			setModelMetrics(data_in);
+		// 			console.log(data_in)
+		// 			setStepStatus(true)
+		// 		})
+		// 		);
+		// }
         }, []);
 
     console.log(modelMetrics)
     console.log(modelMetrics.length)
-	// var output = "Loading learned weights ..."
+	var output = "Loading model options and metrics ..."
 
 	let table_container = document.getElementById("tableContainer")
     if (modelMetrics.length) {
+
+		// const save_metrics = JSON.stringify(modelMetrics)
+		// save data to localStorage
+		// saveStateToLocalStorage = () => {
+		// 	localStorage.setItem('state', JSON.stringify(this.state));
+		// }
+		// writing the JSON string content to a file
+		// fs.writeFile("step4_data.json", save_metrics, (error) => {
+		// 	// throwing the error
+		// 	// in case of a writing problem
+		// 	if (error) {
+		// 	// logging the error
+		// 	console.error(error);
+		
+		// 	throw error;
+		// 	}
+		
+		// 	console.log("data.json written correctly");
+		// });
         const data_table = document.createElement("table");
 		data_table.setAttribute("id", "model_metrics_table")
 		const table_header = document.createElement("thead");
@@ -69,6 +104,7 @@ const Step4 = () => {
 		data_table.appendChild(table_body);
         // let table_container = document.getElementById("tableContainer")
 		table_container.appendChild(data_table);
+		output = ""
 	}
 
 	// if (data3.length) {
@@ -123,8 +159,8 @@ const Step4 = () => {
 	// }
 	return (
 		<div>
+			<p>{output}</p>
 			<div class="tableContainer" id="tableContainer"></div>
-            {/* <p>{output}</p> */}
 			{/* [list of models + LASSO with feature selection] */}
         </div>
 	);

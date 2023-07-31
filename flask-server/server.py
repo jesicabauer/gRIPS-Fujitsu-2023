@@ -25,6 +25,7 @@ import format_data
 import Rashomon
 import Rade2
 import combine
+import os.path
 # from selenium.webdriver.chrome.service import Service
 # from webdriver_manager.chrome import ChromeDriverManager
 
@@ -97,7 +98,7 @@ def save_step2_data():
     # browser = webdriver.Firefox(options=options)
 
     options = webdriver.ChromeOptions()
-    options.add_argument("-headless")
+    # options.add_argument("-headless")
     
 
     # Install Webdriver
@@ -118,13 +119,15 @@ def save_step2_data():
     # file_upload.send_keys("/Users/lilyge/Downloads/gRIPS23/animals_train.csv")
     file_upload.send_keys(os.path.join(os.path.dirname(__file__), "training_data_input.csv"))
 
+    browser.fullscreen_window()
     browser.find_element(By.CLASS_NAME, "v-btn__content").click()
 
     button_list = browser.find_elements(By.CLASS_NAME, "v-btn__content")
     print(button_list[len(button_list)-2]) # get the second to last button
 
     button_list[len(button_list)-2].click()
-    time.sleep(5)
+    time.sleep(6)
+    browser.execute_script("window.scrollTo(720, 840)")
     browser.find_element(By.CLASS_NAME, "v-input__append-inner").click()
 
     browser.find_elements(By.CLASS_NAME, "v-list-item")[-1].click()
@@ -442,64 +445,85 @@ def user_feature_selection():
     return jsonify(d)
 
 
-@app.route("/rademacher_complexity")
-def rademacher_complexity():
-    print("in rademacher_complexity")
-    binary_data = format_data.binary_combo_data("training_data_input.csv", "step2_data.csv", "train")
-    print(binary_data)
-    return Rademacher.main(Data = binary_data)[1]
+# @app.route("/rademacher_complexity")
+# def rademacher_complexity():
+#     print("in rademacher_complexity")
+#     binary_data = format_data.binary_combo_data("training_data_input.csv", "step2_data.csv", "train")
+#     print(binary_data)
+#     return Rademacher.main(Data = binary_data)[1]
 
-@app.route("/rashomon_accuracy")
-def rashomon_accuracy():
-    print("in rashomon_accuracy")
-    binary_data = format_data.binary_combo_data("training_data_input.csv", "step2_data.csv", "train")
-    print(binary_data)
-    return Rashomon.main(Data = binary_data)[1]
+# @app.route("/rashomon_accuracy")
+# def rashomon_accuracy():
+#     print("in rashomon_accuracy")
+#     binary_data = format_data.binary_combo_data("training_data_input.csv", "step2_data.csv", "train")
+#     print(binary_data)
+#     return Rashomon.main(Data = binary_data)[1]
 
-@app.route("/model_accuracy_complexity")
-def model_accuracy_complexity():
-    binary_data = format_data.binary_combo_data("training_data_input.csv", "step2_data.csv", "train")
-    model_complexity = Rademacher.main(Data = binary_data)[1]
-    model_accuracy = Rashomon.main(Data = binary_data)[1]
+# @app.route("/model_accuracy_complexity")
+# def model_accuracy_complexity():
+#     binary_data = format_data.binary_combo_data("training_data_input.csv", "step2_data.csv", "train")
+#     model_complexity = Rademacher.main(Data = binary_data)[1]
+#     model_accuracy = Rashomon.main(Data = binary_data)[1]
 
-    print(model_complexity)
-    print(model_accuracy)
+#     print(model_complexity)
+#     print(model_accuracy)
 
-    for index in range(0, len(model_complexity)):
-        model_complexity[index]["Accuracy Value"] = model_accuracy[index]["Accuracy Value"]
+#     for index in range(0, len(model_complexity)):
+#         model_complexity[index]["Accuracy Value"] = model_accuracy[index]["Accuracy Value"]
 
 
-    return model_complexity
+#     return model_complexity
 
     # for key in model_complexity:
 
 
-@app.route("/complexity_chart")
-def complexity_chart():
-    print("in complexity_chart")
-    binary_data = format_data.binary_combo_data("training_data_input.csv", "step2_data.csv", "train")
-    print(binary_data)
-    return Rademacher.main(Data = binary_data)[0]
+# @app.route("/complexity_chart")
+# def complexity_chart():
+#     print("in complexity_chart")
+#     binary_data = format_data.binary_combo_data("training_data_input.csv", "step2_data.csv", "train")
+#     print(binary_data)
+#     return Rademacher.main(Data = binary_data)[0]
 
-@app.route("/accuracy_chart")
-def accuracy_chart():
-    print("in accuracy_chart")
-    binary_data = format_data.binary_combo_data("training_data_input.csv", "step2_data.csv", "train")
-    print(binary_data)
-    return Rashomon.main(Data = binary_data)[0]
+# @app.route("/accuracy_chart")
+# def accuracy_chart():
+#     print("in accuracy_chart")
+#     binary_data = format_data.binary_combo_data("training_data_input.csv", "step2_data.csv", "train")
+#     print(binary_data)
+#     return Rashomon.main(Data = binary_data)[0]
 
-@app.route("/new_complexity_chart")
-def new_complexity_chart():
-    print("in new_complexity_chart")
-    binary_data = format_data.binary_combo_data("training_data_input.csv", "step2_data.csv", "train")
-    print(binary_data)
-    return Rade2.main(Data = binary_data)
+# @app.route("/new_complexity_chart")
+# def new_complexity_chart():
+#     print("in new_complexity_chart")
+#     binary_data = format_data.binary_combo_data("training_data_input.csv", "step2_data.csv", "train")
+#     print(binary_data)
+#     return Rade2.main(Data = binary_data)
 
 @app.route("/step4_data")
 def step4_data():
     print("in step4_data")
     binary_data = format_data.binary_combo_data("training_data_input.csv", "step2_data.csv", "train")
-    return combine.main(Data = binary_data)
+    if os.path.exists(binary_data.columns[0]+"_step4_data.json"):
+        json_file = open(binary_data.columns[0]+"_step4_data.json")
+        step4_json = json.load(json_file)
+        json_file.close()
+        return step4_json
+    else:
+        print(binary_data.columns[0])
+        models_data = combine.main(Data = binary_data)
+        json_model_data = json.dumps(models_data)
+
+        with open(binary_data.columns[0]+"_step4_data.json", "w") as outfile:
+            outfile.write(json_model_data)
+
+        return models_data
+
+@app.route("/step4_saved_data")
+def step4_saved_data():
+    print("in step4 saved data")
+    json_file = open("step4_data.json")
+    step4_json = json.load(json_file)
+    json_file.close()
+    return step4_json
 
 @app.route("/step7_display")
 def step7_display():
