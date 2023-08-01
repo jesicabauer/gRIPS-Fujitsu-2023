@@ -5,6 +5,7 @@ Created on Tue Aug  1 13:16:44 2023
 @author: GRIPS
 """
 import pandas as pd
+import numpy as np
 from sklearn.svm import SVC
 
 # setting dataset
@@ -28,6 +29,14 @@ model.fit(train_x, train_y)
 # prediction
 y_pred = model.predict(test_x)
 score = model.predict_proba(test_x)[:,1]
+weight = list(model.coef_[0])
+nonzero_weight_indices = np.nonzero(weight)[0]
+weight_dictionary_list=[]
+for i in nonzero_weight_indices:
+    dictionary={}
+    dictionary["Combo"]=combo_names[i]
+    dictionary["Weight"]=weight[i]
+    weight_dictionary_list.append(dictionary)
 
 prediction_disctionary_list=[]
 for (k,v) in enumerate(row_names):
@@ -36,3 +45,5 @@ for (k,v) in enumerate(row_names):
     dictionary["Score"]=score[k]
     dictionary["Predict"]=y_pred[k]
     prediction_disctionary_list.append(dictionary)
+
+print(weight_dictionary_list)
