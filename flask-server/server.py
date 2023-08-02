@@ -24,8 +24,10 @@ import Rademacher
 import format_data
 import Rashomon
 import Rade2
-import combine
+# import combine
+import Step4
 import os.path
+import step4_model_weights
 # from selenium.webdriver.chrome.service import Service
 # from webdriver_manager.chrome import ChromeDriverManager
 
@@ -98,7 +100,7 @@ def save_step2_data():
     # browser = webdriver.Firefox(options=options)
 
     options = webdriver.ChromeOptions()
-    # options.add_argument("-headless")
+    options.add_argument("-headless")
     
 
     # Install Webdriver
@@ -119,7 +121,7 @@ def save_step2_data():
     # file_upload.send_keys("/Users/lilyge/Downloads/gRIPS23/animals_train.csv")
     file_upload.send_keys(os.path.join(os.path.dirname(__file__), "training_data_input.csv"))
 
-    browser.fullscreen_window()
+    # browser.fullscreen_window()
     browser.find_element(By.CLASS_NAME, "v-btn__content").click()
 
     button_list = browser.find_elements(By.CLASS_NAME, "v-btn__content")
@@ -414,6 +416,9 @@ def user_feature_selection():
     try:
         feature_selected = request.form.get("feature_selected")
         print(feature_selected)
+
+        return_feature = [{"combo":"12", "weight": "12"}, {"combo": "20", "weight": "20"}]
+        d["return"] = return_feature
         # stream = io.StringIO(file.stream.read().decode("UTF8"), newline=None)
         # print(stream)
         # csv_input = csv.reader(stream)
@@ -502,6 +507,7 @@ def user_feature_selection():
 def step4_data():
     print("in step4_data")
     binary_data = format_data.binary_combo_data("training_data_input.csv", "step2_data.csv", "train")
+    binary_data.to_csv("binary_combo_data.csv")
     if os.path.exists(binary_data.columns[0]+"_step4_data.json"):
         json_file = open(binary_data.columns[0]+"_step4_data.json")
         step4_json = json.load(json_file)
@@ -509,7 +515,30 @@ def step4_data():
         return step4_json
     else:
         print(binary_data.columns[0])
-        models_data = combine.main(Data = binary_data)
+        models_data = Step4.main(Data = binary_data)
+        print(models_data)
+        prep_plot = []
+        for m in models_data:
+            for key in m:
+                if key in ["Model Name", "x_axis_Rade2", "y_axis_Rade2"]:
+                    for index in range(0, len(m["x_axis_Rade2"])):
+                        plot_dict = {}
+                        plot_dict["ModelName"] = m["Model Name"]
+                        plot_dict["xAxis"] = m["x_axis_Rade2"][index]
+                        plot_dict["yAxis"] = m["y_axis_Rade2"][index]
+
+                    # plot_dict[key] = m[key]
+                        prep_plot.append(plot_dict)
+        
+        print(prep_plot)
+        print(len(prep_plot))
+        plot_file = open("step4_plot_data.csv", "w")
+        csv_writer = csv.writer(plot_file)
+        csv_writer.writerow(['ModelName', 'xAxis', 'yAxis'])
+        for m_dict in prep_plot:
+            csv_writer.writerow(m_dict.values())
+
+        plot_file.close()
         json_model_data = json.dumps(models_data)
 
         with open(binary_data.columns[0]+"_step4_data.json", "w") as outfile:
@@ -524,6 +553,14 @@ def step4_saved_data():
     step4_json = json.load(json_file)
     json_file.close()
     return step4_json
+
+
+@app.route("/step4_display_selected_model") #, methods=['GET', 'POST']
+def step4_display_selected_model():
+    # models = []
+    print("in step4_display_selected_model")
+    print(step4_model_weights.main(0)) 
+    return step4_model_weights.main(0)
 
 @app.route("/step7_display")
 def step7_display():

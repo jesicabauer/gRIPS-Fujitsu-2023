@@ -257,9 +257,10 @@ td, th {
   width: 50rem;
   height: 60rem;
   overflow: scroll;
-  margin-left: 2rem;
+  margin-left: 1rem;
   border: 1px solid black;
   margin-top: 5rem;
+  margin-right: 1rem;
 }
 
 body {
@@ -268,4 +269,9 @@ body {
 
 .displayNone {
   display: None;
+}
+
+.modelContainer {
+  display: flex;
+  justify-content: space-between;
 }

@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from 'react'
 // import * as fs from "fs";
+import $ from 'jquery';
+import { useNavigate } from "react-router-dom";
 
 const Step4 = () => {
 	const table_element = document.getElementById("combo_table")
@@ -17,6 +19,8 @@ const Step4 = () => {
 
 	const [modelMetrics, setModelMetrics] = useState({}) 
 	const [stepStatus, setStepStatus] = useState(false) 
+	const navigate = useNavigate();
+	
     useEffect(() => {
         // Using fetch to fetch the api from
         // flask server it will be redirected to proxy
@@ -48,8 +52,9 @@ const Step4 = () => {
 	var output = "Loading model options and metrics ..."
 
 	let table_container = document.getElementById("tableContainer")
+	const models_set = []
     if (modelMetrics.length) {
-
+		// const models_set = []
 		// const save_metrics = JSON.stringify(modelMetrics)
 		// save data to localStorage
 		// saveStateToLocalStorage = () => {
@@ -73,13 +78,19 @@ const Step4 = () => {
 		const table_header = document.createElement("thead");
         const table_header_row = document.createElement("tr");
 
+		let display_columns = ["Model Name", "accuracy", "complexity"]
+
+		const container_element = document.getElementById("step4container")
         for (var column_key in modelMetrics[0]) {
-            console.log(column_key)
-            const new_header = document.createElement("th")
-            const header_text = document.createTextNode(column_key);
-            new_header.setAttribute("id", "column_"+column_key)
-            new_header.appendChild(header_text)
-            table_header_row.appendChild(new_header)
+			if (display_columns.includes(column_key)) {
+				// console.log(column_key)
+				const new_header = document.createElement("th")
+				const header_text = document.createTextNode(column_key);
+				let column_str = column_key.replace(/[^a-z0-9]/gi, '').replace(/\s/g, '')
+				new_header.setAttribute("id", "column_"+column_str)
+				new_header.appendChild(header_text)
+				table_header_row.appendChild(new_header)
+			}
         }
 		table_header.appendChild(table_header_row)
         const table_body = document.createElement("tbody");
@@ -89,12 +100,17 @@ const Step4 = () => {
 			// const div_container = document.createElement("div")
 			// div_container.setAttribute("id", "row_div")
 			for (let col in modelMetrics[i]) {
-				console.log(modelMetrics[i][col])
-                const table_cell = document.createElement("td")
-				const cell_text = document.createTextNode(modelMetrics[i][col]);
-				table_cell.appendChild(cell_text);
-				// div_container.appendChild(table_cell);
-				table_row.appendChild(table_cell);
+				if (display_columns.includes(col)) {
+					if (col == "Model Name") {
+						models_set.push(modelMetrics[i][col])
+					}
+					// console.log(modelMetrics[i][col])
+					const table_cell = document.createElement("td")
+					const cell_text = document.createTextNode(modelMetrics[i][col]);
+					table_cell.appendChild(cell_text);
+					// div_container.appendChild(table_cell);
+					table_row.appendChild(table_cell);
+				}
             }
            table_body.appendChild(table_row); 
         }
@@ -105,7 +121,70 @@ const Step4 = () => {
         // let table_container = document.getElementById("tableContainer")
 		table_container.appendChild(data_table);
 		output = ""
+
+		for (var column_key in modelMetrics[0]) {
+            // console.log("ever here???")
+			if (display_columns.includes(column_key)) {
+				const new_hover = document.createElement("div")
+				let column_hover_str = column_key.replace(/[^a-z0-9]/gi, '').replace(/\s/g, '')
+				new_hover.setAttribute("id", "hover_"+column_hover_str)
+				let new_hover_text = document.createTextNode("testing"+column_key)
+				new_hover.classList.add("displayNone")
+				new_hover.appendChild(new_hover_text)
+				container_element.appendChild(new_hover)
+				const get_header = document.getElementById("column_"+column_hover_str)
+				let hover_key = "#hover_"+column_hover_str
+				get_header.addEventListener("mouseover", function(e) {
+					// document.getElementById("hover_"+column_key).classList.remove("displayNone")
+					// console.log(e.pageX+20)
+					$(hover_key).css({
+						display: 'block',
+						left: e.pageX+10,
+						top: e.pageY,
+						position: 'absolute',
+						width: '10rem',
+						height: '5rem',
+						background: 'black',
+						color: 'white',
+						textAlign: 'center',
+						padding: '1rem'
+						
+					})
+				})
+		
+				get_header.addEventListener("mouseout", function(e) {
+					$(hover_key).css({
+						display: 'None',
+					})
+				})
+			}
+            // hover_tracker[hover_key] = 1
+        }
+
+
 	}
+
+	const modelSelected = async (model_in) => {
+		// const file = e.target.files[0];
+		// console.log(model_in)
+		if (model_in) {
+			// console.log(model_in)
+			navigate("/step3_model_selected", {state: {model: model_in}});
+		// 	const data = new FormData();
+		// 	data.append('model_selected', model_in);
+		// // 	console.log(data)
+		// 	let response = await fetch('/step4_display_selected_model',
+		// 		{
+		// 		method: 'post',
+		// 		body: data,
+		// 		}
+		// 	);
+		// 	let res = await response.json();
+		// 	if (res.status !== 1){
+		// 		alert('Error selecting feature');
+		// 	}
+		}
+	}; 
 
 	// if (data3.length) {
 	// 	const data_table = document.createElement("table");
@@ -159,9 +238,23 @@ const Step4 = () => {
 	// }
 	return (
 		<div>
+			<div id="step4container">
+				
+			</div>
 			<p>{output}</p>
-			<div class="tableContainer" id="tableContainer"></div>
-			{/* [list of models + LASSO with feature selection] */}
+			<div class="modelContainer">
+				<div class="tableContainer" id="tableContainer"></div>
+				{/* [list of models + LASSO with feature selection] */}
+				<div class="featuresContainer">
+					{models_set.map(x =>
+						// <label>
+							// <input type="button" id='startDate' name={'startDate'+x} value={x} onClick={() => featureSelected(x)}/>
+						// {/* </label> */}
+						<div id='modelSelect' class="featureOption stepDivBackground" name={'modelSelect'+x} value={x} onClick={() => modelSelected(x)}>{x}</div>
+					)}
+				</div>
+			</div>
+			
         </div>
 	);
 };

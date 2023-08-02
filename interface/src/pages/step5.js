@@ -71,6 +71,7 @@ const Step5 = () => {
 					}
 				);
 				let res = await response.json();
+				console.log(res.return)
 				if (res.status !== 1){
 					alert('Error selecting feature');
 				}

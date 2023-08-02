@@ -407,26 +407,27 @@ def main(Data):
         cutoff = np.max(np.abs(xf))/10  # カットオフ周波数を設定
         yf[np.abs(xf) > cutoff] = 0  # カットオフ周波数以上の成分を0にする
         y_filtered = np.fft.ifft(yf).real
-        model_data_dict["y_axis_Rade2_Fourier"] = y_filtered
-        model_data_dict["x_axis_Rade2_Fourier"] = x_values
-        p = Polynomial.fit(x_values, y_values, 2)
-        model_data_dict["least-squares-approximation"] = p
+        model_data_dict["y_axis_Rade2_Fourier"] = list(y_filtered)
+        model_data_dict["x_axis_Rade2_Fourier"] = list(x_values)
+        # p = Polynomial.fit(x_values, y_values, 2)
+        # model_data_dict["least-squares-approximation"] = p
         all_model_data.append(model_data_dict)
 
-    for d in all_model_data:
-        plt.ylim(0, 1.1)
-        plt.plot(d['x_axis_Rade2_Fourier'], d['y_axis_Rade2_Fourier'])
-    plt.show()
+    # for d in all_model_data:
+    #     plt.ylim(0, 1.1)
+    #     plt.plot(d['x_axis_Rade2_Fourier'], d['y_axis_Rade2_Fourier'])
+    # plt.show()
     
-    for d in all_model_data:
-        plt.ylim(0, 1.1)
-        plt.plot(d['x_axis_Rade2'], d['y_axis_Rade2'])
-    plt.show()
+    # for d in all_model_data:
+    #     plt.ylim(0, 1.1)
+    #     plt.plot(d['x_axis_Rade2'], d['y_axis_Rade2'])
+    # plt.show()
     return (all_model_data)
 
 
-if __name__ == "__main__":
-    print(main(Data = pd.read_csv('matrix_format.csv') ))
+# if __name__ == "__main__":
+    # print(main(Data = pd.read_csv('matrix_format.csv') ))
+
 
 
 
