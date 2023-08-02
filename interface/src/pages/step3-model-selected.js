@@ -18,21 +18,25 @@ const Step3_model_selected = ({route,navigate}) => {
 
     const [selectedModelData, setSelectedModelData] = useState({}) 
     useEffect(() => {
+        // console.log(location.state.model)
         // Using fetch to fetch the api from
         // flask server it will be redirected to proxy
-        fetch("/step4_display_selected_model").then((res) =>
-            res.json().then((data_in) => {
-                // Setting a data from api
-                setSelectedModelData(data_in);
-                console.log(data_in)
-            })
-            );
+        // fetch("/step4_display_selected_model").then((res) =>
+        //     res.json().then((data_in) => {
+        //         // Setting a data from api
+        //         setSelectedModelData(data_in);
+        //         console.log(data_in)
+                
+        //     })
+        //     );
+        setSelectedModelData(location.state.model_info)
     }, []);
 
-    console.log(selectedModelData.length)
+    // setSelectedModelData(location.state.model_info)
+    // console.log(selectedModelData.length)
     var output = "Loading learned weights ..."
 
-    if (selectedModelData.length) {
+    if (selectedModelData) {
         console.log(selectedModelData)
 		const data_table = document.createElement("table");
 		data_table.setAttribute("id", "table_step3")
@@ -85,7 +89,12 @@ const Step3_model_selected = ({route,navigate}) => {
 							}
 							
 						} else {
-							new_feature_str += '"' + feature_detail[0] + '"'
+                            if (j < combo_list.length - 1) {
+                                new_feature_str += '"' + feature_detail[0].trim() + '" and '
+                            } else {
+                                new_feature_str += '"' + feature_detail[0].trim() + '"'
+                            }
+							
 						}
 						
 					}

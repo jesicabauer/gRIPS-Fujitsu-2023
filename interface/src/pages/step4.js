@@ -169,20 +169,22 @@ const Step4 = () => {
 		// console.log(model_in)
 		if (model_in) {
 			// console.log(model_in)
-			navigate("/step3_model_selected", {state: {model: model_in}});
-		// 	const data = new FormData();
-		// 	data.append('model_selected', model_in);
-		// // 	console.log(data)
-		// 	let response = await fetch('/step4_display_selected_model',
-		// 		{
-		// 		method: 'post',
-		// 		body: data,
-		// 		}
-		// 	);
-		// 	let res = await response.json();
-		// 	if (res.status !== 1){
-		// 		alert('Error selecting feature');
-		// 	}
+			// navigate("/step3_model_selected", {state: {model: model_in}});
+			const data = new FormData();
+			data.append('model_selected', model_in);
+		// 	console.log(data)
+			let response = await fetch('/step4_display_selected_model',
+				{
+				method: 'post',
+				body: data,
+				}
+			);
+			let res = await response.json();
+			console.log(res.return)
+			navigate("/step3_model_selected", {state: {model_info: res.return}});
+			if (res.status !== 1){
+				alert('Error selecting feature');
+			}
 		}
 	}; 
 

@@ -555,12 +555,54 @@ def step4_saved_data():
     return step4_json
 
 
-@app.route("/step4_display_selected_model") #, methods=['GET', 'POST']
+@app.route("/step4_display_selected_model", methods=['POST']) #, methods=['GET', 'POST']
 def step4_display_selected_model():
     # models = []
     print("in step4_display_selected_model")
-    print(step4_model_weights.main(0)) 
-    return step4_model_weights.main(0)
+    # print(step4_model_weights.main(0)) 
+    d = {}
+    print("in user feature selection")
+    try:
+        model_selected = request.form.get("model_selected")
+        print(model_selected)
+        
+        model_weights = step4_model_weights.main(model_selected)
+        print(model_weights)
+        # step4_model_weights.main(0) # switch model selected string to index and pass into weights main function TODO
+
+        # return_feature = [{"combo":"12", "weight": "12"}, {"combo": "20", "weight": "20"}]
+        d["return"] = model_weights
+        # stream = io.StringIO(file.stream.read().decode("UTF8"), newline=None)
+        # print(stream)
+        # csv_input = csv.reader(stream)
+        # print(csv_input)
+        # save_step2_data(file)
+        # filename = file.filename
+        # # print(f"Uploading file {filename}")
+        # # # print(file.read())
+        # file_bytes = file.read()
+        # file_content = BytesIO(file_bytes).readlines()
+        # print(len(file_content))
+        # data_list = []
+        # for b in file_content:
+        #     print(b.decode('utf-8'))
+        #     str_data = b.decode('utf-8')
+        #     data_list.append(str_data)
+        # print(data_list)
+        # print("writing csv...")
+        # csv_file = open('training_data_input.csv', 'w')
+        # w = csv.writer(csv_file, delimiter = ',')
+        # w.writerows([x.split(',') for x in data_list])
+        # csv_file.close()
+        d['status'] = 1
+
+    except Exception as e:
+        print(f"Couldn't select model {e}")
+        d['status'] = 0
+
+    # return step4_model_weights.main(0)
+    return jsonify(d)
+    
 
 @app.route("/step7_display")
 def step7_display():

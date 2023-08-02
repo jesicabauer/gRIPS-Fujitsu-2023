@@ -49,6 +49,7 @@ const Step3 = () => {
 					}
 				}
 				setData3(chosen_model);
+				
 			})
 			);
         }, []);
