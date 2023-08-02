@@ -65,6 +65,7 @@ def predictions(test_data_name):
     #input data
     # train_data=pd.read_csv(train_data_name)
     test_data = pd.read_csv(test_data_name)
+    print(test_data)
     #split data
     # train_y=train_data.iloc[:,-1]
     # train_x=train_data.iloc[:,1:-1] 
@@ -96,7 +97,7 @@ def predictions(test_data_name):
     prediction_disctionary_list=[]
     for (k,v) in enumerate(row_names):
         dictionary={}
-        dictionary["Row"]=row_names[k]
+        dictionary["Data"]=row_names[k]
         dictionary["Score"]=score[k]
         dictionary["Predict"]=float(y_pred[k])
         prediction_disctionary_list.append(dictionary)

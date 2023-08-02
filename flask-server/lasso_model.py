@@ -76,7 +76,7 @@ def predictions(test_data_name):
     pred_dictionary_list=[]
     for i in range(len(test_row_names)):
         dictionary={}
-        dictionary["Row"]=test_row_names[i]
+        dictionary["Data"]=test_row_names[i]
         dictionary["Score"]=probs[i,1]
         dictionary["Prediction"]=int(predictions[i])
         pred_dictionary_list.append(dictionary)

@@ -102,7 +102,11 @@ const Step4 = () => {
 			for (let col in modelMetrics[i]) {
 				if (display_columns.includes(col)) {
 					if (col == "Model Name") {
-						models_set.push(modelMetrics[i][col])
+						console.log(modelMetrics[i][col])
+						if (modelMetrics[i][col] != "NB") {
+							models_set.push(modelMetrics[i][col])
+						}
+						
 					}
 					// console.log(modelMetrics[i][col])
 					const table_cell = document.createElement("td")

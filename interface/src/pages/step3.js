@@ -60,7 +60,7 @@ const Step3 = () => {
 
 	if (stepStatus) {
 		console.log("???")
-		navigate("/step3_model_selected", {state: {model: data3["Model Name"]}});
+		// navigate("/step3_model_selected", {state: {model_info: [data3]}});
 		const data_table = document.createElement("table");
 		data_table.setAttribute("id", "table_step3")
 		const table_header = document.createElement("thead");
@@ -220,14 +220,39 @@ const Step3 = () => {
 		// document.body.appendChild(data_table);
 
 	}
+
+	const displayBestModel = async () => {
+		// const file = e.target.files[0];
+		// console.log(model_in)
+		// if (model_in) {
+			// console.log(model_in)
+			// navigate("/step3_model_selected", {state: {model: model_in}});
+		const data = new FormData();
+		data.append('model_selected', data3["Model Name"]);
+	// 	console.log(data)
+		let response = await fetch('/step4_display_selected_model',
+			{
+			method: 'post',
+			body: data,
+			}
+		);
+		let res = await response.json();
+		console.log(res.return)
+		navigate("/step3_model_selected", {state: {model_info: res.return}});
+		if (res.status !== 1){
+			alert('Error selecting feature');
+		}
+		// }
+	}; 
 	return (
 		<div>
 			<div id = "step3container">
 				
 			</div>
-			<div class="loading">
+			{/* <div class="loading">
 				<p>{output}</p>
-			</div>
+			</div> */}
+			<button onClick={displayBestModel}>Click here to display weights from the "best" model</button>
 		</div>
 		
 	);

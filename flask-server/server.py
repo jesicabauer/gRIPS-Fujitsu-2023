@@ -28,6 +28,7 @@ import Rade2
 import Step4
 import os.path
 import step4_model_weights
+import step8_model_predictions
 # from selenium.webdriver.chrome.service import Service
 # from webdriver_manager.chrome import ChromeDriverManager
 
@@ -640,6 +641,97 @@ def step7_display():
     testing_data = json.dumps(data_json)
 
     return testing_data
+
+@app.route("/step8_data")
+def step8_data():
+    print("in step8_data")
+    binary_data = format_data.binary_combo_data("testing_data_input.csv", "step2_data.csv", "test")
+    binary_data.to_csv("binary_combo_data_test.csv")
+    if os.path.exists(binary_data.columns[0]+"_step8_data.json"):
+        json_file = open(binary_data.columns[0]+"_step8_data.json")
+        step4_json = json.load(json_file)
+        json_file.close()
+        return step4_json
+    else:
+        print(binary_data.columns[0])
+        models_data = Step4.main(Data = binary_data)
+        print(models_data)
+        prep_plot = []
+        for m in models_data:
+            for key in m:
+                if key in ["Model Name", "x_axis_Rade2", "y_axis_Rade2"]:
+                    for index in range(0, len(m["x_axis_Rade2"])):
+                        plot_dict = {}
+                        plot_dict["ModelName"] = m["Model Name"]
+                        plot_dict["xAxis"] = m["x_axis_Rade2"][index]
+                        plot_dict["yAxis"] = m["y_axis_Rade2"][index]
+
+                    # plot_dict[key] = m[key]
+                        prep_plot.append(plot_dict)
+        
+        print(prep_plot)
+        print(len(prep_plot))
+        plot_file = open("step8_plot_data.csv", "w")
+        csv_writer = csv.writer(plot_file)
+        csv_writer.writerow(['ModelName', 'xAxis', 'yAxis'])
+        for m_dict in prep_plot:
+            csv_writer.writerow(m_dict.values())
+
+        plot_file.close()
+        json_model_data = json.dumps(models_data)
+
+        with open(binary_data.columns[0]+"_step8_data.json", "w") as outfile:
+            outfile.write(json_model_data)
+
+        return models_data
+
+
+@app.route("/step8_display_selected_model", methods=['POST']) #, methods=['GET', 'POST']
+def step8_display_selected_model():
+    # models = []
+    print("in step8_display_selected_model")
+    # print(step4_model_weights.main(0)) 
+    d = {}
+    try:
+        model_selected = request.form.get("model_selected_step8")
+        print(model_selected)
+        
+        model_predictions = step8_model_predictions.main(model_selected)
+        print(model_predictions)
+        # step4_model_weights.main(0) # switch model selected string to index and pass into weights main function TODO
+
+        # return_feature = [{"combo":"12", "weight": "12"}, {"combo": "20", "weight": "20"}]
+        d["return"] = model_predictions
+        # stream = io.StringIO(file.stream.read().decode("UTF8"), newline=None)
+        # print(stream)
+        # csv_input = csv.reader(stream)
+        # print(csv_input)
+        # save_step2_data(file)
+        # filename = file.filename
+        # # print(f"Uploading file {filename}")
+        # # # print(file.read())
+        # file_bytes = file.read()
+        # file_content = BytesIO(file_bytes).readlines()
+        # print(len(file_content))
+        # data_list = []
+        # for b in file_content:
+        #     print(b.decode('utf-8'))
+        #     str_data = b.decode('utf-8')
+        #     data_list.append(str_data)
+        # print(data_list)
+        # print("writing csv...")
+        # csv_file = open('training_data_input.csv', 'w')
+        # w = csv.writer(csv_file, delimiter = ',')
+        # w.writerows([x.split(',') for x in data_list])
+        # csv_file.close()
+        d['status'] = 1
+
+    except Exception as e:
+        print(f"Couldn't select model {e}")
+        d['status'] = 0
+
+    # return step4_model_weights.main(0)
+    return jsonify(d)
 
 # @app.route("/lasso")
 # def members():

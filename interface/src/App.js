@@ -40,6 +40,7 @@ import Step6 from './pages/step6';
 import Step7 from './pages/step7';
 import Step7_testing_data from './pages/step7-testing-data';
 import Step8 from './pages/step8';
+import Step8_model_selected from './pages/step8-model-selected';
 
 function App() {
 	return (
@@ -59,6 +60,7 @@ function App() {
 				<Route path='/step7' element={<Step7 />} />
 				<Route path='/step7-testing-data' element={<Step7_testing_data />} />
 				<Route path='/step8' element={<Step8 />} />
+				<Route path='/step8_model_selected' element={<Step8_model_selected />} />
 			</Routes>
 		</Router>
 	);
