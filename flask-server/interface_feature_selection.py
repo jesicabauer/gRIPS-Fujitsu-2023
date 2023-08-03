@@ -14,6 +14,7 @@ import torch.optim as optim
 import numpy as np
 from sklearn.linear_model import LogisticRegression
 import pandas as pd
+import json
 
 
 
@@ -220,11 +221,13 @@ def new_coef_list(original_coef,X_train,y_train,intercept,C_val,in_idx,user_feat
 
 #####################################################################
 
-def interface_feature_selection(in_combo,current_coef,user_feature_indices,X_train):
+def interface_feature_selection(in_combo,current_coef,user_feature_indices,X_train, y_train, intercept, C_val):
+    print("in interface_feature_selection function")
     combo_names=list(X_train.columns)
     in_idx=combo_names.index(in_combo)
     current_coef,out_idx=new_coef_list(current_coef,X_train,y_train,intercept,C_val,in_idx,user_feature_indices)
     user_feature_indices.append(in_idx)
+    print("end of interface_feature_selection function")
     
     return current_coef.copy(),out_idx,user_feature_indices #updated model weights, list of feature combinations already added by the user
 
@@ -306,6 +309,43 @@ def main(train_combo_data):
     #         # selectable_features["selectable_features"].append(combo_names[index])
     
     return acceptable_combinations
+
+def after_selection(train_combo_data, selected_feature, already_addeded):
+    print("in after_selection function")
+    #preparing training data
+    X_train=pd.read_csv(train_combo_data)
+    y_train=X_train.iloc[:,-1]
+    X_train=X_train.iloc[:,1:-1] #removing row name column and label column
+
+    #gets the Lasso classifier and list of weights (betas)
+    classifier,current_coef,intercept,C_val=optimal_Lasso(X_train,y_train)
+
+    current_coef,out_idx,user_feature_indices=interface_feature_selection(selected_feature,current_coef,already_addeded,X_train, y_train, intercept,C_val)
+
+    acceptable_combinations=acceptable_beta_j(current_coef,intercept,C_val,X_train, y_train)
+
+    # json_file = open("step5_feature_selection_data.json")
+    # fetch_step5_json = json.load(json_file)
+    # json_file.close()
+    
+    print("before new_step5_json??")
+    new_step5_json = [{
+        "current_coef": list(current_coef),
+        "user_added": user_feature_indices,
+        "selectable_features": acceptable_combinations
+    }]
+    json_model_data = json.dumps(new_step5_json)
+    with open("step5_feature_selection_data.json", "w") as outfile:
+        outfile.write(json_model_data)
+
+    print("new_json", new_step5_json)
+
+    weight_dict_list=interface_weights(current_coef,out_idx,X_train)
+
+    print("here??")
+
+    return weight_dict_list
+
 
 if __name__ == "__main__":
     main("animal_combos_train.csv")

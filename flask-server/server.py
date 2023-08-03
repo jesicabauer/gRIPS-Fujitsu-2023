@@ -29,6 +29,7 @@ import Step4
 import os.path
 import step4_model_weights
 import step8_model_predictions
+import interface_feature_selection
 # from selenium.webdriver.chrome.service import Service
 # from webdriver_manager.chrome import ChromeDriverManager
 
@@ -418,8 +419,19 @@ def user_feature_selection():
         feature_selected = request.form.get("feature_selected")
         print(feature_selected)
 
-        return_feature = [{"combo":"12", "weight": "12"}, {"combo": "20", "weight": "20"}]
-        d["return"] = return_feature
+        json_file = open("step5_feature_selection_data.json")
+        step5_json = json.load(json_file)
+        json_file.close()
+
+        print(step5_json[0]["current_coef"])
+
+
+        updated_weights = interface_feature_selection.after_selection("binary_combo_data.csv", feature_selected, step5_json[0]["user_added"])
+
+        print(updated_weights)
+
+        # return_feature = [{"combo":"12", "weight": "12"}, {"combo": "20", "weight": "20"}]
+        d["return"] = updated_weights
         # stream = io.StringIO(file.stream.read().decode("UTF8"), newline=None)
         # print(stream)
         # csv_input = csv.reader(stream)
@@ -603,6 +615,25 @@ def step4_display_selected_model():
 
     # return step4_model_weights.main(0)
     return jsonify(d)
+
+
+@app.route("/step5_features_selection")
+def step5_features_selection():
+    # print(interface_feature_selection.main("binary_combo_data.csv"))
+    current_coef = interface_feature_selection.main("binary_combo_data.csv")
+
+    step5_json = [{
+        "current_coef": current_coef,
+        "user_added": []
+    }]
+    json_model_data = json.dumps(step5_json)
+    with open("step5_feature_selection_data.json", "w") as outfile:
+        outfile.write(json_model_data)
+
+    # json_file = open("step5_data.json")
+    # step5_json = json.load(json_file)
+    # json_file.close()
+    return current_coef
     
 
 @app.route("/step7_display")
