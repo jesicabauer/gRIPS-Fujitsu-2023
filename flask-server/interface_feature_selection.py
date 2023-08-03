@@ -144,7 +144,7 @@ def optimal_Lasso(X_train,y_train):
 #############################################################################################################
 
 #given a list of model coefficients, gives a list of the zero betaj's that can be put in the model
-def acceptable_beta_j(original_coef,intercept,C_val,X_train):
+def acceptable_beta_j(original_coef,intercept,C_val,X_train, y_train):
     combo_names=list(X_train.columns)
     cant_insert_betajs=[] #initialize list that keeps track of zero weight beta_j that can't be added to the model
     n_weights=len(original_coef)
@@ -175,6 +175,7 @@ def acceptable_beta_j(original_coef,intercept,C_val,X_train):
     features_to_add=[]
     for i in acceptable_in_idx:
         features_to_add.append(combo_names[i])
+    print(features_to_add)
     return features_to_add        
 
 ##############################################################################################
@@ -279,45 +280,61 @@ def interface_predictions(X_test,classifier,current_coef):
 ######################################## USER INTERFACE INPUTS AND OUTPUTS #################################################################
 
 
-train_combo_data="animal_combos_train.csv"
-test_combo_data="animal_combos_test.csv"
-in_combo="Flies_Does"
+# train_combo_data="animal_combos_train.csv"
+# test_combo_data="animal_combos_test.csv"
+# in_combo="Flies_Does"
+
+def main(train_combo_data):
+    print("in interface_feature_selection file")
+    #preparing training data
+    X_train=pd.read_csv(train_combo_data)
+    y_train=X_train.iloc[:,-1]
+    X_train=X_train.iloc[:,1:-1] #removing row name column and label column
+
+    #gets the Lasso classifier and list of weights (betas)
+    classifier,current_coef,intercept,C_val=optimal_Lasso(X_train,y_train)
+
+    #gives list of combinations that can be added to the model
+    acceptable_combinations=acceptable_beta_j(current_coef,intercept,C_val,X_train, y_train)
+
+    # combo_names=list(X_train.columns)
+    # selectable_features = {}
+    # selectable_features["selectable_features"] = []
+    # for coef in list(current_coef):
+    #     if coef == 0:
+    #         print(coef)
+    #         # selectable_features["selectable_features"].append(combo_names[index])
+    
+    return acceptable_combinations
+
+if __name__ == "__main__":
+    main("animal_combos_train.csv")
+    # #maximum number of feature combination switches (number of nonzero weights in the original model)
+    # nonzero_weight_indices=np.nonzero(current_coef)[0]
 
 
-#preparing training data
-X_train=pd.read_csv(train_combo_data)
-y_train=X_train.iloc[:,-1]
-X_train=X_train.iloc[:,1:-1] #removing row name column and label column
+    # ################## in loop for set number of feature combination switches  ###################################################
 
-#gets the Lasso classifier and list of weights (betas)
-classifier,current_coef,intercept,C_val=optimal_Lasso(X_train,y_train)
+    # #gives list of combinations that can be added to the model
+    # acceptable_combinations=acceptable_beta_j(current_coef,intercept,C_val,X_train)
 
-#maximum number of feature combination switches (number of nonzero weights in the original model)
-nonzero_weight_indices=np.nonzero(current_coef)[0]
+    # #keeps track of which combos the user has added so they are not taken out at the next iteration
+    # user_feature_indices=[]
 
+    # #does the feature switch, gives list of updated coefficients
+    # current_coef,out_idx,user_feature_indices=interface_feature_selection(in_combo,current_coef,user_feature_indices,X_train)
 
-################## in loop for set number of feature combination switches  ###################################################
+    # #returns list of dictionaries for the model weights
+    # weight_dict_list=interface_weights(current_coef,out_idx,X_train)
 
-#gives list of combinations that can be added to the model
-acceptable_combinations=acceptable_beta_j(current_coef,intercept,C_val,X_train)
-
-#keeps track of which combos the user has added so they are not taken out at the next iteration
-user_feature_indices=[]
-
-#does the feature switch, gives list of updated coefficients
-current_coef,out_idx,user_feature_indices=interface_feature_selection(in_combo,current_coef,user_feature_indices,X_train)
-
-#returns list of dictionaries for the model weights
-weight_dict_list=interface_weights(current_coef,out_idx,X_train)
-
-#####################################################################
+    # #####################################################################
 
 
 
-#preparing testing data
-X_test=pd.read_csv(test_combo_data)
-X_test=X_test.iloc[:,1:] #removing first column (row names)
+    # #preparing testing data
+    # X_test=pd.read_csv(test_combo_data)
+    # X_test=X_test.iloc[:,1:] #removing first column (row names)
 
-#returns list of dictionaries for the prediction scores and classes
-pred_dict_list=interface_predictions(X_test,classifier,current_coef)
+    # #returns list of dictionaries for the prediction scores and classes
+    # pred_dict_list=interface_predictions(X_test,classifier,current_coef)
 

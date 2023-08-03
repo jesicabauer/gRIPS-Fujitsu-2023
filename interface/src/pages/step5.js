@@ -11,7 +11,96 @@ const Step5 = () => {
 		table3_element.remove()
 	}
 
-	const features_set = ["feature1", "feature2", "feature3", "feature4", "feature5", "feature6", "feature1", "feature2", "feature3", "feature4", "feature5", "feature6"]
+	// const features_set = ["feature1", "feature2", "feature3", "feature4", "feature5", "feature6", "feature1", "feature2", "feature3", "feature4", "feature5", "feature6"]
+
+	const [featuresList, setFeaturesList] = useState({})
+	const [step5Status, setStep5Status] = useState(false) 
+	// const [reformatted, setReformatted] = useState(false) 
+	
+	useEffect(() => {
+        // Using fetch to fetch the api from
+        // flask server it will be redirected to proxy
+		// console.log(stepStatus)
+		// if (stepStatus == false) {
+		fetch("/step5_features_selection").then((res) =>
+			res.json().then((data_in) => {
+				// Setting a data from api
+				setFeaturesList(data_in);
+				console.log(data_in)
+				setStep5Status(true)
+				console.log("ready")
+				// let reformatted_combos = []
+				// for (let combo in featuresList) {
+				// 	console.log(featuresList[combo])
+				// 	let combo_list = featuresList[combo].split("∧")
+				// 	console.log(combo_list)
+				// 	let new_feature_str = ""
+				// 	for (let j = 0; j < combo_list.length; j += 1) {
+				// 		console.log(combo_list[j])
+				// 		let feature_detail = combo_list[j].split("_")
+				// 		console.log(feature_detail)
+				// 		if (feature_detail.length > 1) {
+				// 			let feature_str = feature_detail[1].trim() + " " + feature_detail[0].trim()
+				// 			console.log(feature_str)
+				// 			if (j < combo_list.length - 1) {
+				// 				new_feature_str += '"' + feature_str + '" and '
+				// 			} else {
+				// 				new_feature_str += '"' + feature_str + '"'
+				// 			}
+							
+				// 		} else {
+				// 			new_feature_str += '"' + feature_detail[0] + '"'
+				// 		}
+						
+				// 	}
+				// 	reformatted_combos.push(new_feature_str)
+				// 	console.log(reformatted_combos)
+					
+				// }
+				// setFeaturesList(reformatted_combos);
+			})
+			);
+	
+        }, []);
+
+	// if (step5Status) {
+	// 	console.log("ready")
+	// 	let reformatted_combos = []
+	// 	for (let combo in featuresList) {
+	// 		console.log(featuresList[combo])
+	// 		let combo_list = featuresList[combo].split("∧")
+	// 		console.log(combo_list)
+	// 		let new_feature_str = ""
+	// 		for (let j = 0; j < combo_list.length; j += 1) {
+	// 			console.log(combo_list[j])
+	// 			let feature_detail = combo_list[j].split("_")
+	// 			console.log(feature_detail)
+	// 			if (feature_detail.length > 1) {
+	// 				let feature_str = feature_detail[1].trim() + " " + feature_detail[0].trim()
+	// 				console.log(feature_str)
+	// 				if (j < combo_list.length - 1) {
+	// 					new_feature_str += '"' + feature_str + '" and '
+	// 				} else {
+	// 					new_feature_str += '"' + feature_str + '"'
+	// 				}
+					
+	// 			} else {
+	// 				new_feature_str += '"' + feature_detail[0] + '"'
+	// 			}
+				
+	// 		}
+	// 		reformatted_combos.push(new_feature_str)
+	// 		console.log(reformatted_combos)
+			
+	// 	}
+
+	// 	// if (reformatted) {
+
+	// 	// }
+	// 	// setStep5Status(reformatted_combos)
+	// }
+
+	
 
 	// const [selection, setSelection] = useState()
 	// const submitData = async () => {
@@ -101,12 +190,12 @@ const Step5 = () => {
 			<div>
 				<form method='post' action='/user_feature_selection' class="">
 					<div class="featuresContainer">
-						{features_set.map(x =>
+						{(step5Status) ? featuresList.map(x =>
 							// <label>
 								// <input type="button" id='startDate' name={'startDate'+x} value={x} onClick={() => featureSelected(x)}/>
 							// {/* </label> */}
 							<div id='featureSelect' class="featureOption stepDivBackground" name={'featureSelect'+x} value={x} onClick={() => featureSelected(x)}>{x}</div>
-						)}
+						) : ""}
 					</div>
 					
                     
