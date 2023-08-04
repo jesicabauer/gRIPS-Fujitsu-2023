@@ -16,6 +16,11 @@ const Step8_model_predictions = ({route,navigate}) => {
 		table3_element.remove()
 	}
 
+    const updated_weights_table_element = document.getElementById("step6_updated_weights")
+	if (updated_weights_table_element) {
+		updated_weights_table_element.remove()
+	}
+
     const [selectedModelData, setSelectedModelData] = useState({}) 
     useEffect(() => {
         // Using fetch to fetch the api from
@@ -91,6 +96,10 @@ const Step8_model_predictions = ({route,navigate}) => {
 					}
 					new_text_node = new_feature_str
 				}
+
+                if (col == "Score") {
+                    new_text_node = new_text_node.toFixed(2)
+                }
 				
 				const cell_text = document.createTextNode(new_text_node);
 				table_cell.appendChild(cell_text);

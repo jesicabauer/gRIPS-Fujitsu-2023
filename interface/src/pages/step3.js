@@ -11,6 +11,12 @@ const Step3 = () => {
 	if (table3_element) {
 		table3_element.remove()
 	}
+
+	const updated_weights_table_element = document.getElementById("step6_updated_weights")
+	if (updated_weights_table_element) {
+		updated_weights_table_element.remove()
+	}
+	
 	const [data3, setData3] = useState({}) 
 	const [modelMetrics, setModelMetrics] = useState({}) 
 	const [stepStatus, setStepStatus] = useState(false) 
@@ -49,6 +55,12 @@ const Step3 = () => {
 					}
 				}
 				setData3(chosen_model);
+				// model_info_json = [{
+				// 	"ModelName": chosen_model["Model Name"],
+				// 	"selected": false,
+				// 	"choseModel": ""
+				// }]
+				
 				
 			})
 			);
@@ -238,7 +250,7 @@ const Step3 = () => {
 		);
 		let res = await response.json();
 		console.log(res.return)
-		navigate("/step3_model_selected", {state: {model_info: res.return}});
+		navigate("/step3_model_selected", {state: {model_info: res.return, model_name: data3["Model Name"]}});
 		if (res.status !== 1){
 			alert('Error selecting feature');
 		}
@@ -252,7 +264,10 @@ const Step3 = () => {
 			{/* <div class="loading">
 				<p>{output}</p>
 			</div> */}
-			<button onClick={displayBestModel}>Click here to display weights from the "best" model</button>
+			<div class="step3explanations">
+				After training various possible models (will show in <b>Step 4</b>), we show weights from the model that has the <b>highest training accuracy and lowest complexity</b> (referred to as "best" model). Click on the button below to display the learned weights.
+			</div>
+			<button id="step3_dsplay_button" onClick={displayBestModel}>Click here to display weights from the "best" model</button>
 		</div>
 		
 	);

@@ -117,9 +117,15 @@ const Step1_training_data = () => {
             <div id="step1container">
 
             </div>
-            <div class="tableContainer" id="tableContainer">
+            <div class="displayTrainingTable">
+                <div class="tableContainer" id="tableContainer">
 
+                </div>
+                <div class="step1explanations">
+                    The training data you uploaded is shown here and will be used to train various potential models, which will give weights to the different feature combinations. Scroll to check its contents and click on <b>Step 2</b> above to proceed.
+                </div>
             </div>
+            
 			{/* <div id="header1Hover">testing hover 1</div>
 			<div id="header2Hover">testing hover 2</div>
 			<div id="header3Hover">testing hover 3</div>

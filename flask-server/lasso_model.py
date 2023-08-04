@@ -46,7 +46,7 @@ def weights(train_data):
     for i in nonzero_weight_indices:
         dictionary={}
         # print(nonzero_weight_indices[0])
-        dictionary["Combo"]=list(train_x.columns)[i]
+        dictionary["Feature Combination"]=list(train_x.columns)[i]
         dictionary["Weight"]=original_coef[i]
         weight_dictionary_list.append(dictionary)
 

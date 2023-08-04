@@ -221,44 +221,44 @@ const Navbar = () => {
                     {/* <div class="trainingPhase"> */}
                         <div class="stepBlock" id="step1Div" onClick={onClickStep1}>
                             <div to="/step1" >
-                                    Step 1
+                                    <b>Step 1:</b> Upload Training Data
                             </div>
                         </div>
                         <div class="stepBlock" id="step2Div" onClick={onClickStep2}>
                             <div to="/step2" activeStyle>
-                                Step 2
+                                <b>Step 2:</b> Get Important Combinations
                             </div>
                         </div>
                         <div class="stepBlock" id="step3Div" onClick={onClickStep3}>
                             <div to="/step3" activeStyle>
-                                Step 3
+                                <b>Step 3:</b> Learned Weights
                             </div>
                         </div>
                         <div class="stepBlock" id="step4Div" onClick={onClickStep4}>
                             <div to="/step4" activeStyle>
-                                Step 4
+                                <b>Step 4:</b> Set of Possible Models
                             </div>
                         </div>
-                        <div class="stepBlock" id="step5Div" onClick={onClickStep5}>
-                            <div to="/step5" activeStyle>
-                                Step 5
+                        <div class="stepBlock" id="step5Div" >
+                            <div activeStyle>
+                                Step 5: Select Your Own Features
                             </div>
                         </div>
-                        <div class="stepBlock" id="step6Div" onClick={onClickStep6}>
-                            <div to="/step6" activeStyle>
-                                Step 6
+                        <div class="stepBlock" id="step6Div" >
+                            <div activeStyle>
+                                Step 6: Weights with User Selected Features
                             </div>
                         </div>
                     {/* </div> */}
                     {/* <div class="testingPhase"> */}
                        <div class="stepBlock" id="step7Div" onClick={onClickStep7}>
                             <div to="/step7" activeStyle>
-                                Step 7
+                                <b>Step 7:</b> Upload Testing Data
                             </div>
                         </div>
                         <div class="stepBlock" id="step8Div" onClick={onClickStep8}>
                             <div to="/step8" activeStyle>
-                                Step 8
+                                <b>Step 8:</b> Predictions from the Possible Models
                             </div>
                         </div> 
                     {/* </div> */}

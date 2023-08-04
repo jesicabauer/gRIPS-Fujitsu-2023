@@ -8,6 +8,11 @@ const Step7_testing_data = () => {
 		table_element.remove()
 	}
 
+    const updated_weights_table_element = document.getElementById("step6_updated_weights")
+	if (updated_weights_table_element) {
+		updated_weights_table_element.remove()
+	}
+
     const [testingData, setTestingData] = useState({}) 
     useEffect(() => {
         // Using fetch to fetch the api from
@@ -68,7 +73,7 @@ const Step7_testing_data = () => {
     }
 
     return (
-		<div>
+		<div class="displayTrainingTable">
             <div class="tableContainer" id="tableContainer"></div>
 			{/* <div id="header1Hover">testing hover 1</div>
 			<div id="header2Hover">testing hover 2</div>
@@ -78,6 +83,9 @@ const Step7_testing_data = () => {
         <div class="loading">
             <p>{output}</p>
         </div> */}
+            <div class="step7explanations">
+                The testing data you uploaded is shown here and will be used to generate prediction scores from the potential models trained in Step 4. Scroll to check its contents and click on <b>Step 8</b> above to proceed.
+            </div>
 		</div>
     )
 };

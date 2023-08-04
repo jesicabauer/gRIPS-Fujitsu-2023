@@ -35,7 +35,7 @@ def predictions(test_data_name):
     for (k,v) in enumerate(row_names):
         dictionary={}
         dictionary["Data"]=row_names[k]
-        dictionary["Predict"]=float(y_pred[k])
+        dictionary["Prediction"]=float(y_pred[k])
         prediction_disctionary_list.append(dictionary)
 
     return prediction_disctionary_list

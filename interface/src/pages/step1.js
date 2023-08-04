@@ -14,6 +14,11 @@ const Step1 = () => {
 		table3_element.remove()
 	}
 
+    const updated_weights_table_element = document.getElementById("step6_updated_weights")
+	if (updated_weights_table_element) {
+		updated_weights_table_element.remove()
+	}
+
     const navigate = useNavigate();
 
     const [dataUploaded, setDataUploaded] = useState(false) 

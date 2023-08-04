@@ -17,9 +17,17 @@ const Step4 = () => {
 		model_metrics_table_element.remove()
 	}
 
+	const updated_weights_table_element = document.getElementById("step6_updated_weights")
+	if (updated_weights_table_element) {
+		updated_weights_table_element.remove()
+	}
+
 	const [modelMetrics, setModelMetrics] = useState({}) 
 	const [stepStatus, setStepStatus] = useState(false) 
 	const navigate = useNavigate();
+
+	var model_names = {"Lasso": "Lasso", "SVM": "Support Vector Machine", "RF": "Random Forest", "DT2": "Decision Tree (depth = 2)", "DT3": "Decision Tree (depth = 3)", "DT5": "Decision Tree (depth = 5)", "DT10": "Decision Tree (depth = 10)", "LR2": "Logistic Regression", "PT": "Perceptron", "NB": "Gaussian Naive Bayes"}
+	
 	
     useEffect(() => {
         // Using fetch to fetch the api from
@@ -101,16 +109,24 @@ const Step4 = () => {
 			// div_container.setAttribute("id", "row_div")
 			for (let col in modelMetrics[i]) {
 				if (display_columns.includes(col)) {
+					// var cell_text = document.createTextNode();
+					let text_node = modelMetrics[i][col]
 					if (col == "Model Name") {
 						console.log(modelMetrics[i][col])
 						// if (modelMetrics[i][col] != "NB") {
 						models_set.push(modelMetrics[i][col])
 						// }
+						// cell_text = document.createTextNode();
+						text_node = model_names[modelMetrics[i][col]]
 						
+					} else {
+						text_node = text_node.toFixed(2)
 					}
+					let cell_text = document.createTextNode(text_node);
 					// console.log(modelMetrics[i][col])
+
 					const table_cell = document.createElement("td")
-					const cell_text = document.createTextNode(modelMetrics[i][col]);
+					
 					table_cell.appendChild(cell_text);
 					// div_container.appendChild(table_cell);
 					table_row.appendChild(table_cell);
@@ -126,13 +142,14 @@ const Step4 = () => {
 		table_container.appendChild(data_table);
 		output = ""
 
+		let column_hover_texts = {"Model Name": "Model considered in the Rashomon Set", "accuracy": "Accuracy divides data given as training data, using one as training data and the other as test data, and evaluates how well the model trained on the training data predicts the test data, i.e., the percentage of correct answers", "complexity": "The higher the value, the more complexity the model, according to Rademacher Complexity"}
 		for (var column_key in modelMetrics[0]) {
             // console.log("ever here???")
 			if (display_columns.includes(column_key)) {
 				const new_hover = document.createElement("div")
 				let column_hover_str = column_key.replace(/[^a-z0-9]/gi, '').replace(/\s/g, '')
 				new_hover.setAttribute("id", "hover_"+column_hover_str)
-				let new_hover_text = document.createTextNode("testing"+column_key)
+				let new_hover_text = document.createTextNode(column_hover_texts[column_key])
 				new_hover.classList.add("displayNone")
 				new_hover.appendChild(new_hover_text)
 				container_element.appendChild(new_hover)
@@ -147,7 +164,7 @@ const Step4 = () => {
 						top: e.pageY,
 						position: 'absolute',
 						width: '10rem',
-						height: '5rem',
+						height: 'auto',
 						background: 'black',
 						color: 'white',
 						textAlign: 'center',
@@ -185,12 +202,17 @@ const Step4 = () => {
 			);
 			let res = await response.json();
 			console.log(res.return)
-			navigate("/step8_model_selected", {state: {model_info: res.return}});
+			navigate("/step8_model_selected", {state: {model_info: res.return, model_name: model_in}});
 			if (res.status !== 1){
 				alert('Error selecting feature');
 			}
 		}
 	}; 
+
+	const reformat_model_name = (name_in) => {
+		return model_names[name_in]
+	}
+
 
 	// if (data3.length) {
 	// 	const data_table = document.createElement("table");
@@ -248,15 +270,16 @@ const Step4 = () => {
 				
 			</div>
 			<p>{output}</p>
+			<div class="rashomonSetExplanation">Shown below are models considered in the Rashomon Set (same table as Step 4), which contains models with similar accuracy. Click on a model from the list on the right to display the prediction for the test data.</div>
 			<div class="modelContainer">
 				<div class="tableContainer" id="tableContainer"></div>
 				{/* [list of models + LASSO with feature selection] */}
-				<div class="featuresContainer">
+				<div class="potentialList">
 					{models_set.map(x =>
 						// <label>
 							// <input type="button" id='startDate' name={'startDate'+x} value={x} onClick={() => featureSelected(x)}/>
 						// {/* </label> */}
-						<div id='modelSelect' class="featureOption stepDivBackground" name={'modelSelect'+x} value={x} onClick={() => modelSelected(x)}>{x}</div>
+						<div id='modelSelect' class="featureOption stepDivBackground" name={'modelSelect'+x} value={x} onClick={() => modelSelected(x)}>{reformat_model_name(x)}</div>
 					)}
 				</div>
 			</div>

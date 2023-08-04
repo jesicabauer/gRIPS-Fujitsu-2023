@@ -36,7 +36,7 @@ def weights(train_data_name):
     weight_dictionary_list=[]
     for i in nonzero_weight_indices:
         dictionary={}
-        dictionary["Combo"]=combo_names[i]
+        dictionary["Feature Combination"]=combo_names[i]
         dictionary["Weight"]=weight[i]
         weight_dictionary_list.append(dictionary)
 
@@ -88,7 +88,7 @@ def predictions(test_data_name):
         dictionary={}
         dictionary["Data"]=row_names[k]
         dictionary["Score"]=score[k]
-        dictionary["Predict"]=float(y_pred[k])
+        dictionary["Prediction"]=float(y_pred[k])
         prediction_disctionary_list.append(dictionary)
 
     return prediction_disctionary_list

@@ -243,14 +243,14 @@ def interface_weights(coef,out_idx,X_train):
     weight_dictionary_list=[]
     for i in nonzero_weight_indices:
         dictionary={}
-        dictionary["Combo"]=combo_names[i]
+        dictionary["Feature Combination"]=combo_names[i]
         dictionary["Weight"]=new_coef[i]
         dictionary["Old"]=False #only True for the beta i that was just removed from the model
         weight_dictionary_list.append(dictionary)
     
     #adding dictionary for the beta i that was removed from the model
     dictionary={}
-    dictionary["Combo"]=combo_names[out_idx]    
+    dictionary["Feature Combination"]=combo_names[out_idx]    
     dictionary["Weight"]=0
     dictionary["Old"]=True
     weight_dictionary_list.append(dictionary)

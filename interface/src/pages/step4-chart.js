@@ -127,8 +127,9 @@ const DisplayChart = () => {
     // };
 
     return (
-      <div id="complexityChart">
-        <button onClick={showChart}>click</button>
+      <div>
+        {/* <button onClick={showChart}>click</button> */}
+        <img id="step4chart" src="http://127.0.0.1:5000/step4Chart.png" alt="complexity chart" />
         {/* <VegaLite spec={spec} data={{ values: barData }} />; */}
       </div>
     )

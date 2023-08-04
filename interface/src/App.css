@@ -48,6 +48,7 @@
   text-align: center;
   vertical-align: center;
   background-color: #d0cdd1;
+  padding-bottom: 1rem;
   /* display: flex;
   justify-content: center; */
   /* margin: 0.5rem; */
@@ -184,7 +185,7 @@ td, th {
 #explanationStep2 {
   width: 80%;
   margin: auto;
-  padding-top: 1rem;
+  margin-top: 2rem;
 }
 
 .fileUpload {
@@ -223,7 +224,22 @@ td, th {
   overflow: auto;
   height: 25rem;
   margin-top: 5rem;
+  /* border: 1px solid black; */
+  margin-left: 25%;
+}
+
+.potentialList {
+  width: 50%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 200px, 200px;
+  gap: 2rem;
+  text-align: center;
+  overflow: auto;
+  height: 25rem;
+  margin-top: 5rem;
   border: 1px solid black;
+  /* margin-left: 25%; */
 }
 
 .featureOption:hover {
@@ -274,4 +290,92 @@ body {
 .modelContainer {
   display: flex;
   justify-content: space-between;
+}
+
+.removedCombo {
+  background-color: lightcoral;
+}
+
+.addedCombo {
+  background-color: lightblue;
+}
+
+#step3_dsplay_button {
+  margin-top: 5rem;
+  margin-left: 40%;
+}
+
+.displayTrainingTable {
+  display: flex;
+  /* width: 80%; */
+  /* margin-right: 0px; */
+}
+
+.step1explanations, .step7explanations {
+  width: 50%;
+  margin-left: 2rem;
+  margin-right:2rem;
+  margin-top: 15%;
+}
+
+.step3explanations {
+  width: 50%;
+  margin-top: 5rem;
+  margin-left: 25%;
+}
+
+#step3selectedModelExplanation {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  margin-left: 2rem;
+  width: 30%;
+}
+
+.step4LassoButotn {
+  margin-left: 2rem;
+}
+
+.featureSelectionContainer {
+  /* dissfy-content: space-evenly; */
+}
+
+.featureSelectionExplanations {
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 2rem;
+}
+
+.step6explanation {
+  margin-left: 20%;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+}
+
+.rashomonSetExplanation {
+  margin-left: 10%;
+  margin-top: 2rem;
+}
+
+#modelSelect {
+  padding: 0.5rem;
+  padding-top: 25%;
+  text-align: center;
+}
+
+.step8explanations {
+  margin-left: 20%;
+  margin-bottom: 2rem;
+}
+
+#step4chart {
+  display: None;
+}
+
+#displayChartButton {
+  margin-top: 2rem;
+  margin-left: 10%;
+}
+
+#displayChartButton button {
+  margin-top: 1rem;
 }
