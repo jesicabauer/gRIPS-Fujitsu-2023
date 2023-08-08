@@ -118,7 +118,7 @@ def nonzero_betaj(combo_mat,beta_star,intercept,y_vect,C,j,out_index):
 
 ##########################################################################################################################
 
-#Regular Lasso to find beta star, returns predictions and their probabilities, and classifer that contains the weights
+#Regular Lasso to find beta star, returns predictions and their probabilities, and classifier that contains the weights
 def optimal_Lasso(X_train,y_train):
     C_val=20
     n_nonzero=101
@@ -256,14 +256,16 @@ def interface_weights(coef,out_idx,X_train):
 
 #################################################################################################################
 
-def interface_predictions(X_test,classifer,coef):
-    
+def interface_predictions(X_test,classifier,current_coef):
+    test_row_names=list(X_test.iloc[:,0])
+    X_test=X_test.iloc[:,1:] #removing first column (row names)
     #making the predictions
     classifier.coef_[0]=current_coef.copy() #changing the coefficients in the model to the new ones from user feature selection
     predictions=classifier.predict(X_test)
     probs=classifier.predict_proba(X_test)
     
-    test_row_names=list(X_test.iloc[:,0])
+   
+    
     
     #saving predictions for each testing data point in a list of dictionaries
     pred_dictionary_list=[]
@@ -317,7 +319,7 @@ weight_dict_list=interface_weights(current_coef,out_idx,X_train)
 
 #preparing testing data
 X_test=pd.read_csv(test_combo_data)
-X_test=X_test.iloc[:,1:] #removing first column (row names)
+
 
 #returns list of dictionaries for the prediction scores and classes
 pred_dict_list=interface_predictions(X_test,classifier,current_coef)

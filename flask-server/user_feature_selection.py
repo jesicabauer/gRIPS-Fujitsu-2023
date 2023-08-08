@@ -35,7 +35,7 @@ def nonzero_betaj(combo_mat,beta_star,intercept,y_vect,C,j,out_index):
     
     sigmoid=nn.Sigmoid()
     loss=nn.BCELoss(reduction='sum') #adds loss for each term, doesn't take average
-    beta_j=torch.tensor(0.0,requires_grad=True) #initialize beta_j as 0?
+    beta_j=torch.tensor(0.0,requires_grad=True) #initialize beta_j as 0
     optimizer=optim.SGD(params=[beta_j],lr=alpha) 
     
     m=combo_mat.shape[0] #num training samples    
@@ -182,7 +182,7 @@ zero_weight_indices=np.setdiff1d(all_indices,nonzero_weight_indices)
 print("Combinations being used in the model:")
 for i in nonzero_weight_indices:
     print(f"{combo_names[i]} index {i}")
-    
+print("\n")
 print("Combinations NOT being used in the model:")
 for i in zero_weight_indices:
     print(f"{combo_names[i]} index {i}")
@@ -197,8 +197,8 @@ for i in zero_weight_indices:
 
 for in_idx in zero_weight_indices:
     nonzero_weight_indices=np.nonzero(original_coef)[0]
-    #if in_idx>85:
-    #    break
+    if in_idx>30:
+        break
     print("\n")
     #print(f"in index = {in_idx} name of combo = {combo_names[in_idx]}")
     print(f"in index = {in_idx}")
