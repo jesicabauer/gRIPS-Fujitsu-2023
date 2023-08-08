@@ -284,10 +284,6 @@ def interface_predictions(X_test,classifier,current_coef):
 ######################################## USER INTERFACE INPUTS AND OUTPUTS #################################################################
 
 
-# train_combo_data="animal_combos_train.csv"
-# test_combo_data="animal_combos_test.csv"
-# in_combo="Flies_Does"
-
 def main(train_combo_data):
     print("in interface_feature_selection file")
     #preparing training data
@@ -303,14 +299,6 @@ def main(train_combo_data):
 
     #gives list of combinations that can be added to the model
     acceptable_combinations=acceptable_beta_j(current_coef,intercept,C_val,X_train, y_train)
-
-    # combo_names=list(X_train.columns)
-    # selectable_features = {}
-    # selectable_features["selectable_features"] = []
-    # for coef in list(current_coef):
-    #     if coef == 0:
-    #         print(coef)
-    #         # selectable_features["selectable_features"].append(combo_names[index])
     
     return acceptable_combinations
 
@@ -329,12 +317,9 @@ def after_selection(train_combo_data, selected_feature, already_addeded):
 
     acceptable_combinations=acceptable_beta_j(current_coef,intercept,C_val,X_train, y_train)
 
-    # json_file = open("step5_feature_selection_data.json")
-    # fetch_step5_json = json.load(json_file)
-    # json_file.close()
+
     
     print(user_feature_indices)
-    print("before new_step5_json??")
     new_step5_json = [{
         "current_coef": list(current_coef),
         "user_added": user_feature_indices,
@@ -344,11 +329,9 @@ def after_selection(train_combo_data, selected_feature, already_addeded):
     with open("step5_feature_selection_data.json", "w") as outfile:
         outfile.write(json_model_data)
 
-    print("new_json", new_step5_json)
 
     weight_dict_list=interface_weights(current_coef,out_idx,X_train)
 
-    print("here??")
 
     return weight_dict_list
 
@@ -357,7 +340,6 @@ def predictions(test_combo_data):
     classifier=pickle.load(open("optimal_LASSO_model.sav",'rb'))
     #preparing testing data
     X_test=pd.read_csv(test_combo_data)
-    # X_test=X_test.iloc[:,1:] #removing first column (row names)
 
     json_file = open("step5_feature_selection_data.json")
     step5_json = json.load(json_file)
@@ -370,32 +352,5 @@ def predictions(test_combo_data):
 
 if __name__ == "__main__":
     main("animal_combos_train.csv")
-    # #maximum number of feature combination switches (number of nonzero weights in the original model)
-    # nonzero_weight_indices=np.nonzero(current_coef)[0]
 
-
-    # ################## in loop for set number of feature combination switches  ###################################################
-
-    # #gives list of combinations that can be added to the model
-    # acceptable_combinations=acceptable_beta_j(current_coef,intercept,C_val,X_train)
-
-    # #keeps track of which combos the user has added so they are not taken out at the next iteration
-    # user_feature_indices=[]
-
-    # #does the feature switch, gives list of updated coefficients
-    # current_coef,out_idx,user_feature_indices=interface_feature_selection(in_combo,current_coef,user_feature_indices,X_train)
-
-    # #returns list of dictionaries for the model weights
-    # weight_dict_list=interface_weights(current_coef,out_idx,X_train)
-
-    # #####################################################################
-
-
-
-    # #preparing testing data
-    # X_test=pd.read_csv(test_combo_data)
-    # X_test=X_test.iloc[:,1:] #removing first column (row names)
-
-    # #returns list of dictionaries for the prediction scores and classes
-    # pred_dict_list=interface_predictions(X_test,classifier,current_coef)
 

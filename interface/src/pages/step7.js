@@ -48,14 +48,12 @@ const Step7 = () => {
     }
 
 	return (
-		// <form>
 		<div>
 			<div class="fileUpload">
 			<label>
 			<input
 				type="file" onChange={uploadTestingFile}/>
 				{dataUploaded? 'File ready! Click "Upload" below to display data or click here to upload another' : 'Click here to upload testing data'}
-			{/* <input type="submit" value="Submit" onClick={uploadFile}></input> */}
 			</label>
 			</div>
 			<button class="uploadButton" onClick={redirect}>Upload</button>

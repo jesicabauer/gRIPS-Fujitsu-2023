@@ -48,69 +48,27 @@ const Step1 = () => {
     };
 
 
-    // console.log(dataUploaded)
-    // const [step1Data, setStep1Data] = useState({}) 
-    // useEffect(() => {
-    //     // Using fetch to fetch the api from
-    //     // flask server it will be redirected to proxy
-    //     fetch("/step1_display").then((res) =>
-    //         res.json().then((data_in) => {
-    //             // Setting a data from api
-    //             setStep1Data(data_in);
-    //             console.log(data_in)
-    //         })
-    //         );
-    //     }, []);
 
     const redirect = () => {
         navigate("/step1-training-data");
     }
-    // if (dataUploaded) {
-        
-    //     console.log(step1_data)
-    // }
+   
 
-
-    // const [data, setData] = useState({}) 
-    // useEffect(() => {
-    // // Using fetch to fetch the api from
-    // // flask server it will be redirected to proxy
-    // fetch("/data").then((res) =>
-    //     res.json().then((data) => {
-    //         // Setting a data from api
-    //         setData(data);
-    //         console.log(data)
-    //     })
-    //     );
-    // }, []);
-    // return (
-    //     <div>
-    //         <p>{data.data}</p>
-    //     </div>
-    // )
 	return (
         // the react form
         <div>
             <div class="fileUpload">
                 <label>
-                    {/* <form> */}
                     <input 
                         type="file" onChange={uploadTrainingFile}/>
                         {dataUploaded? 'File ready! Click "Upload" below to display data or click here to upload another' : 'Click here to upload training data'}
-                    {/* <input type="submit" value="Submit" onClick={uploadFile}></input> */}
-                    {/* </form> */}
+    
                 </label>
             
             </div>
             <button class="uploadButton" onClick={redirect}>Upload</button>
          </div>
         
-	// 	<div>
-	// 		<h1>
-	// 			GeeksforGeeks is a Computer
-	// 			Science portal for geeks.
-	// 		</h1>
-	// 	</div>
 	);
 };
 

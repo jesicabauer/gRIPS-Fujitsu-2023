@@ -3,7 +3,6 @@ import $ from 'jquery';
 import {useLocation} from 'react-router-dom';
 
 const Step8_model_selected = ({route,navigate}) => {
-    // console.log(props.st)
     const location = useLocation();
 
 
@@ -23,22 +22,11 @@ const Step8_model_selected = ({route,navigate}) => {
 
     const [selectedModelData, setSelectedModelData] = useState({}) 
     useEffect(() => {
-        // console.log(location.state.model)
-        // Using fetch to fetch the api from
-        // flask server it will be redirected to proxy
-        // fetch("/step4_display_selected_model").then((res) =>
-        //     res.json().then((data_in) => {
-        //         // Setting a data from api
-        //         setSelectedModelData(data_in);
-        //         console.log(data_in)
-                
-        //     })
-        //     );
+    
         setSelectedModelData(location.state.model_info)
     }, []);
 
-    // setSelectedModelData(location.state.model_info)
-    // console.log(selectedModelData.length)
+
     var output = "Loading learned weights ..."
 
     var model_names = {"Lasso": "Lasso", "SVM": "Support Vector Machine", "RF": "Random Forest", "DT2": "Decision Tree (depth = 2)", "DT3": "Decision Tree (depth = 3)", "DT5": "Decision Tree (depth = 5)", "DT10": "Decision Tree (depth = 10)", "LR2": "Logistic Regression", "PT": "Perceptron", "NB": "Gaussian Naive Bayes", "LassoFeatureSelection": "Lasso with Feature Selection"}
@@ -50,8 +38,7 @@ const Step8_model_selected = ({route,navigate}) => {
 		data_table.setAttribute("id", "table_step3")
 		const table_header = document.createElement("thead");
         const table_header_row = document.createElement("tr");
-        // let hover_tracker = {}
-        // let table_container = document.getElementById("tableContainer")
+
         const container_element = document.getElementById("step8container")
 
 		for (var column_key in selectedModelData[0]) {
@@ -70,51 +57,20 @@ const Step8_model_selected = ({route,navigate}) => {
         const table_body = document.createElement("tbody");
         for (let i = 0; i < selectedModelData.length; i += 1) {
 			const table_row = document.createElement("tr")
-			// console.log(data[0])
-			// const div_container = document.createElement("div")
-			// div_container.setAttribute("id", "row_div")
+	
 			let col_index = 0
 			for (let col in selectedModelData[i]) {
-				// console.log(trainingData[i][col])
+	
                 const table_cell = document.createElement("td")
 				let new_text_node = selectedModelData[i][col]
-				// if (col_index == 0) {
-				// 	console.log(selectedModelData[i][col])
-				// 	let combo_list = selectedModelData[i][col].split("∧")
-				// 	console.log(combo_list)
-				// 	let new_feature_str = ""
-				// 	for (let j = 0; j < combo_list.length; j += 1) {
-				// 		console.log(combo_list[j])
-				// 		let feature_detail = combo_list[j].split("_")
-				// 		console.log(feature_detail)
-				// 		if (feature_detail.length > 1) {
-				// 			let feature_str = feature_detail[1].trim() + " " + feature_detail[0].trim()
-				// 			console.log(feature_str)
-				// 			if (j < combo_list.length - 1) {
-				// 				new_feature_str += '"' + feature_str + '" and '
-				// 			} else {
-				// 				new_feature_str += '"' + feature_str + '"'
-				// 			}
-							
-				// 		} else {
-                //             if (j < combo_list.length - 1) {
-                //                 new_feature_str += '"' + feature_detail[0].trim() + '" and '
-                //             } else {
-                //                 new_feature_str += '"' + feature_detail[0].trim() + '"'
-                //             }
-							
-				// 		}
-						
-				// 	}
-				// 	new_text_node = new_feature_str
-				// }
+				
                 if (col == "Score") {
                     new_text_node = new_text_node.toFixed(2)
                 }
 				
 				const cell_text = document.createTextNode(new_text_node);
 				table_cell.appendChild(cell_text);
-				// div_container.appendChild(table_cell);
+	
 				table_row.appendChild(table_cell);
 				col_index += 1
             }
@@ -124,13 +80,12 @@ const Step8_model_selected = ({route,navigate}) => {
 
 		data_table.appendChild(table_header);
 		data_table.appendChild(table_body);
-        // let table_container = document.getElementById("tableContainer")
 		document.body.appendChild(data_table);
 
         let column_hover_texts = {"Data": "Testing data", "Prediction": "Model prediction: 0 means a negative classification and 1 means a positive classification", "Score": "The probability for each test data point is the probability that it belongs to the positive class. Therefore a probability score greater than 0.5 leads to a positive classification, and a probability score less than 0.5 leads to a negative classification"}
 
 		for (var column_key in selectedModelData[0]) {
-            console.log("ever here???")
+
             const new_hover = document.createElement("div")
             let column_hover_str = column_key.replace(/[^a-z0-9]/gi, '').replace(/\s/g, '')
             new_hover.setAttribute("id", "hover_"+column_hover_str)
@@ -141,8 +96,7 @@ const Step8_model_selected = ({route,navigate}) => {
             const get_header = document.getElementById("column_"+column_hover_str)
             let hover_key = "#hover_"+column_hover_str
             get_header.addEventListener("mouseover", function(e) {
-                // document.getElementById("hover_"+column_key).classList.remove("displayNone")
-                console.log(e.pageX+20)
+
                 $(hover_key).css({
                     display: 'block',
                     left: e.pageX+10,
@@ -163,7 +117,7 @@ const Step8_model_selected = ({route,navigate}) => {
                     display: 'None',
                 })
             })
-            // hover_tracker[hover_key] = 1
+
         }
         
     }
@@ -171,10 +125,9 @@ const Step8_model_selected = ({route,navigate}) => {
 	return (
 		<div>
 			<div id = "step8container">
-				{/* {location.state.model} */}
+		
 			</div>
 			<div class="loading">
-				{/* <p>{output}</p> */}
 			</div>
             <div class="step8explanations">
                 Shown below are the prediction scores generated by the <b>{model_names[location.state.model_name]}</b> model.

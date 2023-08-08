@@ -9,7 +9,6 @@ const Navbar = () => {
     var trainingSteps = 4
 
     const onClickStep1 = () => {
-        // console.log("hello")
         
         for (let index = 0; index < stepsList.length; index += 1) {
             if (index != 0) {
@@ -29,7 +28,6 @@ const Navbar = () => {
 
     }
     const onClickStep2 = () => {
-        // console.log("hello")
         for (let index = 0; index < stepsList.length; index += 1) {
             if (index != 1) {
                 var stepElement = document.getElementById(stepsList[index]);
@@ -47,7 +45,6 @@ const Navbar = () => {
         navigate('/step2');
     }
     const onClickStep3 = () => {
-        // console.log("hello")
         for (let index = 0; index < stepsList.length; index += 1) {
             if (index != 2) {
                 var stepElement = document.getElementById(stepsList[index]);
@@ -65,7 +62,6 @@ const Navbar = () => {
         navigate('/step3');
     }
     const onClickStep4 = () => {
-        // console.log("hello")
         for (let index = 0; index < stepsList.length; index += 1) {
             if (index != 3) {
                 var stepElement = document.getElementById(stepsList[index]);
@@ -84,7 +80,6 @@ const Navbar = () => {
     }
 
     const onClickStep5 = () => {
-        // console.log("hello")
         for (let index = 0; index < stepsList.length; index += 1) {
             if (index != 4) {
                 var stepElement = document.getElementById(stepsList[index]);
@@ -103,7 +98,6 @@ const Navbar = () => {
     }
 
     const onClickStep6 = () => {
-        // console.log("hello")
         for (let index = 0; index < stepsList.length; index += 1) {
             if (index != 5) {
                 var stepElement = document.getElementById(stepsList[index]);
@@ -122,7 +116,6 @@ const Navbar = () => {
     }
 
     const onClickStep7 = () => {
-        // console.log("hello")
         for (let index = 0; index < stepsList.length; index += 1) {
             if (index != 6) {
                 var stepElement = document.getElementById(stepsList[index]);
@@ -140,7 +133,6 @@ const Navbar = () => {
         navigate('/step7');
     }
     const onClickStep8 = () => {
-        // console.log("hello")
         for (let index = 0; index < stepsList.length; index += 1) {
             if (index != 7) {
                 var stepElement = document.getElementById(stepsList[index]);
@@ -159,17 +151,10 @@ const Navbar = () => {
     }
 	return (
 		<>
-            {/* <div class="phases">
-                <div class="training">
-                    Training phase
-                </div>
-                {/* <div class="testing">
-                    Testing phase
-                </div> */}
-            {/* </div> */}
+
             <div class="navContainer phasesContainer">
 				<div class="navBar phasesBar">
-                    {/* <div class="trainingPhase"> */}
+
                         <div class="phasesBlock">
                             <div id="trainingText">
                                     Training Phase >>>
@@ -200,8 +185,7 @@ const Navbar = () => {
                                
                             </div>
                         </div>
-                    {/* </div> */}
-                    {/* <div class="testingPhase"> */}
+            
                        <div class="phasesBlock">
                             <div id="testingText">
                                 Testing Phase >>>
@@ -212,13 +196,13 @@ const Navbar = () => {
             
                             </div>
                         </div> 
-                    {/* </div> */}
+        
                     
 				</div>
 			</div>
 			<div class="navContainer">
 				<div class="navBar">
-                    {/* <div class="trainingPhase"> */}
+
                         <div class="stepBlock" id="step1Div" onClick={onClickStep1}>
                             <div to="/step1" >
                                     <b>Step 1:</b> Upload Training Data
@@ -249,8 +233,7 @@ const Navbar = () => {
                                 Step 6: Weights with User Selected Features
                             </div>
                         </div>
-                    {/* </div> */}
-                    {/* <div class="testingPhase"> */}
+    
                        <div class="stepBlock" id="step7Div" onClick={onClickStep7}>
                             <div to="/step7" activeStyle>
                                 <b>Step 7:</b> Upload Testing Data
@@ -261,7 +244,6 @@ const Navbar = () => {
                                 <b>Step 8:</b> Predictions from the Possible Models
                             </div>
                         </div> 
-                    {/* </div> */}
                     
 				</div>
 			</div>

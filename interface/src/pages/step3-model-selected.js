@@ -4,7 +4,6 @@ import {useLocation} from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 
 const Step3_model_selected = () => {
-    // console.log(props.st)
     const location = useLocation();
 
 
@@ -25,35 +24,20 @@ const Step3_model_selected = () => {
     const [selectedModelData, setSelectedModelData] = useState({}) 
     const navigate = useNavigate();
     useEffect(() => {
-        // console.log(location.state.model)
-        // Using fetch to fetch the api from
-        // flask server it will be redirected to proxy
-        // fetch("/step4_display_selected_model").then((res) =>
-        //     res.json().then((data_in) => {
-        //         // Setting a data from api
-        //         setSelectedModelData(data_in);
-        //         console.log(data_in)
-                
-        //     })
-        //     );
         setSelectedModelData(location.state.model_info)
     }, []);
 
-    // setSelectedModelData(location.state.model_info)
-    // console.log(selectedModelData.length)
+
     var output = "Loading learned weights ..."
 
     var model_names = {"Lasso": "Lasso", "SVM": "Support Vector Machine", "RF": "Random Forest", "DT2": "Decision Tree (depth = 2)", "DT3": "Decision Tree (depth = 3)", "DT5": "Decision Tree (depth = 5)", "DT10": "Decision Tree (depth = 10)", "LR2": "Logistic Regression", "PT": "Perceptron", "NB": "Gaussian Naive Bayes"}
 
     let table_container = document.getElementById("insertTable")
     if (selectedModelData) {
-        console.log(location.state)
 		const data_table = document.createElement("table");
 		data_table.setAttribute("id", "table_step3")
 		const table_header = document.createElement("thead");
         const table_header_row = document.createElement("tr");
-        // let hover_tracker = {}
-        // let table_container = document.getElementById("tableContainer")
         const container_element = document.getElementById("step3container")
 
 		for (var column_key in selectedModelData[0]) {
@@ -72,12 +56,9 @@ const Step3_model_selected = () => {
         const table_body = document.createElement("tbody");
         for (let i = 0; i < selectedModelData.length; i += 1) {
 			const table_row = document.createElement("tr")
-			// console.log(data[0])
-			// const div_container = document.createElement("div")
-			// div_container.setAttribute("id", "row_div")
 			let col_index = 0
 			for (let col in selectedModelData[i]) {
-				// console.log(trainingData[i][col])
+	
                 const table_cell = document.createElement("td")
 				let new_text_node = selectedModelData[i][col]
 				if (col_index == 0) {
@@ -117,7 +98,7 @@ const Step3_model_selected = () => {
                 }
 				const cell_text = document.createTextNode(new_text_node);
 				table_cell.appendChild(cell_text);
-				// div_container.appendChild(table_cell);
+
 				table_row.appendChild(table_cell);
 				col_index += 1
             }
@@ -127,7 +108,6 @@ const Step3_model_selected = () => {
 
 		data_table.appendChild(table_header);
 		data_table.appendChild(table_body);
-        // let table_container = document.getElementById("insertTable")
 		document.body.appendChild(data_table);
 
         let column_hover_texts = {"Feature Combination": "Combinations important for model", "Weight": "A higher numerical value indicates a more important feature"}
@@ -144,7 +124,7 @@ const Step3_model_selected = () => {
             const get_header = document.getElementById("column_"+column_hover_str)
             let hover_key = "#hover_"+column_hover_str
             get_header.addEventListener("mouseover", function(e) {
-                // document.getElementById("hover_"+column_key).classList.remove("displayNone")
+
                 console.log(e.pageX+20)
                 $(hover_key).css({
                     display: 'block',
@@ -166,7 +146,7 @@ const Step3_model_selected = () => {
                     display: 'None',
                 })
             })
-            // hover_tracker[hover_key] = 1
+
         }
 
         
@@ -192,10 +172,10 @@ const Step3_model_selected = () => {
 	return (
 		<div>
 			<div id = "step3container">
-				{/* {location.state.model} */}
+			
 			</div>
 			<div class="loading">
-				{/* <p>{output}</p> */}
+			
 			</div>
             <div>
                 <div id="step3selectedModelExplanation">

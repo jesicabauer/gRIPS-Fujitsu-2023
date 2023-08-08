@@ -25,17 +25,7 @@ const Step6 = () => {
 	const navigate = useNavigate();
 
 	useEffect(() => {
-        // console.log(location.state.model)
-        // Using fetch to fetch the api from
-        // flask server it will be redirected to proxy
-        // fetch("/step4_display_selected_model").then((res) =>
-        //     res.json().then((data_in) => {
-        //         // Setting a data from api
-        //         setSelectedModelData(data_in);
-        //         console.log(data_in)
-                
-        //     })
-        //     );
+        
 		document.getElementById("step6Div").classList.add("onclickColor");
 		document.getElementById("step6Div").classList.remove("stepDivBackground")
 		document.getElementById("step5Div").classList.add("stepDivBackground")
@@ -49,14 +39,12 @@ const Step6 = () => {
 		data_table.setAttribute("id", "step6_updated_weights")
 		const table_header = document.createElement("thead");
         const table_header_row = document.createElement("tr");
-        // let hover_tracker = {}
-        // let table_container = document.getElementById("tableContainer")
+        
 		let no_display_columns = ["Old"]
         const container_element = document.getElementById("step6container")
 
 		for (var column_key in selectedModelWeightsData[0]) {
 			if (!no_display_columns.includes(column_key)) {
-				// console.log(column_key)
 				const new_header = document.createElement("th")
 				const header_text = document.createTextNode(column_key);
 				let column_str = column_key.replace(/[^a-z0-9]/gi, '').replace(/\s/g, '')
@@ -69,13 +57,11 @@ const Step6 = () => {
 		const table_body = document.createElement("tbody");
 		for (let i = 0; i < selectedModelWeightsData.length; i += 1) {
 			const table_row = document.createElement("tr")
-			// console.log(data[0])
-			// const div_container = document.createElement("div")
-			// div_container.setAttribute("id", "row_div")
+		
 			let col_index = 0
 			for (let col in selectedModelWeightsData[i]) {
 				if (!no_display_columns.includes(col)) {
-					// console.log(trainingData[i][col])
+		
 					const table_cell = document.createElement("td")
 					let new_text_node = selectedModelWeightsData[i][col]
 					
@@ -87,9 +73,9 @@ const Step6 = () => {
 						}
 						console.log(selectedModelWeightsData[i])
 						if (selectedModelWeightsData[i]["Old"] == true) {
-							// if (selectedModelWeightsData[i][col] == "True") {
+				
 								table_cell.classList.add("removedCombo")
-							// }
+
 						}
 						console.log(selectedModelWeightsData[i][col])
 						let combo_list = selectedModelWeightsData[i][col].split("∧")
@@ -126,7 +112,6 @@ const Step6 = () => {
 					}
 					const cell_text = document.createTextNode(new_text_node);
 					table_cell.appendChild(cell_text);
-					// div_container.appendChild(table_cell);
 					table_row.appendChild(table_cell);
 					col_index += 1
 				}
@@ -138,7 +123,6 @@ const Step6 = () => {
 	
 		data_table.appendChild(table_header);
 		data_table.appendChild(table_body);
-		// let table_container = document.getElementById("tableContainer")
 		document.body.appendChild(data_table);
 
 		let column_hover_texts = {"Feature Combination": "Combinations important for model", "Weight": "A higher numerical value indicates a more important feature. The feature combination with a 0 weight got replaced by the user selected combination"}
@@ -146,7 +130,7 @@ const Step6 = () => {
 
 		for (var column_key in selectedModelWeightsData[0]) {
 			if (!no_display_columns.includes(column_key)) {
-				console.log("ever here???")
+
 				const new_hover = document.createElement("div")
 				let column_hover_str = column_key.replace(/[^a-z0-9]/gi, '').replace(/\s/g, '')
 				new_hover.setAttribute("id", "hover_"+column_hover_str)
@@ -157,8 +141,8 @@ const Step6 = () => {
 				const get_header = document.getElementById("column_"+column_hover_str)
 				let hover_key = "#hover_"+column_hover_str
 				get_header.addEventListener("mouseover", function(e) {
-					// document.getElementById("hover_"+column_key).classList.remove("displayNone")
-					console.log(e.pageX+20)
+
+			
 					$(hover_key).css({
 						display: 'block',
 						left: e.pageX+10,
@@ -197,9 +181,7 @@ const Step6 = () => {
 			<p>{output}</p>
 			<div class="step6explanation">The feature combination with a 0.00 weight was replaced by the feature selected by the user from Step 5.</div>
 			<button id="step6selectAnotherButton" onClick={toStep5}>Select another feature combination</button>
-			{/* <div class="modelContainer">
-				<div class="tableContainer" id="tableContainer"></div>
-			</div> */}
+		
 		</div>
 	);
 };

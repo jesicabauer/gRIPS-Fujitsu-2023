@@ -107,7 +107,7 @@ const Step1_training_data = () => {
                     display: 'None',
                 })
             })
-            // hover_tracker[hover_key] = 1
+
         }
         
     }
@@ -125,15 +125,7 @@ const Step1_training_data = () => {
                     The training data you uploaded is shown here and will be used to train various potential models, which will give weights to the different feature combinations. Scroll to check its contents and click on <b>Step 2</b> above to proceed.
                 </div>
             </div>
-            
-			{/* <div id="header1Hover">testing hover 1</div>
-			<div id="header2Hover">testing hover 2</div>
-			<div id="header3Hover">testing hover 3</div>
-			<div id="header4Hover">testing hover 4</div>
-			<p id="explanationStep2">Wide Learning generates all possible combinations of variables. The combinations in this table are the most important combinations of features to determine whether or not an animal is a mammal. The importance of a combination is measured by the length of the combination and the number of positive and negative occurrences for the animals in the training dataset that have that combination of features. The table below will only show feature combinations with a maximum length of three, however, important feature combinations that are longer than three may exist.</p>
-        <div class="loading">
-            <p>{output}</p>
-        </div> */}
+        
 		</div>
     )
 };

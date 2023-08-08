@@ -3,7 +3,6 @@ import $ from 'jquery';
 import {useLocation} from 'react-router-dom';
 
 const Step8_model_predictions = ({route,navigate}) => {
-    // console.log(props.st)
     const location = useLocation();
 
 
@@ -43,8 +42,7 @@ const Step8_model_predictions = ({route,navigate}) => {
 		data_table.setAttribute("id", "table_step3")
 		const table_header = document.createElement("thead");
         const table_header_row = document.createElement("tr");
-        // let hover_tracker = {}
-        // let table_container = document.getElementById("tableContainer")
+
         const container_element = document.getElementById("step3container")
 
 		for (var column_key in selectedModelData[0]) {
@@ -63,12 +61,10 @@ const Step8_model_predictions = ({route,navigate}) => {
         const table_body = document.createElement("tbody");
         for (let i = 0; i < selectedModelData.length; i += 1) {
 			const table_row = document.createElement("tr")
-			// console.log(data[0])
-			// const div_container = document.createElement("div")
-			// div_container.setAttribute("id", "row_div")
+
 			let col_index = 0
 			for (let col in selectedModelData[i]) {
-				// console.log(trainingData[i][col])
+
                 const table_cell = document.createElement("td")
 				let new_text_node = selectedModelData[i][col]
 				if (col_index == 0) {
@@ -103,7 +99,6 @@ const Step8_model_predictions = ({route,navigate}) => {
 				
 				const cell_text = document.createTextNode(new_text_node);
 				table_cell.appendChild(cell_text);
-				// div_container.appendChild(table_cell);
 				table_row.appendChild(table_cell);
 				col_index += 1
             }
@@ -113,11 +108,10 @@ const Step8_model_predictions = ({route,navigate}) => {
 
 		data_table.appendChild(table_header);
 		data_table.appendChild(table_body);
-        // let table_container = document.getElementById("tableContainer")
 		document.body.appendChild(data_table);
 
 		for (var column_key in selectedModelData[0]) {
-            console.log("ever here???")
+
             const new_hover = document.createElement("div")
             let column_hover_str = column_key.replace(/[^a-z0-9]/gi, '').replace(/\s/g, '')
             new_hover.setAttribute("id", "hover_"+column_hover_str)
@@ -128,8 +122,6 @@ const Step8_model_predictions = ({route,navigate}) => {
             const get_header = document.getElementById("column_"+column_hover_str)
             let hover_key = "#hover_"+column_hover_str
             get_header.addEventListener("mouseover", function(e) {
-                // document.getElementById("hover_"+column_key).classList.remove("displayNone")
-                console.log(e.pageX+20)
                 $(hover_key).css({
                     display: 'block',
                     left: e.pageX+10,
@@ -150,7 +142,6 @@ const Step8_model_predictions = ({route,navigate}) => {
                     display: 'None',
                 })
             })
-            // hover_tracker[hover_key] = 1
         }
         
     }
@@ -158,10 +149,8 @@ const Step8_model_predictions = ({route,navigate}) => {
 	return (
 		<div>
 			<div id = "step8container">
-				{/* {location.state.model} */}
 			</div>
 			<div class="loading">
-				{/* <p>{output}</p> */}
 			</div>
 		</div>
 		
