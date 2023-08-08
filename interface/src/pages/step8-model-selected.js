@@ -41,7 +41,7 @@ const Step8_model_selected = ({route,navigate}) => {
     // console.log(selectedModelData.length)
     var output = "Loading learned weights ..."
 
-    var model_names = {"Lasso": "Lasso", "SVM": "Support Vector Machine", "RF": "Random Forest", "DT2": "Decision Tree (depth = 2)", "DT3": "Decision Tree (depth = 3)", "DT5": "Decision Tree (depth = 5)", "DT10": "Decision Tree (depth = 10)", "LR2": "Logistic Regression", "PT": "Perceptron", "NB": "Gaussian Naive Bayes"}
+    var model_names = {"Lasso": "Lasso", "SVM": "Support Vector Machine", "RF": "Random Forest", "DT2": "Decision Tree (depth = 2)", "DT3": "Decision Tree (depth = 3)", "DT5": "Decision Tree (depth = 5)", "DT10": "Decision Tree (depth = 10)", "LR2": "Logistic Regression", "PT": "Perceptron", "NB": "Gaussian Naive Bayes", "LassoFeatureSelection": "Lasso with Feature Selection"}
 
 
     if (selectedModelData) {

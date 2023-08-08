@@ -8,6 +8,7 @@ import decision_tree2_model
 import logistic_regression_model
 import GaussianNB_model
 import SVM_model
+import interface_feature_selection
 
 def main(index):
     print("in step8_model_predictions py file")
@@ -21,7 +22,8 @@ def main(index):
                    "DT10": decision_tree10_model,
                    "LR2": logistic_regression_model,
                     "NB": GaussianNB_model,
-                   "SVM": SVM_model
+                   "SVM": SVM_model,
+                   "LassoFeatureSelection": interface_feature_selection
                    }
     print("in step8 model weights file")
     return models_list[index].predictions("binary_combo_data_test.csv")

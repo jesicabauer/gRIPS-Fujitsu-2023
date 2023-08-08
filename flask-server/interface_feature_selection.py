@@ -15,6 +15,7 @@ import numpy as np
 from sklearn.linear_model import LogisticRegression
 import pandas as pd
 import json
+import pickle
 
 
 
@@ -272,9 +273,9 @@ def interface_predictions(X_test,classifier,current_coef):
     pred_dictionary_list=[]
     for i in range(len(test_row_names)):
         dictionary={}
-        dictionary["Row"]=test_row_names[i]
+        dictionary["Data"]=test_row_names[i]
         dictionary["Score"]=probs[i,1]
-        dictionary["Prediction"]=predictions[i]
+        dictionary["Prediction"]=int(predictions[i])
         pred_dictionary_list.append(dictionary)
     
     return pred_dictionary_list
@@ -297,6 +298,9 @@ def main(train_combo_data):
     #gets the Lasso classifier and list of weights (betas)
     classifier,current_coef,intercept,C_val=optimal_Lasso(X_train,y_train)
 
+    filename="optimal_LASSO_model.sav"
+    pickle.dump(classifier, open(filename,'wb'))
+
     #gives list of combinations that can be added to the model
     acceptable_combinations=acceptable_beta_j(current_coef,intercept,C_val,X_train, y_train)
 
@@ -312,6 +316,7 @@ def main(train_combo_data):
 
 def after_selection(train_combo_data, selected_feature, already_addeded):
     print("in after_selection function")
+    print(already_addeded)
     #preparing training data
     X_train=pd.read_csv(train_combo_data)
     y_train=X_train.iloc[:,-1]
@@ -328,6 +333,7 @@ def after_selection(train_combo_data, selected_feature, already_addeded):
     # fetch_step5_json = json.load(json_file)
     # json_file.close()
     
+    print(user_feature_indices)
     print("before new_step5_json??")
     new_step5_json = [{
         "current_coef": list(current_coef),
@@ -345,6 +351,21 @@ def after_selection(train_combo_data, selected_feature, already_addeded):
     print("here??")
 
     return weight_dict_list
+
+
+def predictions(test_combo_data):
+    classifier=pickle.load(open("optimal_LASSO_model.sav",'rb'))
+    #preparing testing data
+    X_test=pd.read_csv(test_combo_data)
+    # X_test=X_test.iloc[:,1:] #removing first column (row names)
+
+    json_file = open("step5_feature_selection_data.json")
+    step5_json = json.load(json_file)
+    json_file.close()
+    #returns list of dictionaries for the prediction scores and classes
+    pred_dict_list=interface_predictions(X_test,classifier,step5_json[0]["current_coef"])
+
+    return pred_dict_list
 
 
 if __name__ == "__main__":

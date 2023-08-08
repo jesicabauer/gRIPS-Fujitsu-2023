@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt, mpld3
 import warnings
 warnings.filterwarnings('ignore')
 from sklearn.model_selection import train_test_split
@@ -413,20 +413,21 @@ def main(Data):
         # model_data_dict["least-squares-approximation"] = p
         all_model_data.append(model_data_dict)
 
-    # for d in all_model_data:
-    #     plt.ylim(0, 1.1)
-    #     plt.plot(d['x_axis_Rade2_Fourier'], d['y_axis_Rade2_Fourier'])
+    for d in all_model_data:
+        plt.ylim(0, 1.1)
+        plt.plot(d['x_axis_Rade2_Fourier'], d['y_axis_Rade2_Fourier'])
     # plt.show()
     
     # for d in all_model_data:
     #     plt.ylim(0, 1.1)
     #     plt.plot(d['x_axis_Rade2'], d['y_axis_Rade2'])
+    print(mpld3.fig_to_html(plt.figure()))
     # plt.show()
     return (all_model_data)
 
 
-# if __name__ == "__main__":
-    # print(main(Data = pd.read_csv('matrix_format.csv') ))
+if __name__ == "__main__":
+    print(main(Data = pd.read_csv('matrix_format.csv') ))
 
 
 

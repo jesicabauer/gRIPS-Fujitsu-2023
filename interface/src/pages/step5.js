@@ -29,6 +29,7 @@ const Step5 = () => {
 	useEffect(() => {
 		document.getElementById("step5Div").classList.add("onclickColor")
 		document.getElementById("step5Div").classList.remove("stepDivBackground")
+		document.getElementById("step6Div").classList.add("stepDivBackground")
 		
         // Using fetch to fetch the api from
         // flask server it will be redirected to proxy
@@ -128,6 +129,7 @@ const Step5 = () => {
 	// }
 
 	const format_combo = (combo_in) => {
+		console.log(combo_in)
 		let combo_list = combo_in.split("∧")
 		console.log(combo_list)
 		let new_feature_str = ""
@@ -388,7 +390,7 @@ const Step5 = () => {
 							// <label>
 								// <input type="button" id='startDate' name={'startDate'+x} value={x} onClick={() => featureSelected(x)}/>
 							// {/* </label> */}
-							<div id='featureSelect' class="featureOption stepDivBackground" name={'featureSelect'+x} value={x} onClick={() => featureSelected(x)}>{format_combo(x)}</div>
+							<div id='featureSelect' class="featureSelectOption stepDivBackground" name={'featureSelect'+x} value={x} onClick={() => featureSelected(x)}>{format_combo(x)}</div>
 						) : ""}
 					</div>
 					

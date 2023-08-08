@@ -423,7 +423,14 @@ def user_feature_selection():
         step5_json = json.load(json_file)
         json_file.close()
 
+        print(step5_json)
+        # step5_json[0]["user_added"].append(feature_selected)
+
         print(step5_json[0]["current_coef"])
+
+        json_model_data = json.dumps(step5_json)
+        with open("step5_feature_selection_data.json", "w") as outfile:
+            outfile.write(json_model_data)
 
 
         updated_weights = interface_feature_selection.after_selection("binary_combo_data.csv", feature_selected, step5_json[0]["user_added"])
@@ -621,19 +628,25 @@ def step4_display_selected_model():
 def step5_features_selection():
     # print(interface_feature_selection.main("binary_combo_data.csv"))
     current_coef = interface_feature_selection.main("binary_combo_data.csv")
-
-    step5_json = [{
-        "current_coef": current_coef,
-        "user_added": []
-    }]
-    json_model_data = json.dumps(step5_json)
-    with open("step5_feature_selection_data.json", "w") as outfile:
-        outfile.write(json_model_data)
+    try:
+        json_file = open("step5_feature_selection_data.json")
+        step5_json = json.load(json_file)
+        print(step5_json)
+        json_file.close()
+        return step5_json[0]["selectable_features"]
+    except:
+        step5_json = [{
+            "current_coef": current_coef,
+            "user_added": []
+        }]
+        json_model_data = json.dumps(step5_json)
+        with open("step5_feature_selection_data.json", "w") as outfile:
+            outfile.write(json_model_data)
 
     # json_file = open("step5_data.json")
     # step5_json = json.load(json_file)
     # json_file.close()
-    return current_coef
+    return step5_json[0]["current_coef"]
     
 
 @app.route("/step7_display")

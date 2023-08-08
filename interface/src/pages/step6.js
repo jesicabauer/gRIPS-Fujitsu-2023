@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import {useLocation} from 'react-router-dom';
 import $ from 'jquery';
+import { useNavigate } from "react-router-dom";
 
-const Step6 = ({route,navigate}) => {
+
+const Step6 = () => {
 	const table_element = document.getElementById("combo_table")
 	if (table_element) {
 		table_element.remove()
@@ -20,6 +22,7 @@ const Step6 = ({route,navigate}) => {
 	const location = useLocation();
 	const [selectedModelWeightsData, setSelectedModelWeightsData] = useState({})
 	const [selectedFeature, setSelectedFeature] = useState("")
+	const navigate = useNavigate();
 
 	useEffect(() => {
         // console.log(location.state.model)
@@ -181,6 +184,10 @@ const Step6 = ({route,navigate}) => {
 		}
 	}
 
+	const toStep5 = () => {
+		navigate("/step5")
+	}
+
 
 	return (
 		<div>
@@ -189,6 +196,7 @@ const Step6 = ({route,navigate}) => {
 			</div>
 			<p>{output}</p>
 			<div class="step6explanation">The feature combination with a 0.00 weight was replaced by the feature selected by the user from Step 5.</div>
+			<button id="step6selectAnotherButton" onClick={toStep5}>Select another feature combination</button>
 			{/* <div class="modelContainer">
 				<div class="tableContainer" id="tableContainer"></div>
 			</div> */}
