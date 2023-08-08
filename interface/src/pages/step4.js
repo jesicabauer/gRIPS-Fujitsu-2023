@@ -278,13 +278,13 @@ const Step4 = () => {
 			<p>{output}</p>
 			<div class="rashomonSetExplanation">Shown below are models considered in the Rashomon Set, which contains models with similar accuracy. Click on a model from the list on the right to display weights for relevant feature combinations.</div>
 			<img id="step4chart" src="/step4Chart.png" alt="complexity chart" />
-			<div id="displayChartButton">
+			{/* <div id="displayChartButton">
 				<div>
 				For line chart with more information about complexity for the models, click the button below.	
 				</div>
 				<button onClick={displayChartButton}>Display complexity chart</button>
 			</div>
-	
+	 */}
 			<div class="modelContainer">
 				<div class="tableContainer" id="tableContainer"></div>
 				{/* [list of models + LASSO with feature selection] */}
