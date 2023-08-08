@@ -1,4 +1,3 @@
-
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -9,6 +8,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.linear_model import Perceptron
 from sklearn.naive_bayes import GaussianNB
+from mpl_toolkits.mplot3d import Axes3D
 
 def RF(train_data_name ,test_data_name):
     train_data = pd.DataFrame(train_data_name)
@@ -195,8 +195,6 @@ def Explore_data_correlations(data):
     
     df = df.drop(df.columns[-1], axis=1)
     
-    
-    
     # Compute the dot products
     dot_products = df.T.dot(labels)
     
@@ -225,85 +223,95 @@ def Data_generation(n_rows, n_cols,inf_correlation,sup_correlation):
     df["Label"] = labels
     return df
 
-
-def Rade2(model, erasuresize, data, n):
-    # Reduce the size of data if erasuresize > 0
-    if erasuresize > 0:
-        data = data.iloc[:-erasuresize]
-
-    # Replace 0 with -1
-    data = data.replace(0, -1)
+def Rademacher (model, erasuresize, data):
+    data = data.iloc[:-erasuresize]
+    df = data.copy()
+    num_rows = df.shape[0]
     
-    # Reverse n labels chosen randomly
-    size = data.shape[0]
-    random_indices = np.random.choice(size, size=n, replace=False)
-    
-    # Create a vector with 1s and -1s
-    vector = np.ones(size)
-    vector[random_indices] = -1
-    
-    # Replace the labels in the dataframe
-    data.iloc[:, -1] *= vector
+    #Completely relabeling randomly
 
-    # Generate test data
-    test = data.iloc[:, :-1].values
+    df = df.iloc[:, :-1]
+    probabilities = [0, 1]
+    column_vector = np.random.choice(probabilities, size=(num_rows, 1), p=[0.5, 0.5]) 
+    df['label'] = column_vector
+
+    #Generate test data identical to the training data but without labels, and have it predicted
+    df = df.replace(0, -1)
+    test = np.delete(np.array(np.matrix(data)), -1, axis=1)
     test[test == 0] = -1
+    prediction =  model(df, test)
     
-    # Predict using the model
-    prediction = model(data, test)
-
-    # Return the dot product divided by the number of rows
-    return (data.iloc[:, -1] * prediction).mean()
-
+    b = np.array([i for i in df.iloc[:,-1]])
+    return np.dot(b, prediction)/num_rows
 
 
 def main(Data):
     model = [RF, DT2, DT3, DT5, DT10,LR2, PT, NB]
-    model2 = ["RF", "DT2", "DT3", "DT5", "DT10","LR2", "PT", "NB"]
-    book  = {"RF":[],"DT2":[],"DT3":[],"DT5":[],"DT10":[],"LR2":[],"PT":[],"NB":[]} 
-    book1_list =[]
-    sup_corre = Explore_data_correlations(Data)[0]
-    inf_corre = Explore_data_correlations(Data)[1]   
-    
-    if Data.shape[0] <= 2000:
-        size1 = Data.shape[0]
-    else:
-        size1 = 2000
-    if Data.shape[1] <= 200:
-        size2 = Data.shape[0]
-    else:
-        size2 = 200
-    data = Data_generation(size1, size2, inf_corre, sup_corre) 
-    done =0
-    all_model_data = []
-    
-    
-    
-    for k in range(len(model)):
-        run = 10 
-        row = data.shape[0]
-        data_erasure_size = 0
-       
 
-        model_data_dict = {}
-        model_data_dict["Model Name"] = model2[k]
-            
-        List_comp_Rade2 = np.zeros(50)
-        List_Data_Rade2 = np.zeros(50)
-            
-        for j in range(50):
-            compx_Rade2 = 0
-            for i in range(run):
-                compx_Rade2 += Rade2(model[k], data_erasure_size, data , int(j * row/50))  
-            List_Data_Rade2[j] = int(j * row/50)
-            List_comp_Rade2[j] = (compx_Rade2 / run)
-            done += 100/(50 * len(model))
+    sup_corre = Explore_data_correlations(Data)[0]
+    inf_corre = Explore_data_correlations(Data)[1]    
+    
+    done =0
+    Data_step = 100
+    mode = 0
+    List_3D = []
+    D = 5
+    for k in range(D):
+        data = Data_generation(2000, k*Data_step+5, inf_corre, sup_corre)
+        # book = {"model_name":"" ,"value":[]}
+
+        run = 10
+        row = data.shape[0]
+        
+        if(int(data.shape[0]/50)>10):
+            data_erasure_size = row - int(data.shape[0]/50)
+        else:
+            data_erasure_size = row - 10
+        add_data_size = int(data.shape[0]/50)
+        iterations = int(data_erasure_size /add_data_size)    
+        List_comp = np.zeros(iterations)
+        List_Data = np.zeros(iterations)
+        List_Z = np.zeros(iterations)
+        
+        
+        
+        for j in range(iterations):
+            compx = 0
+            data = Data_generation(2000, k*Data_step+50, inf_corre, sup_corre)
+            for i in range(run):          
+                compx += Rademacher(model[mode], data_erasure_size, data)
+            List_Data[j] = (row  - data_erasure_size)
+            List_comp[j] = (compx / run)
+
+            List_Z[j] = k*Data_step+5
+            data_erasure_size -= add_data_size
+            done += 100/( int(iterations) * D)
             print(str(done) + "%")
-        model_data_dict["y_axis_Rade2"] = list(List_comp_Rade2)
-        model_data_dict["x_axis_Rade2"] = list(List_Data_Rade2)
-        all_model_data.append(model_data_dict)
-    return all_model_data
+        List_2D = [List_Data,List_comp,List_Z]
+        List_3D.append(List_2D)
+
+    fig = plt.figure()
+    ax = fig.add_subplot(111, projection='3d')
+    
+    # 3次元の散布図をプロット
+    for i, List_3D in enumerate(List_3D):
+        x = List_3D[0]      
+        y = List_3D[2] 
+        z = List_3D[1]
+        ax.plot(x, y, z)
+
+
+    ax.legend()
+    plt.show()
+    return 
+
 
 if __name__ == "__main__":
-    main(Data = pd.read_csv('matrix_format.csv') )
+    print(main(Data = pd.read_csv('matrix_format.csv') ))
+
+
+
+
+
+
 

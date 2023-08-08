@@ -251,8 +251,9 @@ def main(Data):
     book_list =[]
 
     sup_corre = Explore_data_correlations(Data)[0]
-    inf_corre = Explore_data_correlations(Data)[1]    
-    data = Data_generation(2000, Data.shape[1], inf_corre, sup_corre)
+    inf_corre = Explore_data_correlations(Data)[1]
+    data = Data    
+    #data = Data_generation(800, 400, inf_corre, sup_corre)
     done =0
     
     all_model_data = []
@@ -274,8 +275,10 @@ def main(Data):
         List_Data = np.zeros(iterations)
         
         for j in range(iterations):
+            #data = Data_generation(800, 400, inf_corre, sup_corre)
             compx = 0
             for i in range(run):
+                #data = Data_generation(800, 400, inf_corre, sup_corre)
                 compx += Rademacher(model[k], data_erasure_size, data)
             List_Data[j] = (row  - data_erasure_size)
             List_comp[j] = (compx / run)
@@ -288,22 +291,23 @@ def main(Data):
         # book1[model2[k]].append(List_Data)
         model_data_dict["x_axis"] = list(List_Data)
         all_model_data.append(model_data_dict)
-        # plt.ylim(0, 1)
-        # plt.xlabel('Data_size')
-        # plt.ylabel('Complexity')
-        # plt.plot(List_Data, List_comp,label=str(k))
+        plt.ylim(0, 1)
+        plt.xlabel('Data_size')
+        plt.ylabel('Complexity')
+        plt.plot(List_Data, List_comp,label= model2[k])
         book["Model Name"] = model2[k]
         book["Complexity Value"] = List_comp[-1]
         book_list.append(book)
         book1_list = []
         book1_list.append(book1)
         # book1.tolist() , 
-        result = []
         print(book_list)
         print(book1)
         print(book1_list)
 
     print(all_model_data)
+    plt.legend()
+    plt.show()
         # result.append(book1_list, book_list)
     return (all_model_data, book_list)
 

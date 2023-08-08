@@ -9,6 +9,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.linear_model import Perceptron
 from sklearn.naive_bayes import GaussianNB
+from numpy.polynomial.polynomial import Polynomial
 
 def RF(train_data_name ,test_data_name):
     train_data = pd.DataFrame(train_data_name)
@@ -293,7 +294,6 @@ def main(Data):
     
     model = [RF, DT2, DT3, DT5, DT10,LR2, PT, NB]
     model_name = ["RF", "DT2", "DT3", "DT5", "DT10","LR2", "PT", "NB"]
-    book_list =[]
 
     sup_corre = Explore_data_correlations(Data)[0]
     inf_corre = Explore_data_correlations(Data)[1]
@@ -303,72 +303,119 @@ def main(Data):
         data = Data
     else :
         data = Data_generation(300, 20, inf_corre, sup_corre) 
+    #data = Data_generation(2000, 200, inf_corre, sup_corre)
     done =0
     all_model_data = []
-    
+    iterations = 50 
+    run = 10
     for k in range(len(model)):  
         # book = {"model_name":"" ,"value":[]}
-        book = {}
-        run = 10
         row = data.shape[0]
         
         model_data_dict = {}
         model_data_dict["Model Name"] = model_name[k]
-        if(int(data.shape[0]/50)>10):
-            data_erasure_size_Rade = row - int(data.shape[0]/50)
-        else:
-            data_erasure_size_Rade = row - 10
+
         data_erasure_size_Rasyo = row - 30
-        add_data_size_Rade = int(data_erasure_size_Rade/50)
-        add_data_size_Rasyo = int(data_erasure_size_Rasyo/50)
         
-        iterations = 50   
-        List_comp_Rade = np.zeros(iterations)
-        List_Data_Rade = np.zeros(iterations)
+        #add_data_size_Rade = int(data_erasure_size_Rade/iterations)
+        #add_data_size_Rasyo = int(data_erasure_size_Rasyo/iterations)
+ 
+        #List_comp_Rade = np.zeros(iterations)
+        #List_Data_Rade = np.zeros(iterations)
         List_comp_Rade2 = np.zeros(iterations)
         List_Data_Rade2 = np.zeros(iterations)
-        List_comp_Rasyo = np.zeros(iterations)
-        List_Data_Rasyo = np.zeros(iterations)
+        #List_comp_Rasyo = np.zeros(iterations)
+        #List_Data_Rasyo = np.zeros(iterations)
         
         for j in range(iterations):
+            #data = Data_generation(2000, 200, inf_corre, sup_corre)
             compx_Rade = 0
             compx_Rade2 = 0
-            compx_Rasyo = 0
+            #compx_Rasyo = 0
             for i in range(run):
-                #data = Data_generation(2000, size2, inf_corre, sup_corre) 
-                compx_Rade += Rademacher(model[k], data_erasure_size_Rade, data)
-                compx_Rade2 += Rade2(model[k],  data , int(j * row/50)) 
-                compx_Rasyo += Rasyomon(model[k] , data_erasure_size_Rasyo, data)
+                if(j==iterations-1):
+                    compx_Rade += Rademacher(model[k], 0, data)
+                compx_Rade2 += Rade2(model[k],  data , int(j * row/iterations)) 
+                #compx_Rasyo += Rasyomon(model[k] , data_erasure_size_Rasyo, data)
             done += 100/( int(iterations) * len(model))
             print(str(done) + "%")
-            List_Data_Rade[j] = (row  - data_erasure_size_Rade)
-            List_comp_Rade[j] = (compx_Rade / run)
+            #List_Data_Rade[j] = (row  - data_erasure_size_Rade)
+            #List_comp_Rade[j] = (compx_Rade / run)
             List_Data_Rade2[j] = int(j * row/50)
             List_comp_Rade2[j] = (compx_Rade2 / run)
-            List_Data_Rasyo[j] = row - (data_erasure_size_Rasyo + 20)
-            List_comp_Rasyo[j] = compx_Rasyo / run
-            data_erasure_size_Rade -= add_data_size_Rade
-            data_erasure_size_Rasyo -= add_data_size_Rasyo
-        model_data_dict["y_axis_Rade"] = list(List_comp_Rade)
-        model_data_dict["x_axis_Rade"] = list(List_Data_Rade)
+            #List_Data_Rasyo[j] = row - (data_erasure_size_Rasyo + 20)
+            #List_comp_Rasyo[j] = compx_Rasyo / run
+            #data_erasure_size_Rade -= add_data_size_Rade
+            #data_erasure_size_Rasyo -= add_data_size_Rasyo
+        #model_data_dict["y_axis_Rade"] = list(List_comp_Rade)
+        #model_data_dict["x_axis_Rade"] = list(List_Data_Rade)
+        model_data_dict["complexity"] = compx_Rade/iterations
         model_data_dict["y_axis_Rade2"] = list(List_comp_Rade2)
         model_data_dict["x_axis_Rade2"] = list(List_Data_Rade2)
-        model_data_dict["y_axis_Rasyo"] = list(List_comp_Rasyo)
-        model_data_dict["x_axis_Rasyo"] = list(List_Data_Rasyo)
-        model_data_dict["accuracy"] = List_comp_Rasyo[-1] 
+        x_values = List_Data_Rade2
+        y_values = List_comp_Rade2
+        yf = np.fft.fft(y_values)
+        xf = np.fft.fftfreq(len(x_values), (x_values[1] - x_values[0])/2)
+        cutoff = np.max(np.abs(xf))/12  # カットオフ周波数を設定
+        yf[np.abs(xf) > cutoff] = 0  # カットオフ周波数以上の成分を0にする
+        y_filtered = np.fft.ifft(yf).real
+        model_data_dict["y_axis_Rade2_Fourier"] = y_filtered
+        model_data_dict["x_axis_Rade2_Fourier"] = x_values
+        p = Polynomial.fit(x_values, y_values, 2)
+        model_data_dict["least-squares-approximation"] = p
+        
+        
+        #model_data_dict["y_axis_Rasyo"] = list(List_comp_Rasyo)
+        #model_data_dict["x_axis_Rasyo"] = list(List_Data_Rasyo)
+        #model_data_dict["accuracy"] = List_comp_Rasyo[-1] 
         model_data_dict["Rademacher_comp"] = List_comp_Rade[-1]
-        model_data_dict["Random_comp"] = List_comp_Rade2[-1]
+        #model_data_dict["Random_comp"] = List_comp_Rade2[-1]
         
         all_model_data.append(model_data_dict)
-    #plt.ylim(0, 1.1)
     #for d in all_model_data :
-    #    plt.plot(d['x_axis_Rasyo'],d['y_axis_Rasyo'])
+        #plt.ylim(0, 1.1)
+        #plt.plot(d['x_axis_Rasyo'],d['y_axis_Rasyo'])
     #plt.show()
     #for d in all_model_data:
-    #    plt.plot(d['x_axis_Rade'], d['y_axis_Rade'])
+        #plt.ylim(0, 1.1)
+        #plt.plot(d['x_axis_Rade'], d['y_axis_Rade'])
     #plt.show()
+    for d in all_model_data:
+        plt.ylim(0, 1.1)
+        plt.plot(d['x_axis_Rade2_Fourier'], d['y_axis_Rade2_Fourier'])
+    plt.show()
+    
+    for d in all_model_data:
+        plt.ylim(0, 1.1)
+        plt.plot(d['x_axis_Rade2'], d['y_axis_Rade2'])
+    plt.show()
+    
     #for d in all_model_data:
-    #    plt.plot(d['x_axis_Rade2'], d['y_axis_Rade2'])
+    #    x_values = np.array(d["x_axis_Rade2"])
+    #    y_values = np.array(d["y_axis_Rade2"])
+    #    yf = np.fft.fft(y_values)
+    #    xf = np.fft.fftfreq(len(x_values), x_values[1] - x_values[0])
+    #    plt.plot(np.abs(xf),np.abs(yf),'.')
+    #plt.show()
+    #
+    #for d in all_model_data:
+    #   x_values = np.array(d["x_axis_Rade2"])
+    #    y_values = np.array(d["y_axis_Rade2"])
+    #    yf = np.fft.fft(y_values)
+    #    xf = np.fft.fftfreq(len(x_values), (x_values[1] - x_values[0])/2)       
+    #    cutoff = np.max(np.abs(xf))/10  # カットオフ周波数を設定（ここでは0.2とする）
+    #    yf[np.abs(xf) > cutoff] = 0  # カットオフ周波数以上の成分を0にする
+    #    y_filtered = np.fft.ifft(yf).real
+    #    plt.ylim(0, 1.1)
+    #    plt.plot(x_values, y_filtered)
+    #plt.show()
+    # 
+    # for d in all_model_data:
+    #    x_values = np.array(d["x_axis_Rade2"])
+    #    y_values = np.array(d["y_axis_Rade2"])
+    #    p = Polynomial.fit(x_values, y_values, 2)
+    #    plt.ylim(0, 1.1)
+    #    plt.plot(*p.linspace())
     #plt.show()
     return (all_model_data)
 

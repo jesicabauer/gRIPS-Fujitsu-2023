@@ -235,7 +235,7 @@ def Rasyomon (model, erasuresize, data):
     df = df.replace(0, -1)
     X = df.iloc[:, :-1]
     y = df.iloc[:, -1]
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size= 40, random_state=42)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size= 20, random_state=42)
     train_data = pd.concat([X_train, y_train], axis=1)
     
     #Generate test data identical to the training data but without labels, and have it predicted
@@ -272,34 +272,36 @@ def main(Data):
         model_data_dict["Model Name"] = model2[k]
                  
         row = data.shape[0]
-        data_erasure_size = row - 50
-        add_data_size = int(data.shape[0]/50)
-        iterations = int((data_erasure_size ) /add_data_size)    
-        List_comp = np.zeros(iterations)
-        List_Data = np.zeros(iterations)
+        data_erasure_size_Rasyo = row - 30
+        add_data_size_Rasyo = int(data_erasure_size_Rasyo/50)
+        iterations = 50   
+        List_comp_Rasyo = np.zeros(iterations)
+        List_Data_Rasyo = np.zeros(iterations)
         
         for j in range(iterations):
-            compx = 0
+            compx_Rasyo = 0
+            print(iterations)
             for i in range(run):
-                compx += Rasyomon(model[k] , data_erasure_size, data)   
-            List_Data[j] = row - (data_erasure_size + 40)
-            List_comp[j] = compx / run
-            data_erasure_size -= add_data_size
+                compx_Rasyo += Rasyomon(model[k] , data_erasure_size_Rasyo, data)   
+            List_Data_Rasyo[j] = row - (data_erasure_size_Rasyo + 20)
+            List_comp_Rasyo[j] = compx_Rasyo / run
+            data_erasure_size_Rasyo -= add_data_size_Rasyo
             done += 100/( int(iterations) * len(model))
             print(str(done) + "%")
             
-        # book1[model2[k]].append(List_comp)
-        # book1[model2[k]].append(List_Data)
+        # book1[model2[k]].append(List_comp_Rasyo)
+        # book1[model2[k]].append(List_Data_Rasyo)
 
-        model_data_dict["y_axis"] = list(List_comp)
-        model_data_dict["x_axis"] = list(List_Data)
+        model_data_dict["y_axis"] = list(List_comp_Rasyo)
+        model_data_dict["x_axis"] = list(List_Data_Rasyo)
         all_model_data.append(model_data_dict)
-        # plt.xlabel('Data_size')
-        # plt.ylabel('accuracy')
-        # plt.plot(List_Data, List_comp,label=str(k))
         book["Model Name"] = model2[k]
-        book["Accuracy Value"] = List_comp[-1]
+        book["Accuracy Value"] = List_comp_Rasyo[-1]
         book_list.append(book)
+        plt.ylim(0, 1)
+        plt.xlabel('Data_size')
+        plt.ylabel('Complexity')
+        plt.plot(List_Data_Rasyo, List_comp_Rasyo,label=str(k))
     return (all_model_data , book_list)
 
 if __name__ == "__main__":

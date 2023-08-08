@@ -192,7 +192,7 @@ def DT10(train_data ,test_data):
 
     return y_pred
 
-def LR2(train_data ,test_data):
+def LR(train_data ,test_data):
 
     train_data = pd.DataFrame(train_data)
     test_data = pd.DataFrame(test_data)
@@ -353,8 +353,10 @@ def Rasyomon (model, erasuresize, data):
 
 def main(Data):
     
-    model = [Lasso,SVM,RF,DT2,DT3,DT5,DT10,LR2,PT,NB]
-    model_name = ["Lasso","SVM","RF", "DT2", "DT3", "DT5", "DT10","LR2", "PT", "NB"]
+    model = [Lasso,SVM,RF,DT2,DT3,DT5,DT10,LR,PT,NB]
+    model_name = ["Lasso","support vector machine","Random Forest", "2-way decision tree", "3-way decision tree", "5-way decision tree", "10-way decision tree","linear regression", "perceptron", "Naive Bayes"]
+    #model = [RF,DT2,DT3,DT5,DT10,LR,PT,NB]
+    #model_name = ["RF", "DT2", "DT3", "DT5", "DT10","LR", "PT", "NB"]
 
     sup_corre = Explore_data_correlations(Data)[0]
     inf_corre = Explore_data_correlations(Data)[1]
@@ -364,7 +366,8 @@ def main(Data):
         data = Data
     else :
         data = Data_generation(300, 20, inf_corre, sup_corre) 
-    #data = Data_generation(2000, 200, inf_corre, sup_corre)
+    data = Data_generation(500, 500, 0.3, 0.7)
+    #data = Data_generation(700, 400, inf_corre, sup_corre)
     done =0
     all_model_data = []
     iterations = 50 
@@ -386,7 +389,11 @@ def main(Data):
             
         
             for i in range(run):
+                #data = Data_generation(700, 400, inf_corre, sup_corre)
+                data = Data_generation(500, 500, 0.3, 0.7)
                 if(j==iterations-1):
+                    #data = Data_generation(700, 400, inf_corre, sup_corre)
+                    data = Data_generation(500, 500, 0.3, 0.7)
                     compx_Rade += Rademacher(model[k], 0, data)
                     accuracy += Rasyomon(model[k] , 0, data)
                 compx_Rade2 += Rade2(model[k],  data , int(j * row/iterations))
@@ -394,7 +401,7 @@ def main(Data):
                 
             done += 100/( int(iterations) * len(model))
             print(str(done) + "%")
-            List_Data_Rade2[j] = int(j * row/50)
+            List_Data_Rade2[j] = (float(j) * 1.0/iterations)
             List_comp_Rade2[j] = (compx_Rade2 / run)
         model_data_dict["complexity"] = compx_Rade/run
         model_data_dict["accuracy"] = accuracy/run
@@ -412,15 +419,22 @@ def main(Data):
         p = Polynomial.fit(x_values, y_values, 2)
         model_data_dict["least-squares-approximation"] = p
         all_model_data.append(model_data_dict)
-
+    plt.figure(figsize=(10, 6))
     for d in all_model_data:
         plt.ylim(0, 1.1)
-        plt.plot(d['x_axis_Rade2_Fourier'], d['y_axis_Rade2_Fourier'])
+        plt.plot(d['x_axis_Rade2_Fourier'], d['y_axis_Rade2_Fourier'],label= d["Model Name"])
+    plt.xlabel("Flip rate")
+    plt.ylabel("Our complexity")    
+    plt.legend()
     plt.show()
     
+    plt.figure(figsize=(10, 6))
     for d in all_model_data:
         plt.ylim(0, 1.1)
-        plt.plot(d['x_axis_Rade2'], d['y_axis_Rade2'])
+        plt.plot(d['x_axis_Rade2'], d['y_axis_Rade2'],label= d["Model Name"])
+    plt.xlabel("Flip rate")
+    plt.ylabel("Our complexity")
+    plt.legend()
     plt.show()
     return (all_model_data)
 
